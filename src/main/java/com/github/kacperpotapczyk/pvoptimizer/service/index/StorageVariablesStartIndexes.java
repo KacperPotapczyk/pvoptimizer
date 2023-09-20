@@ -1,4 +1,4 @@
 package com.github.kacperpotapczyk.pvoptimizer.service.index;
 
-public record StorageVariablesStartIndexes(int charge, int discharge, int chargeIndicator, int dischargeIndicator, int energy) {
+public record StorageVariablesStartIndexes(int charge, int discharge, int chargeIndicator, int energy) {
 }

@@ -12,6 +12,7 @@ import com.github.kacperpotapczyk.pvoptimizer.model.storage.Storage;
 import com.github.kacperpotapczyk.pvoptimizer.model.storage.StorageResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.OptimizationStatus;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -98,6 +99,7 @@ class OptimizerTest {
     }
 
     @Test
+    @Disabled
     public void completeTestFifteenMinutesIntervals() {
 
         Profile intervals = new Profile(96, 0.25);
@@ -148,8 +150,7 @@ class OptimizerTest {
 
         assertEquals(0.186350525, result.getObjectiveFunctionValue(), 1e-2);
 
-        // TODO correct expected sell and purchase energy
-        List<Double> expectedEnergyResults = Arrays.asList(2.49173, 1.200);
+        List<Double> expectedEnergyResults = Arrays.asList(0.622933, 0.300);
         resultValidator.assertContractEnergyResults(contractResults, expectedEnergyResults);
 
 

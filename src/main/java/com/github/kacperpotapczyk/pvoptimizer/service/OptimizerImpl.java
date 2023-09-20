@@ -36,8 +36,8 @@ public class OptimizerImpl implements Optimizer {
         try {
             Solver solver = new LpSolveSolver();
             solver.initializeSolver();
-            solver.setRelativeGap(0.1);
-            solver.setTimeOut(900L);
+//            solver.setRelativeGap(0.1);
+            solver.setTimeOut(300L);
 
             List<Integer> intervals = IntStream.iterate(0, i -> i + 1)
                     .limit(task.optimizationHorizonLength())
@@ -118,7 +118,6 @@ public class OptimizerImpl implements Optimizer {
                     new StorageVariablesStartIndexes(
                             solver.addVariables(taskLength),
                             solver.addVariables(taskLength),
-                            solver.addBinaryVariables(taskLength),
                             solver.addBinaryVariables(taskLength),
                             solver.addVariables(taskLength)
                     )
@@ -368,17 +367,16 @@ public class OptimizerImpl implements Optimizer {
             int energyStartIndex = storageStartIndexes.get(storageId).energy();
             int chargeStartIndex = storageStartIndexes.get(storageId).charge();
             int chargeIndicatorStartIndex = storageStartIndexes.get(storageId).chargeIndicator();
-            int dischargeIndicatorStartIndex = storageStartIndexes.get(storageId).dischargeIndicator();
             int dischargeStartIndex = storageStartIndexes.get(storageId).discharge();
             double storageBigM = Math.max(storage.getMaxCharge(), storage.getMaxDischarge()) * 1e2;
 
             setUpStorageEnergyBalance(solver, intervals, task.getIntervals().getValues(), storage, energyStartIndex, chargeStartIndex, dischargeStartIndex);
-            setUpStorageModeIndicators(solver, intervals, chargeStartIndex, chargeIndicatorStartIndex, dischargeStartIndex, dischargeIndicatorStartIndex, storageBigM);
+            setUpStorageModeIndicators(solver, intervals, chargeStartIndex, chargeIndicatorStartIndex, dischargeStartIndex, storageBigM);
 
             setUpStorageChargeConstraints(solver, intervals, storage, chargeStartIndex);
             setUpStorageDischargeConstraints(solver, intervals, storage, dischargeStartIndex);
             setUpStorageEnergyConstraints(solver, intervals, storage, energyStartIndex);
-            setUpStorageForbiddenStates(solver, storage, chargeIndicatorStartIndex, dischargeIndicatorStartIndex);
+            setUpStorageForbiddenStates(solver, storage, chargeStartIndex, dischargeStartIndex);
         }
     }
 
@@ -418,25 +416,24 @@ public class OptimizerImpl implements Optimizer {
             int chargeStartIndex,
             int chargeIndicatorStartIndex,
             int dischargeStartIndex,
-            int dischargeIndicatorStartIndex,
             double storageBigM) throws SolverException {
 
         for (int interval : intervals) {
-            solver.addImplication(
-                    chargeStartIndex + interval,
-                    chargeIndicatorStartIndex + interval,
-                    storageBigM
-            );
-            solver.addImplication(
-                    dischargeStartIndex + interval,
-                    dischargeIndicatorStartIndex + interval,
-                    storageBigM
+            Map<Integer, Double> chargeIndexedValues = new HashMap<>(2);
+            chargeIndexedValues.put(chargeStartIndex + interval, 1.0);
+            chargeIndexedValues.put(chargeIndicatorStartIndex + interval, -1.0*storageBigM);
+            solver.addLeqWeightedSumConstraint(
+                    chargeIndexedValues,
+                    0.0
             );
 
-            Set<Integer> indicatorConstraint = new HashSet<>(2);
-            indicatorConstraint.add(chargeIndicatorStartIndex + interval);
-            indicatorConstraint.add(dischargeIndicatorStartIndex + interval);
-            solver.addLeqSumConstraint(indicatorConstraint,1.0);
+            Map<Integer, Double> dischargeIndexedValues = new HashMap<>(2);
+            dischargeIndexedValues.put(dischargeStartIndex + interval, 1.0);
+            dischargeIndexedValues.put(chargeIndicatorStartIndex + interval, storageBigM);
+            solver.addLeqWeightedSumConstraint(
+                    dischargeIndexedValues,
+                    storageBigM
+            );
         }
     }
 
@@ -560,13 +557,13 @@ public class OptimizerImpl implements Optimizer {
     private void setUpStorageForbiddenStates(
             Solver solver,
             Storage storage,
-            int chargeIndicatorStartIndex,
-            int dischargeIndicatorStartIndex) throws SolverException {
+            int chargeStartIndex,
+            int dischargeStartIndex) throws SolverException {
 
         if (storage.getForbiddenChargeIntervals() != null) {
             solver.fixVariables(storage.getForbiddenChargeIntervals().stream()
                     .collect(Collectors.toMap(
-                            interval -> interval + chargeIndicatorStartIndex,
+                            interval -> interval + chargeStartIndex,
                             interval -> 0.0
                     ))
             );
@@ -574,7 +571,7 @@ public class OptimizerImpl implements Optimizer {
         if (storage.getForbiddenDischargeIntervals() != null) {
             solver.fixVariables(storage.getForbiddenDischargeIntervals().stream()
                     .collect(Collectors.toMap(
-                            interval -> interval + dischargeIndicatorStartIndex,
+                            interval -> interval + dischargeStartIndex,
                             interval -> 0.0
                     ))
             );
@@ -685,9 +682,11 @@ public class OptimizerImpl implements Optimizer {
                     .map(Map.Entry::getValue)
                     .toList();
 
-            List<Double> contractIntervalsDuration = task.getIntervals().getValues().stream()
-                    .filter(interval -> interval >= contract.getStartInterval() &&
-                            interval < contract.getLastInterval())
+            List<Double> contractIntervalsDuration = IntStream.range(contract.getStartInterval(), contract.getStartInterval() + contractLength)
+                    .boxed()
+                    .map(
+                            interval -> task.getIntervals().getValueForInterval(interval).orElseThrow()
+                    )
                     .toList();
 
             List<Double> energy = new ArrayList<>(contractLength);
@@ -723,8 +722,7 @@ public class OptimizerImpl implements Optimizer {
             int energyStartIndex = storageStartIndexes.get(storage.getId()).energy();
             int chargeStartIndex = storageStartIndexes.get(storage.getId()).charge();
             int dischargeStartIndex = storageStartIndexes.get(storage.getId()).discharge();
-            int chargeIndicatorStartIndex = storageStartIndexes.get(storage.getId()).chargeIndicator();
-            int dischargeIndicatorStartIndex = storageStartIndexes.get(storage.getId()).dischargeIndicator();
+//            int chargeIndicatorStartIndex = storageStartIndexes.get(storage.getId()).chargeIndicator();
 
             Profile charge = new Profile(
                     variableResults.entrySet().stream()
@@ -754,8 +752,8 @@ public class OptimizerImpl implements Optimizer {
             );
 
             List<Integer> chargeIndicators = variableResults.entrySet().stream()
-                    .filter(entry -> entry.getKey() >= chargeIndicatorStartIndex &&
-                            entry.getKey() < chargeIndicatorStartIndex + task.optimizationHorizonLength())
+                    .filter(entry -> entry.getKey() >= chargeStartIndex &&
+                            entry.getKey() < chargeStartIndex + task.optimizationHorizonLength())
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
                         if (entry.getValue() > 0) {
@@ -766,8 +764,8 @@ public class OptimizerImpl implements Optimizer {
                     .toList();
 
             List<Integer> dischargeIndicators = variableResults.entrySet().stream()
-                    .filter(entry -> entry.getKey() >= dischargeIndicatorStartIndex &&
-                            entry.getKey() < dischargeIndicatorStartIndex + task.optimizationHorizonLength())
+                    .filter(entry -> entry.getKey() >= dischargeStartIndex &&
+                            entry.getKey() < dischargeStartIndex + task.optimizationHorizonLength())
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
                         if (entry.getValue() > 0) {

@@ -24,9 +24,9 @@ public class LpSolveSolver implements Solver {
         try {
             solver = LpSolve.makeLp(0, 0);
             setObjectiveDirection(ObjectiveDirection.MIN);
-            solver.setPresolve(
-                    LpSolve.PRESOLVE_ROWS + LpSolve.PRESOLVE_COLS,
-                    solver.getPresolveloops());
+//            solver.setPresolve(
+//                    LpSolve.PRESOLVE_ROWS + LpSolve.PRESOLVE_COLS,
+//                    solver.getPresolveloops());
             solver.setVerbose(LpSolve.DETAILED);
         }
         catch (LpSolveException e) {
@@ -237,6 +237,7 @@ public class LpSolveSolver implements Solver {
     public SolutionStatus solve() throws SolverException {
 
         try {
+            solver.printLp();
             int code = solver.solve();
             return switch (code) {
                 case 0 -> SolutionStatus.OPTIMAL;
