@@ -98,7 +98,6 @@ public class OptimizerImpl implements Optimizer {
                     contract.getId(),
                     new ContractVariablesStartIndexes(
                             solver.addVariables(contractLength),
-                            solver.addVariables(contractLength),
                             contractLength
                     )
             );
@@ -239,54 +238,9 @@ public class OptimizerImpl implements Optimizer {
         for (Contract contract : task.getContracts()) {
 
             int powerStartIndex = contractStartIndexes.get(contract.getId()).power();
-            int costStartIndex = contractStartIndexes.get(contract.getId()).cost();
 
-            setUpContractCostConstraints(solver, intervals, contract, powerStartIndex, costStartIndex, taskIntervals);
             setUpContractPowerConstraints(solver, intervals, contract, powerStartIndex);
             setUpContractEnergyConstraints(solver, intervals, contract, powerStartIndex, taskIntervals);
-        }
-    }
-
-    private void setUpContractCostConstraints(
-            Solver solver,
-            List<Integer> intervals,
-            Contract contract,
-            int powerStartIndex,
-            int costStartIndex,
-            Profile taskIntervals) throws SolverException {
-
-        Map<Integer, Double> contractIntervalCost = new HashMap<>();
-
-        for (int interval : intervals) {
-            contractIntervalCost.clear();
-
-            int powerIndex = powerStartIndex + interval - contract.getStartInterval();
-            int costIndex = costStartIndex + interval - contract.getStartInterval();
-
-            if (contract.isContractActiveAtInterval(interval)) {
-                if (contract.getContractDirection() == ContractDirection.PURCHASE) {
-                    contractIntervalCost.put(
-                            powerIndex,
-                            -1.0 * contract.getUnitPrice().getValueForInterval(interval).orElseThrow() *
-                                    taskIntervals.getValueForInterval(interval).orElse(0.0)
-                    );
-                    contractIntervalCost.put(
-                            costIndex,
-                            1.0
-                    );
-                } else {
-                    contractIntervalCost.put(
-                            powerIndex,
-                            contract.getUnitPrice().getValueForInterval(interval).orElseThrow() *
-                                    taskIntervals.getValueForInterval(interval).orElse(0.0)
-                    );
-                    contractIntervalCost.put(
-                            costIndex,
-                            -1.0
-                    );
-                }
-                solver.addEqWeightedSumConstraint(contractIntervalCost, 0.0);
-            }
         }
     }
 
@@ -618,24 +572,27 @@ public class OptimizerImpl implements Optimizer {
             Map<Integer, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
 
         Map<Integer, Double> costCoefficients = new HashMap<>();
+        Profile taskIntervals = task.getIntervals();
 
         for (Contract contract : task.getContracts()) {
 
-            int costStartIndex = contractStartIndexes.get(contract.getId()).cost();
+            int powerStartIndex = contractStartIndexes.get(contract.getId()).power();
             for (int interval : intervals) {
 
                 if (contract.isContractActiveAtInterval(interval)) {
 
                     if (contract.getContractDirection() == ContractDirection.PURCHASE) {
                         costCoefficients.put(
-                                costStartIndex + interval - contract.getStartInterval(),
-                                1.0
+                                powerStartIndex + interval - contract.getStartInterval(),
+                                contract.getUnitPrice().getValueForInterval(interval).orElseThrow() *
+                                        taskIntervals.getValueForInterval(interval).orElse(0.0)
                         );
                     }
                     else {
                         costCoefficients.put(
-                                costStartIndex + interval - contract.getStartInterval(),
-                                -1.0
+                                powerStartIndex + interval - contract.getStartInterval(),
+                                -1.0 * contract.getUnitPrice().getValueForInterval(interval).orElseThrow() *
+                                    taskIntervals.getValueForInterval(interval).orElse(0.0)
                         );
                     }
                 }
@@ -672,7 +629,7 @@ public class OptimizerImpl implements Optimizer {
         for (Contract contract : task.getContracts()) {
 
             int contractPowerVariableStart = contractStartIndexes.get(contract.getId()).power();
-            int contractCostVariableStart = contractStartIndexes.get(contract.getId()).cost();
+
             int contractLength = contractStartIndexes.get(contract.getId()).length();
 
             List<Double> power = variableResults.entrySet().stream()
@@ -694,12 +651,7 @@ public class OptimizerImpl implements Optimizer {
                 energy.add(power.get(i) * contractIntervalsDuration.get(i));
             }
 
-            List<Double> cost = variableResults.entrySet().stream()
-                    .filter(entry -> entry.getKey() >= contractCostVariableStart &&
-                            entry.getKey() < contractCostVariableStart + contractLength)
-                    .sorted(Map.Entry.comparingByKey())
-                    .map(Map.Entry::getValue)
-                    .toList();
+            List<Double> cost = contractCostForEnergy(contract, energy);
 
             resultBuilder.contractResult(new ContractResult(
                     contract.getId(),
@@ -829,5 +781,15 @@ public class OptimizerImpl implements Optimizer {
                     interval
             ));
         }
+    }
+
+    private List<Double> contractCostForEnergy(Contract contract, List<Double> energy) {
+
+        List<Double> cost = new ArrayList<>(energy.size());
+        for (int i=0; i<energy.size(); i++) {
+            cost.add(contract.getUnitPrice().getValueForIndex(i).orElseThrow() * energy.get(i));
+        }
+
+        return cost;
     }
 }
