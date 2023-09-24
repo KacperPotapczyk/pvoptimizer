@@ -6,28 +6,23 @@ import com.github.kacperpotapczyk.pvoptimizer.solver.enums.SolutionStatus;
 import com.github.kacperpotapczyk.pvoptimizer.solver.exceptions.SolverException;
 import lpsolve.LpSolve;
 import lpsolve.LpSolveException;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-@Component
 public class LpSolveSolver implements Solver {
 
-    LpSolve solver;
+    private final LpSolve solver;
 
-    public LpSolveSolver() {}
-
-    @Override
-    public void initializeSolver() throws SolverException {
+    public LpSolveSolver() throws SolverException {
         try {
             solver = LpSolve.makeLp(0, 0);
             setObjectiveDirection(ObjectiveDirection.MIN);
             solver.setPresolve(
                     LpSolve.PRESOLVE_ROWS + LpSolve.PRESOLVE_COLS + LpSolve.PRESOLVE_LINDEP + LpSolve.PRESOLVE_SOS + LpSolve.PRESOLVE_KNAPSACK,
                     solver.getPresolveloops());
-            solver.setVerbose(LpSolve.DETAILED);
+            solver.setVerbose(LpSolve.IMPORTANT);
         }
         catch (LpSolveException e) {
             throw new SolverException(e.getMessage());
@@ -237,7 +232,6 @@ public class LpSolveSolver implements Solver {
     public SolutionStatus solve() throws SolverException {
 
         try {
-            solver.printLp();
             int code = solver.solve();
             return switch (code) {
                 case 0 -> SolutionStatus.OPTIMAL;

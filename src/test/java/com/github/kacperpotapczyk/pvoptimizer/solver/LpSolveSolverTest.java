@@ -17,8 +17,6 @@ class LpSolveSolverTest {
     void optimizationGoal() {
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
-
             assertEquals(ObjectiveDirection.MIN, solver.getObjectiveDirection(), "Default goal should be MIN");
 
             solver.setObjectiveDirection(ObjectiveDirection.MAX);
@@ -38,7 +36,6 @@ class LpSolveSolverTest {
     void lowerBoundTest() {
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(1);
 
@@ -72,7 +69,6 @@ class LpSolveSolverTest {
     void upperBoundTest() {
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(1);
 
@@ -107,7 +103,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
 
@@ -144,7 +139,6 @@ class LpSolveSolverTest {
     void sumLeqTest() {
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
 
@@ -189,7 +183,6 @@ class LpSolveSolverTest {
     void sumGeqTest() {
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
 
@@ -236,7 +229,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
 
@@ -277,7 +269,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(1);
 
@@ -299,7 +290,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
 
@@ -336,7 +326,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
             Map<Integer, Double> lowerBound1 = new HashMap<>();
@@ -387,7 +376,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             int index = solver.addVariables(1);
             Map<Integer, Double> lowerBound1 = new HashMap<>();
@@ -432,7 +420,6 @@ class LpSolveSolverTest {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
 
             solver.addVariables(2);
             HashMap<Integer, Double> upperBound = new HashMap<>();
@@ -501,7 +488,7 @@ class LpSolveSolverTest {
     private Solver setUpSolverExample() throws SolverException {
 
         Solver solver = new LpSolveSolver();
-        solver.initializeSolver();
+        solver.printModel();
 
         solver.addVariables(4);
 

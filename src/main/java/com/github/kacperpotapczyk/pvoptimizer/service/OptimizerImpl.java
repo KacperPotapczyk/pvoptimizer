@@ -21,6 +21,7 @@ import com.github.kacperpotapczyk.pvoptimizer.solver.LpSolveSolver;
 import com.github.kacperpotapczyk.pvoptimizer.solver.Solver;
 import com.github.kacperpotapczyk.pvoptimizer.solver.enums.SolutionStatus;
 import com.github.kacperpotapczyk.pvoptimizer.solver.exceptions.SolverException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -30,14 +31,15 @@ import java.util.stream.IntStream;
 @Service
 public class OptimizerImpl implements Optimizer {
 
+    @Value("${optimizer.maxAllowedTimeOut}")
+    private Long maxAllowedTimeOut;
+
     @Override
     public Result solve(Task task) {
 
         try {
             Solver solver = new LpSolveSolver();
-            solver.initializeSolver();
-//            solver.setRelativeGap(0.1);
-            solver.setTimeOut(300L);
+            solver.setTimeOut(maxAllowedTimeOut);
 
             List<Integer> intervals = IntStream.iterate(0, i -> i + 1)
                     .limit(task.optimizationHorizonLength())
@@ -59,9 +61,6 @@ public class OptimizerImpl implements Optimizer {
             setUpMovableDemandConstraints(task, solver, movableDemandVariablesIndexes);
 
             setUpObjectiveFunction(task, solver, intervals, contractStartIndexes);
-
-            // for debugging purposes
-//            solver.printModel();
 
             SolutionStatus solutionStatus = solver.solve();
 
@@ -222,7 +221,6 @@ public class OptimizerImpl implements Optimizer {
                     balanceWeights.putAll(movableDemandWeights);
                 }
             }
-
             solver.addEqWeightedSumConstraint(balanceWeights, rhs.getValueForInterval(interval).orElseThrow());
         }
     }
@@ -348,8 +346,7 @@ public class OptimizerImpl implements Optimizer {
         firstIntervalBalance.put(energyStartIndex, -1.0);
         firstIntervalBalance.put(chargeStartIndex, 1.0 * intervalsDuration.get(0));
         firstIntervalBalance.put(dischargeStartIndex, -1.0 * intervalsDuration.get(0));
-        solver.addEqWeightedSumConstraint(firstIntervalBalance,-1.0 * storage.getInitialEnergy()
-        );
+        solver.addEqWeightedSumConstraint(firstIntervalBalance,-1.0 * storage.getInitialEnergy());
 
         // energy balance for the rest of intervals
         Map<Integer, Double> intervalBalance = new HashMap<>(4);
@@ -629,7 +626,6 @@ public class OptimizerImpl implements Optimizer {
         for (Contract contract : task.getContracts()) {
 
             int contractPowerVariableStart = contractStartIndexes.get(contract.getId()).power();
-
             int contractLength = contractStartIndexes.get(contract.getId()).length();
 
             List<Double> power = variableResults.entrySet().stream()
@@ -674,7 +670,6 @@ public class OptimizerImpl implements Optimizer {
             int energyStartIndex = storageStartIndexes.get(storage.getId()).energy();
             int chargeStartIndex = storageStartIndexes.get(storage.getId()).charge();
             int dischargeStartIndex = storageStartIndexes.get(storage.getId()).discharge();
-//            int chargeIndicatorStartIndex = storageStartIndexes.get(storage.getId()).chargeIndicator();
 
             Profile charge = new Profile(
                     variableResults.entrySet().stream()

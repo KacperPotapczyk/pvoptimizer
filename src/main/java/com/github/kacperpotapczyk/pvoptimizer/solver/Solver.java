@@ -10,8 +10,6 @@ import java.util.Set;
 
 public interface Solver {
 
-    void initializeSolver() throws SolverException;
-
     int addVariables(int numberOfVariables) throws SolverException;
 
     int addBinaryVariables(int numberOfVariables) throws SolverException ;
