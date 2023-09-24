@@ -24,9 +24,9 @@ public class LpSolveSolver implements Solver {
         try {
             solver = LpSolve.makeLp(0, 0);
             setObjectiveDirection(ObjectiveDirection.MIN);
-//            solver.setPresolve(
-//                    LpSolve.PRESOLVE_ROWS + LpSolve.PRESOLVE_COLS,
-//                    solver.getPresolveloops());
+            solver.setPresolve(
+                    LpSolve.PRESOLVE_ROWS + LpSolve.PRESOLVE_COLS + LpSolve.PRESOLVE_LINDEP + LpSolve.PRESOLVE_SOS + LpSolve.PRESOLVE_KNAPSACK,
+                    solver.getPresolveloops());
             solver.setVerbose(LpSolve.DETAILED);
         }
         catch (LpSolveException e) {
@@ -268,10 +268,10 @@ public class LpSolveSolver implements Solver {
 
         Map<Integer, Double>  solution = new TreeMap<>();
         try {
-            double[] var = new double[solver.getNcolumns()];
-            solver.getVariables(var);
-            for (int i = 0; i < var.length; i++) {
-                solution.put(i+1, var[i]);
+            int numberOfColumns = solver.getNorigColumns();
+            int numberOfRows = solver.getNorigRows();
+            for (int i = 1; i <= numberOfColumns; i++) {
+                solution.put(i, solver.getVarPrimalresult(numberOfRows + i));
             }
         }
         catch (LpSolveException e) {
