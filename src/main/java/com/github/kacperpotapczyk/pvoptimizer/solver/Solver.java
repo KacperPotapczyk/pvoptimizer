@@ -44,13 +44,17 @@ public interface Solver {
 
     void setRelativeGap(double relativeGap);
 
-    void setTimeOut(Long timeOutSeconds);
+    void setTimeOut(long timeOutSeconds);
 
     SolutionStatus solve() throws SolverException;
 
     double getObjectiveValue() throws SolverException;
 
     Map<Integer, Double> getSolution() throws SolverException;
+
+    double getSolutionRelativeGap();
+
+    double getSolutionElapsedTime();
 
     void printModel();
 

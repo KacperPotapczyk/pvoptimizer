@@ -34,12 +34,17 @@ public class OptimizerImpl implements Optimizer {
     @Value("${optimizer.maxAllowedTimeOut}")
     private Long maxAllowedTimeOut;
 
+    @Value("${optimizer.numericalZero}")
+    private double numericalZero;
+
     @Override
     public Result solve(Task task) {
 
+        Result.ResultBuilder resultBuilder = Result.builder();
         try {
             Solver solver = new LpSolveSolver();
-            solver.setTimeOut(maxAllowedTimeOut);
+            solver.setTimeOut(Math.min(task.getTimeoutSeconds(), maxAllowedTimeOut));
+            solver.setRelativeGap(Math.max(numericalZero, task.getRelativeGap()));
 
             List<Integer> intervals = IntStream.iterate(0, i -> i + 1)
                     .limit(task.optimizationHorizonLength())
@@ -64,25 +69,22 @@ public class OptimizerImpl implements Optimizer {
 
             SolutionStatus solutionStatus = solver.solve();
 
-            Result.ResultBuilder resultBuilder = Result.builder();
-
             if (solutionStatus == SolutionStatus.OPTIMAL || solutionStatus == SolutionStatus.SUBOPTIMAL) {
                 getResult(task, solver, resultBuilder, contractStartIndexes, storageStartIndexes, movableDemandVariablesIndexes);
             }
             else {
-                resultBuilder.optimizationStatus(OptimizationStatus.SOLUTION_NOT_FOUND);
+                resultBuilder.optimizationStatus(OptimizationStatus.SOLUTION_NOT_FOUND)
+                        .errorMessage("Solution could not be found.");
             }
-
             solver.free();
-            return resultBuilder.build();
         }
         catch (RuntimeException | SolverException exception) {
             System.out.println(exception.getMessage());
+            resultBuilder.optimizationStatus(OptimizationStatus.SOLUTION_NOT_FOUND)
+                    .errorMessage(exception.getMessage());
         }
 
-        return Result.builder()
-                .optimizationStatus(OptimizationStatus.SOLUTION_NOT_FOUND)
-                .build();
+        return resultBuilder.build();
     }
 
     private void assignContractsVariables(
@@ -608,6 +610,8 @@ public class OptimizerImpl implements Optimizer {
 
         resultBuilder
                 .optimizationStatus(OptimizationStatus.SOLUTION_FOUND)
+                .relativeGap(solver.getSolutionRelativeGap())
+                .elapsedTime(solver.getSolutionElapsedTime())
                 .objectiveFunctionValue(solver.getObjectiveValue());
 
         Map<Integer, Double> variableResults = solver.getSolution();
@@ -703,7 +707,7 @@ public class OptimizerImpl implements Optimizer {
                             entry.getKey() < chargeStartIndex + task.optimizationHorizonLength())
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
-                        if (entry.getValue() > 0) {
+                        if (entry.getValue() > numericalZero) {
                             return 1;
                         }
                         return 0;
@@ -715,7 +719,7 @@ public class OptimizerImpl implements Optimizer {
                             entry.getKey() < dischargeStartIndex + task.optimizationHorizonLength())
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
-                        if (entry.getValue() > 0) {
+                        if (entry.getValue() > numericalZero) {
                             return -1;
                         }
                         return 0;

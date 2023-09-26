@@ -14,12 +14,15 @@ import java.util.List;
 @Getter
 public class Result {
 
-    final OptimizationStatus optimizationStatus;
-    double objectiveFunctionValue;
+    private final OptimizationStatus optimizationStatus;
+    private double objectiveFunctionValue;
+    private double relativeGap;
+    private double elapsedTime;
+    private String errorMessage;
     @Singular
-    List<ContractResult> contractResults;
+    private List<ContractResult> contractResults;
     @Singular
-    List<StorageResult> storageResults;
+    private List<StorageResult> storageResults;
     @Singular
-    List<MovableDemandResult> movableDemandResults;
+    private List<MovableDemandResult> movableDemandResults;
 }

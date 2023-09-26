@@ -223,7 +223,7 @@ public class LpSolveSolver implements Solver {
     }
 
     @Override
-    public void setTimeOut(Long timeOutSeconds) {
+    public void setTimeOut(long timeOutSeconds) {
 
         solver.setTimeout(timeOutSeconds);
     }
@@ -272,6 +272,16 @@ public class LpSolveSolver implements Solver {
             throw new SolverException(e.getMessage());
         }
         return solution;
+    }
+
+    @Override
+    public double getSolutionRelativeGap() {
+        return solver.getMipGap(false);
+    }
+
+    @Override
+    public double getSolutionElapsedTime() {
+        return solver.timeElapsed();
     }
 
     @Override

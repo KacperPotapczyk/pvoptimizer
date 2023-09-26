@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class OptimizerMovableDemandTest {
@@ -55,6 +55,7 @@ public class OptimizerMovableDemandTest {
         expectedMovableDemandStartIntervals.add(2);
 
         resultValidator.assertMovableDemandResults(expectedMovableDemandStartIntervals, result.getMovableDemandResults());
+        assertNull(result.getErrorMessage());
     }
 
     @Test
@@ -79,6 +80,7 @@ public class OptimizerMovableDemandTest {
         Result result = optimizer.solve(task);
 
         assertEquals(OptimizationStatus.SOLUTION_NOT_FOUND, result.getOptimizationStatus());
+        assertNotNull(result.getErrorMessage());
     }
 
     @Test

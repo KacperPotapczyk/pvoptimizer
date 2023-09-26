@@ -65,6 +65,8 @@ public class OptimizerContractTest {
         expectedCostResults.add(new Profile(Arrays.asList(10.0, 10.0, 10.0)));
 
         resultValidator.assertContractResults(contractResults, expectedPowerResults, expectedCostResults);
+
+        assertEquals(1e-11, result.getRelativeGap());
     }
 
     @Test

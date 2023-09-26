@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class OptimizerTest {
@@ -38,6 +39,8 @@ class OptimizerTest {
     public void completeTest() {
 
         Profile intervals = new Profile(24, 1.0);
+        double relativeGap = 0.001;
+        long maxTime = 60L;
 
         Profile productionProfile = new Profile(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, 0.05, 0.2, 0.2, 0.2, 0.2, 0.2, 0.05, 0.05, 0.05, 0.05, 0.0, 0.0, 0.0, 0.0));
         Production production = new Production(1, "pv production", productionProfile);
@@ -68,6 +71,8 @@ class OptimizerTest {
                 .build();
 
         Task task = Task.builder()
+                .timeoutSeconds(maxTime)
+                .relativeGap(relativeGap)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -96,6 +101,9 @@ class OptimizerTest {
         expectedMovableDemandStartIntervals.add(21);
 
         resultValidator.assertMovableDemandResults(expectedMovableDemandStartIntervals, result.getMovableDemandResults());
+        assertEquals(relativeGap, result.getRelativeGap(), 1e-6);
+        assertTrue(result.getElapsedTime() >= 1e-6);
+        assertTrue(result.getElapsedTime() < maxTime);
     }
 
     @Test

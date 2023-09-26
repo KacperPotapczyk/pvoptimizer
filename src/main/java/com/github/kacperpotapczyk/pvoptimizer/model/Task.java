@@ -16,6 +16,10 @@ import java.util.Set;
 @Getter
 public class Task {
 
+    @Builder.Default
+    private final Long timeoutSeconds = 0L;
+    @Builder.Default
+    private final double relativeGap = 0.0;
     private Profile intervals;
     private Production production;
     private Demand demand;
