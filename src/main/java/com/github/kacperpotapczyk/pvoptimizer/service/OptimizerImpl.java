@@ -28,6 +28,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Service responsible for creating model based on received {@link Task task} data
+ * and then invoking {@link com.github.kacperpotapczyk.pvoptimizer.solver.Solver solver} to find optimal solution.
+ * Optimization goal is to find optimal electric energy purchase, sell and storage strategy to minimize operation costs
+ * while fulfilling fixed PV generation and household electricity demand profiles.
+ */
 @Service
 public class OptimizerImpl implements Optimizer {
 
