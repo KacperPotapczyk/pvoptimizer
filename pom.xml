@@ -88,6 +88,8 @@
 				<version>3.4.1</version>
 				<configuration>
 					<sourcepath>${delombok.output}</sourcepath>
+					<!--suppress GrazieInspection -->
+					<excludePackageNames>com/github/kacperpotapczyk/pvoptimizer/service/index</excludePackageNames>
 				</configuration>
 			</plugin>
 
