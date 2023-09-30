@@ -1,5 +1,11 @@
 package com.github.kacperpotapczyk.pvoptimizer.model.utils;
 
+/**
+ * Defines sum constraint over intervals range. startInterval has to be lower or equal to endInterval
+ * @param startInterval first interval
+ * @param endInterval last interval
+ * @param sum constraint value
+ */
 public record SumConstraint(int startInterval, int endInterval, double sum) {
 
     public SumConstraint {

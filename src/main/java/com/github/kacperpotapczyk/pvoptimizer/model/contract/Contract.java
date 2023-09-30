@@ -7,39 +7,96 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.*;
 
+/**
+ * Contract definition required for optimization model. Contract can be available on continuous subset of task intervals.
+ */
 @Getter
 @RequiredArgsConstructor
 public class Contract {
 
+    /**
+     * Contract id
+     */
     private final int id;
+    /**
+     * Contract name
+     */
     private final String name;
+    /**
+     * Energy unit price for intervals at which contract is available
+     */
     private final Profile unitPrice;
+    /**
+     * Purchase or sell contract direction
+     */
     private final ContractDirection contractDirection;
+    /**
+     * Interval and interval minimal power value constraint pairs
+     */
     private Map<Integer, Double> minPowerConstraints;
+    /**
+     * Interval and interval maximal power value constraint pairs
+     */
     private Map<Integer, Double> maxPowerConstraints;
+    /**
+     * List of constraints on minimal energy over continuous set of intervals
+     */
     private List<SumConstraint> minEnergyConstraints;
+    /**
+     * List of constraints on maximal energy over continuous set of intervals
+     */
     private List<SumConstraint> maxEnergyConstraints;
 
+    /**
+     * Contract builder with required fields
+     * @param id contract id
+     * @param name contract name
+     * @param unitPrice energy unit price for intervals at which contract is available
+     * @param contractDirection Purchase or sell contract direction
+     * @return contract builder
+     */
     public static ContractBuilder builder(int id, String name, Profile unitPrice, ContractDirection contractDirection) {
         return new ContractBuilder(id, name, unitPrice, contractDirection);
     }
 
+    /**
+     * Returns first interval at which contract is available.
+     * @return first interval at which contract is available
+     */
     public int getStartInterval() {
         return unitPrice.getStartInterval();
     }
 
+    /**
+     * Returns last interval at which contract is available.
+     * @return last interval at which contract is available
+     */
     public int getLastInterval() {
         return getStartInterval() + unitPrice.getLength();
     }
 
+    /**
+     * Returns contract length in intervals.
+     * @return contract length in intervals
+     */
     public int getContractLength() {
         return unitPrice.getLength();
     }
 
+    /**
+     * Check if contract is available at given interval
+     * @param interval interval to check
+     * @return if contract is available at given interval
+     */
     public boolean isContractActiveAtInterval(int interval) {
         return interval >= this.getStartInterval() && interval < this.getLastInterval();
     }
 
+    /**
+     * Returns maximal contract power at given interval.
+     * @param interval interval
+     * @return if contract is available then maximal contract power
+     */
     public Optional<Double> getMaxPowerConstraintForInterval(int interval) {
 
         if (maxPowerConstraints.containsKey(interval)) {
@@ -50,6 +107,11 @@ public class Contract {
         }
     }
 
+    /**
+     * Returns minimal contract power at given interval.
+     * @param interval interval
+     * @return if contract is available then minimal contract power
+     */
     public Optional<Double> getMinPowerConstraintForInterval(int interval) {
 
         if (minPowerConstraints.containsKey(interval)) {
@@ -110,6 +172,11 @@ public class Contract {
                 .allMatch(constraint -> isContractActiveAtInterval(constraint.startInterval()) && isContractActiveAtInterval(constraint.endInterval()));
     }
 
+    /**
+     * Two contracts are considered equal when their ids are equal
+     * @param o Contract object
+     * @return if storages are equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -118,11 +185,18 @@ public class Contract {
         return getId() == contract.getId();
     }
 
+    /**
+     * Two contracts are considered equal when their ids are equal
+     * @return id value
+     */
     @Override
     public int hashCode() {
         return getId();
     }
 
+    /**
+     * Contract builder used for setting up all storage constraints.
+     */
     @RequiredArgsConstructor
     public static class ContractBuilder {
 
@@ -195,6 +269,11 @@ public class Contract {
             return this;
         }
 
+        /**
+         * Builds contract using provided data.
+         * @return contract with all constraints set up
+         * @throws IllegalStateException if provided data is invalid.
+         */
         public Contract build() {
 
             Contract contract = new Contract(this.id, this.name, this.unitPrice, this.contractDirection);

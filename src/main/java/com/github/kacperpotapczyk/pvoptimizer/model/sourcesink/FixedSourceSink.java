@@ -8,7 +8,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 abstract class FixedSourceSink {
 
+    /**
+     * Profile id
+     */
     private final int id;
+    /**
+     * Profile name
+     */
     private final String name;
+    /**
+     * Values profile
+     */
     private final Profile profile;
 }

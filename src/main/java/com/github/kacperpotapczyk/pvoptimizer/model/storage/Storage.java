@@ -8,25 +8,79 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Storage definition required for optimization model. It is assumed that storage is available at all task intervals.
+ */
 @Getter
 @RequiredArgsConstructor
 public class Storage {
 
+    /**
+     * Storage id
+     */
     private final int id;
+    /**
+     * Storage name
+     */
     private final String name;
+    /**
+     * Maximal charge power
+     */
     private final double maxCharge;
+    /**
+     * Maximal discharge power
+     */
     private final double maxDischarge;
+    /**
+     * Maximal energy stored.
+     */
     private final double maxCapacity;
+    /**
+     * Energy stored at 0 interval
+     */
     private double initialEnergy;
+    /**
+     * Interval and interval minimal charge power value constraint pairs
+     */
     private Map<Integer, Double> minChargeConstraints;
+    /**
+     * Interval and interval maximal charge power value constraints pairs
+     */
     private Map<Integer, Double> maxChargeConstraints;
+    /**
+     * Interval and interval minimal discharge power value constraint pairs
+     */
     private Map<Integer, Double> minDischargeConstraints;
+    /**
+     * Interval and interval maximal discharge power value constraints pairs
+     */
     private Map<Integer, Double> maxDischargeConstraints;
+    /**
+     * Interval and interval minimal energy stored value constraints pairs
+     */
     private Map<Integer, Double> minEnergyConstraints;
+    /**
+     * Interval and interval maximal energy stored value constraints pairs
+     */
     private Map<Integer, Double> maxEnergyConstraints;
+    /**
+     * Intervals at which storage charging is forbidden
+     */
     private Set<Integer> forbiddenChargeIntervals;
+    /**
+     * Intervals at which storage discharging is forbidden
+     */
     private Set<Integer> forbiddenDischargeIntervals;
 
+    /**
+     * Storage builder with required fields
+     * @param id storage id
+     * @param name storage name
+     * @param maxCharge maximal charge power
+     * @param maxDischarge maximal discharge power
+     * @param maxCapacity maximal energy stored
+     * @return storage builder
+     */
     public static StorageBuilder builder(int id, String name, double maxCharge, double maxDischarge, double maxCapacity) {
         return new StorageBuilder(id, name, maxCharge, maxDischarge, maxCapacity);
     }
@@ -131,6 +185,11 @@ public class Storage {
         this.forbiddenDischargeIntervals = forbiddenDischargeIntervals;
     }
 
+    /**
+     * Two storages are considered equal when their ids are equal
+     * @param o Storage object
+     * @return if storages are equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,11 +197,18 @@ public class Storage {
         return getId() == storage.getId();
     }
 
+    /**
+     * Two storages are considered equal when their ids are equal
+     * @return id value
+     */
     @Override
     public int hashCode() {
         return getId();
     }
 
+    /**
+     * Storage builder used for setting up all storage constraints.
+     */
     @RequiredArgsConstructor
     public static class StorageBuilder {
         private final int id;
@@ -286,6 +352,11 @@ public class Storage {
             return this;
         }
 
+        /**
+         * Builds storage using provided data.
+         * @return storage with all constraints set up
+         * @throws IllegalStateException if provided data is invalid.
+         */
         public Storage build() {
 
             Storage storage = new Storage(this.id, this.name, this.maxCharge, this.maxDischarge, this.maxCapacity);
