@@ -1,6 +1,5 @@
 package com.github.kacperpotapczyk.pvoptimizer.solver;
 
-
 import com.github.kacperpotapczyk.pvoptimizer.solver.enums.ObjectiveDirection;
 import com.github.kacperpotapczyk.pvoptimizer.solver.enums.SolutionStatus;
 import com.github.kacperpotapczyk.pvoptimizer.solver.exceptions.SolverException;
@@ -11,10 +10,21 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+/**
+ * Class implements {@link Solver Solver} interface using LpSolve library. For more information regarding LpSolve library
+ * and its usage in Java see links below.
+ * @see <a href="https://lpsolve.sourceforge.net/5.5">LpSolve</a>
+ * @see <a href="https://lpsolve.sourceforge.net/5.5/Java/README.html">LpSolve Java API</a>
+ */
 public class LpSolveSolver implements Solver {
 
     private final LpSolve solver;
 
+    /**
+     * Initiates solver with model containing 0 variables and 0 constraints. Default optimization goal is to minimize objective function.
+     * Sets up pre-solver methods. Sets up LpSolve log output to IMPORTANT level.
+     * @throws SolverException if model can not be initiated
+     */
     public LpSolveSolver() throws SolverException {
         try {
             solver = LpSolve.makeLp(0, 0);
