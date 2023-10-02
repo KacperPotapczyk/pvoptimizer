@@ -1,0 +1,282 @@
+{
+  "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+  "type": "record",
+  "name": "Task",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long",
+      "doc": "Task identifier"
+    },
+    {
+      "name": "timeoutSeconds",
+      "type": "long",
+      "doc": "Time after which optimization has to stop.",
+      "default": 0
+    },
+    {
+      "name": "relativeGap",
+      "type": "double",
+      "doc": "Relative gap below which optimization has to stop.",
+      "default": 0
+    },
+    {
+      "name": "intervals",
+      "type": {
+        "type": "array",
+        "items": "double"
+      },
+      "doc": "Time length of task intervals."
+    },
+    {
+      "name": "production",
+      "type": {
+        "type": "array",
+        "items": "double"
+      },
+      "doc": "PV installation power output."
+    },
+    {
+      "name": "demand",
+      "type": {
+        "type": "array",
+        "items": "double"
+      },
+      "doc": "Household power demand."
+    },
+    {
+      "name": "contracts",
+      "doc": "List of electricity purchase and sell contracts.",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "Contract",
+            "type": "record",
+            "fields": [
+              {
+                "name": "id",
+                "type": "long",
+                "doc": "Contract id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "doc": "Contract name"
+              },
+              {
+                "name": "contractDirection",
+                "type": {
+                  "type": "enum",
+                  "name": "ContractDirection",
+                  "symbols": ["Purchase", "Sell"]
+                },
+                "doc": "Defines if it is purchase or sell contract"
+              },
+              {
+                "name": "unitPrice",
+                "type": {
+                  "type": "array",
+                  "items": "double"
+                },
+                "doc": "Energy unit price"
+              },
+              {
+                "name": "minPower",
+                "doc": "Constraints on minimal power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "maxPower",
+                "doc": "Constraints on maximal power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "minEnergy",
+                "doc": "Constraint on minimal energy over intervals range",
+                "type": {
+                  "type": "array",
+                  "items": {
+                    "type": "record",
+                    "name": "SumConstraint",
+                    "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+                    "fields": [
+                      {
+                        "type": "int",
+                        "name": "startInterval"
+                      },
+                      {
+                        "type": "int",
+                        "name": "endInterval"
+                      },
+                      {
+                        "type": "double",
+                        "name": "sum"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "maxEnergy",
+                "doc": "Constraint on maximal energy over intervals range",
+                "type": {
+                  "type": "array",
+                  "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint"
+                }
+              }
+            ]
+          }]
+      },
+      "default": []
+    },
+    {
+      "name": "storages",
+      "doc": "List of electric energy storages.",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "Storage",
+            "type": "record",
+            "fields": [
+              {
+                "name": "id",
+                "type": "int"
+              },
+              {
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "name": "maxCharge",
+                "type": "double"
+              },
+              {
+                "name": "maxDischarge",
+                "type": "double"
+              },
+              {
+                "name": "maxCapacity",
+                "type": "double"
+              },
+              {
+                "name": "initialEnergy",
+                "type": "double"
+              },
+              {
+                "name": "minCharge",
+                "doc": "Constraints on minimal charging power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "maxChargeConstraints",
+                "doc": "Constraints on maximal charging power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "minDischargeConstraints",
+                "doc": "Constraints on minimal discharging power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "maxDischargeConstraints",
+                "doc": "Constraints on maximal discharging power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "minEnergyConstraints",
+                "doc": "Constraints on minimal stored energy for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "maxEnergyConstraints",
+                "doc": "Constraints on maximal stored energy power for intervals",
+                "type": {
+                  "type": "map",
+                  "values": "double"
+                }
+              },
+              {
+                "name": "forbiddenChargeIntervals",
+                "doc": "Set of intervals at which charging is forbidden",
+                "type": {
+                  "type": "array",
+                  "items": "int"
+                }
+              },
+              {
+                "name": "forbiddenDischargeIntervals",
+                "doc": "Set of intervals at which discharging is forbidden",
+                "type": {
+                  "type": "array",
+                  "items": "int"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "default": []
+    },
+    {
+      "name": "movableDemands",
+      "doc": "Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "MovableDemand",
+            "type": "record",
+            "fields": [
+              {
+                "name": "id",
+                "type": "int"
+              },
+              {
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "name": "profile",
+                "type": {
+                  "type": "array",
+                  "items": "double"
+                }
+              },
+              {
+                "name": "startIntervals",
+                "type": {
+                  "type": "array",
+                  "items": "int"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "default": []
+    }
+  ]
+}
