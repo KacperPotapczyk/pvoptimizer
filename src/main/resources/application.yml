@@ -1,3 +1,12 @@
 optimizer:
   maxAllowedTimeOut: 300
   numericalZero: 1e-11
+
+spring:
+  kafka:
+    consumer:
+      groupId: pvoptimizer
+      topic: pvoptimizer
+      bootstrapServers: localhost:9092
+      properties:
+        schema.registry.url: http://localhost:8081
