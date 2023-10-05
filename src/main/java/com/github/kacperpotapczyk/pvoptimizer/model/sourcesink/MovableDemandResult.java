@@ -6,5 +6,5 @@ package com.github.kacperpotapczyk.pvoptimizer.model.sourcesink;
  * @param name movable demand name
  * @param startInterval optimal start interval
  */
-public record MovableDemandResult(int id, String name, int startInterval) {
+public record MovableDemandResult(long id, String name, int startInterval) {
 }

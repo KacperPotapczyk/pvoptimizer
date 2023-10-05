@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Storage extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4137566361717063821L;
+public class StorageDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -3451241610659496374L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Storage\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StorageDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Storage> ENCODER =
+  private static final BinaryMessageEncoder<StorageDto> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Storage> DECODER =
+  private static final BinaryMessageDecoder<StorageDto> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Storage> getEncoder() {
+  public static BinaryMessageEncoder<StorageDto> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Storage> getDecoder() {
+  public static BinaryMessageDecoder<StorageDto> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Storage> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<StorageDto> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this Storage to a ByteBuffer.
+   * Serializes this StorageDto to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,17 +63,17 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   /**
-   * Deserializes a Storage from a ByteBuffer.
+   * Deserializes a StorageDto from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Storage instance decoded from the given buffer
+   * @return a StorageDto instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Storage fromByteBuffer(
+  public static StorageDto fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  private int id;
+  private long id;
   private java.lang.CharSequence name;
   private double maxCharge;
   private double maxDischarge;
@@ -101,7 +101,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Storage() {}
+  public StorageDto() {}
 
   /**
    * All-args constructor.
@@ -120,7 +120,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param forbiddenChargeIntervals Set of intervals at which charging is forbidden
    * @param forbiddenDischargeIntervals Set of intervals at which discharging is forbidden
    */
-  public Storage(java.lang.Integer id, java.lang.CharSequence name, java.lang.Double maxCharge, java.lang.Double maxDischarge, java.lang.Double maxCapacity, java.lang.Double initialEnergy, java.util.Map<java.lang.CharSequence,java.lang.Double> minCharge, java.util.Map<java.lang.CharSequence,java.lang.Double> maxChargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minEnergyConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxEnergyConstraints, java.util.List<java.lang.Integer> forbiddenChargeIntervals, java.util.List<java.lang.Integer> forbiddenDischargeIntervals) {
+  public StorageDto(java.lang.Long id, java.lang.CharSequence name, java.lang.Double maxCharge, java.lang.Double maxDischarge, java.lang.Double maxCapacity, java.lang.Double initialEnergy, java.util.Map<java.lang.CharSequence,java.lang.Double> minCharge, java.util.Map<java.lang.CharSequence,java.lang.Double> maxChargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minEnergyConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxEnergyConstraints, java.util.List<java.lang.Integer> forbiddenChargeIntervals, java.util.List<java.lang.Integer> forbiddenDischargeIntervals) {
     this.id = id;
     this.name = name;
     this.maxCharge = maxCharge;
@@ -170,7 +170,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.Integer)value$; break;
+    case 0: id = (java.lang.Long)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
     case 2: maxCharge = (java.lang.Double)value$; break;
     case 3: maxDischarge = (java.lang.Double)value$; break;
@@ -192,7 +192,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public int getId() {
+  public long getId() {
     return id;
   }
 
@@ -201,7 +201,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(int value) {
+  public void setId(long value) {
     this.id = value;
   }
 
@@ -435,47 +435,47 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   /**
-   * Creates a new Storage RecordBuilder.
-   * @return A new Storage RecordBuilder
+   * Creates a new StorageDto RecordBuilder.
+   * @return A new StorageDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder newBuilder() {
-    return new com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder();
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder newBuilder() {
+    return new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder();
   }
 
   /**
-   * Creates a new Storage RecordBuilder by copying an existing Builder.
+   * Creates a new StorageDto RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new Storage RecordBuilder
+   * @return A new StorageDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder(other);
     }
   }
 
   /**
-   * Creates a new Storage RecordBuilder by copying an existing Storage instance.
+   * Creates a new StorageDto RecordBuilder by copying an existing StorageDto instance.
    * @param other The existing instance to copy.
-   * @return A new Storage RecordBuilder
+   * @return A new StorageDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.Storage other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for Storage instances.
+   * RecordBuilder for StorageDto instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Storage>
-    implements org.apache.avro.data.RecordBuilder<Storage> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<StorageDto>
+    implements org.apache.avro.data.RecordBuilder<StorageDto> {
 
-    private int id;
+    private long id;
     private java.lang.CharSequence name;
     private double maxCharge;
     private double maxDischarge;
@@ -507,7 +507,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -568,10 +568,10 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
     }
 
     /**
-     * Creates a Builder by copying an existing Storage instance
+     * Creates a Builder by copying an existing StorageDto instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.Storage other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -635,7 +635,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public int getId() {
+    public long getId() {
       return id;
     }
 
@@ -645,7 +645,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setId(int value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -665,7 +665,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearId() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -684,7 +684,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setName(java.lang.CharSequence value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -704,7 +704,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'name' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearName() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -724,7 +724,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'maxCharge'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMaxCharge(double value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMaxCharge(double value) {
       validate(fields()[2], value);
       this.maxCharge = value;
       fieldSetFlags()[2] = true;
@@ -744,7 +744,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'maxCharge' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMaxCharge() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMaxCharge() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -763,7 +763,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'maxDischarge'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMaxDischarge(double value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMaxDischarge(double value) {
       validate(fields()[3], value);
       this.maxDischarge = value;
       fieldSetFlags()[3] = true;
@@ -783,7 +783,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'maxDischarge' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMaxDischarge() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMaxDischarge() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -802,7 +802,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'maxCapacity'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMaxCapacity(double value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMaxCapacity(double value) {
       validate(fields()[4], value);
       this.maxCapacity = value;
       fieldSetFlags()[4] = true;
@@ -822,7 +822,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'maxCapacity' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMaxCapacity() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMaxCapacity() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -841,7 +841,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'initialEnergy'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setInitialEnergy(double value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setInitialEnergy(double value) {
       validate(fields()[5], value);
       this.initialEnergy = value;
       fieldSetFlags()[5] = true;
@@ -861,7 +861,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'initialEnergy' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearInitialEnergy() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearInitialEnergy() {
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -882,7 +882,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'minCharge'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMinCharge(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMinCharge(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[6], value);
       this.minCharge = value;
       fieldSetFlags()[6] = true;
@@ -904,7 +904,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Constraints on minimal charging power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMinCharge() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMinCharge() {
       minCharge = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -926,7 +926,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'maxChargeConstraints'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMaxChargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMaxChargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[7], value);
       this.maxChargeConstraints = value;
       fieldSetFlags()[7] = true;
@@ -948,7 +948,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Constraints on maximal charging power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMaxChargeConstraints() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMaxChargeConstraints() {
       maxChargeConstraints = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -970,7 +970,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'minDischargeConstraints'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMinDischargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMinDischargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[8], value);
       this.minDischargeConstraints = value;
       fieldSetFlags()[8] = true;
@@ -992,7 +992,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Constraints on minimal discharging power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMinDischargeConstraints() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMinDischargeConstraints() {
       minDischargeConstraints = null;
       fieldSetFlags()[8] = false;
       return this;
@@ -1014,7 +1014,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'maxDischargeConstraints'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMaxDischargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMaxDischargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[9], value);
       this.maxDischargeConstraints = value;
       fieldSetFlags()[9] = true;
@@ -1036,7 +1036,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Constraints on maximal discharging power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMaxDischargeConstraints() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMaxDischargeConstraints() {
       maxDischargeConstraints = null;
       fieldSetFlags()[9] = false;
       return this;
@@ -1058,7 +1058,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'minEnergyConstraints'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMinEnergyConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMinEnergyConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[10], value);
       this.minEnergyConstraints = value;
       fieldSetFlags()[10] = true;
@@ -1080,7 +1080,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Constraints on minimal stored energy for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMinEnergyConstraints() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMinEnergyConstraints() {
       minEnergyConstraints = null;
       fieldSetFlags()[10] = false;
       return this;
@@ -1102,7 +1102,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'maxEnergyConstraints'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setMaxEnergyConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMaxEnergyConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[11], value);
       this.maxEnergyConstraints = value;
       fieldSetFlags()[11] = true;
@@ -1124,7 +1124,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Constraints on maximal stored energy power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearMaxEnergyConstraints() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMaxEnergyConstraints() {
       maxEnergyConstraints = null;
       fieldSetFlags()[11] = false;
       return this;
@@ -1146,7 +1146,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'forbiddenChargeIntervals'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setForbiddenChargeIntervals(java.util.List<java.lang.Integer> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setForbiddenChargeIntervals(java.util.List<java.lang.Integer> value) {
       validate(fields()[12], value);
       this.forbiddenChargeIntervals = value;
       fieldSetFlags()[12] = true;
@@ -1168,7 +1168,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Set of intervals at which charging is forbidden
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearForbiddenChargeIntervals() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearForbiddenChargeIntervals() {
       forbiddenChargeIntervals = null;
       fieldSetFlags()[12] = false;
       return this;
@@ -1190,7 +1190,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'forbiddenDischargeIntervals'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder setForbiddenDischargeIntervals(java.util.List<java.lang.Integer> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setForbiddenDischargeIntervals(java.util.List<java.lang.Integer> value) {
       validate(fields()[13], value);
       this.forbiddenDischargeIntervals = value;
       fieldSetFlags()[13] = true;
@@ -1212,7 +1212,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       * Set of intervals at which discharging is forbidden
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Storage.Builder clearForbiddenDischargeIntervals() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearForbiddenDischargeIntervals() {
       forbiddenDischargeIntervals = null;
       fieldSetFlags()[13] = false;
       return this;
@@ -1220,10 +1220,10 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
 
     @Override
     @SuppressWarnings("unchecked")
-    public Storage build() {
+    public StorageDto build() {
       try {
-        Storage record = new Storage();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Integer) defaultValue(fields()[0]);
+        StorageDto record = new StorageDto();
+        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.maxCharge = fieldSetFlags()[2] ? this.maxCharge : (java.lang.Double) defaultValue(fields()[2]);
         record.maxDischarge = fieldSetFlags()[3] ? this.maxDischarge : (java.lang.Double) defaultValue(fields()[3]);
@@ -1247,8 +1247,8 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Storage>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Storage>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<StorageDto>
+    WRITER$ = (org.apache.avro.io.DatumWriter<StorageDto>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -1256,8 +1256,8 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Storage>
-    READER$ = (org.apache.avro.io.DatumReader<Storage>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<StorageDto>
+    READER$ = (org.apache.avro.io.DatumReader<StorageDto>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -1269,7 +1269,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeInt(this.id);
+    out.writeLong(this.id);
 
     out.writeString(this.name);
 
@@ -1440,7 +1440,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.id = in.readInt();
+      this.id = in.readLong();
 
       this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
 
@@ -1612,7 +1612,7 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
       for (int i = 0; i < 14; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.id = in.readInt();
+          this.id = in.readLong();
           break;
 
         case 1:

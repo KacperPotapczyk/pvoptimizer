@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Task extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7185621111986149011L;
+public class TaskDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 9215476160592666874L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Task\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Task identifier\"},{\"name\":\"timeoutSeconds\",\"type\":\"long\",\"doc\":\"Time after which optimization has to stop.\",\"default\":0},{\"name\":\"relativeGap\",\"type\":\"double\",\"doc\":\"Relative gap below which optimization has to stop.\",\"default\":0},{\"name\":\"intervals\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Time length of task intervals.\"},{\"name\":\"production\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"PV installation power output.\"},{\"name\":\"demand\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Household power demand.\"},{\"name\":\"contracts\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"Contract\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirection\",\"symbols\":[\"Purchase\",\"Sell\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraint\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraint\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}]},\"doc\":\"List of electricity purchase and sell contracts.\",\"default\":[]},{\"name\":\"storages\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"Storage\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}]},\"doc\":\"List of electric energy storages.\",\"default\":[]},{\"name\":\"movableDemands\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"MovableDemand\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"profile\",\"type\":{\"type\":\"array\",\"items\":\"double\"}},{\"name\":\"startIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}]}]},\"doc\":\"Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.\",\"default\":[]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TaskDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Task identifier\"},{\"name\":\"timeoutSeconds\",\"type\":\"long\",\"doc\":\"Time after which optimization has to stop.\",\"default\":0},{\"name\":\"relativeGap\",\"type\":\"double\",\"doc\":\"Relative gap below which optimization has to stop.\",\"default\":0},{\"name\":\"intervals\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Time length of task intervals.\"},{\"name\":\"production\",\"type\":{\"type\":\"record\",\"name\":\"ProductionDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Production id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Production name\"},{\"name\":\"productionProfile\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Production profile\"}]},\"doc\":\"PV installation power output.\"},{\"name\":\"demand\",\"type\":{\"type\":\"record\",\"name\":\"DemandDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Demand id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Demand name\"},{\"name\":\"demandProfile\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Demand profile\"}]},\"doc\":\"Household power demand.\"},{\"name\":\"contracts\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"ContractDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirectionDto\",\"symbols\":[\"Purchase\",\"Sell\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraintDto\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraintDto\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}]},\"doc\":\"List of electricity purchase and sell contracts.\",\"default\":[]},{\"name\":\"storages\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"StorageDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}]},\"doc\":\"List of electric energy storages.\",\"default\":[]},{\"name\":\"movableDemands\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"MovableDemandDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"profile\",\"type\":{\"type\":\"array\",\"items\":\"double\"}},{\"name\":\"startIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}]}]},\"doc\":\"Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Task> ENCODER =
+  private static final BinaryMessageEncoder<TaskDto> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Task> DECODER =
+  private static final BinaryMessageDecoder<TaskDto> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Task> getEncoder() {
+  public static BinaryMessageEncoder<TaskDto> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Task> getDecoder() {
+  public static BinaryMessageDecoder<TaskDto> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Task> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<TaskDto> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this Task to a ByteBuffer.
+   * Serializes this TaskDto to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,12 +63,12 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
   }
 
   /**
-   * Deserializes a Task from a ByteBuffer.
+   * Deserializes a TaskDto from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Task instance decoded from the given buffer
+   * @return a TaskDto instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Task fromByteBuffer(
+  public static TaskDto fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -82,9 +82,9 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
   /** Time length of task intervals. */
   private java.util.List<java.lang.Double> intervals;
   /** PV installation power output. */
-  private java.util.List<java.lang.Double> production;
+  private com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto production;
   /** Household power demand. */
-  private java.util.List<java.lang.Double> demand;
+  private com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand;
   /** List of electricity purchase and sell contracts. */
   private java.util.List<java.lang.Object> contracts;
   /** List of electric energy storages. */
@@ -97,7 +97,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Task() {}
+  public TaskDto() {}
 
   /**
    * All-args constructor.
@@ -111,7 +111,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * @param storages List of electric energy storages.
    * @param movableDemands Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.
    */
-  public Task(java.lang.Long id, java.lang.Long timeoutSeconds, java.lang.Double relativeGap, java.util.List<java.lang.Double> intervals, java.util.List<java.lang.Double> production, java.util.List<java.lang.Double> demand, java.util.List<java.lang.Object> contracts, java.util.List<java.lang.Object> storages, java.util.List<java.lang.Object> movableDemands) {
+  public TaskDto(java.lang.Long id, java.lang.Long timeoutSeconds, java.lang.Double relativeGap, java.util.List<java.lang.Double> intervals, com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto production, com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand, java.util.List<java.lang.Object> contracts, java.util.List<java.lang.Object> storages, java.util.List<java.lang.Object> movableDemands) {
     this.id = id;
     this.timeoutSeconds = timeoutSeconds;
     this.relativeGap = relativeGap;
@@ -155,8 +155,8 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
     case 1: timeoutSeconds = (java.lang.Long)value$; break;
     case 2: relativeGap = (java.lang.Double)value$; break;
     case 3: intervals = (java.util.List<java.lang.Double>)value$; break;
-    case 4: production = (java.util.List<java.lang.Double>)value$; break;
-    case 5: demand = (java.util.List<java.lang.Double>)value$; break;
+    case 4: production = (com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto)value$; break;
+    case 5: demand = (com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto)value$; break;
     case 6: contracts = (java.util.List<java.lang.Object>)value$; break;
     case 7: storages = (java.util.List<java.lang.Object>)value$; break;
     case 8: movableDemands = (java.util.List<java.lang.Object>)value$; break;
@@ -240,7 +240,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * Gets the value of the 'production' field.
    * @return PV installation power output.
    */
-  public java.util.List<java.lang.Double> getProduction() {
+  public com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto getProduction() {
     return production;
   }
 
@@ -250,7 +250,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * PV installation power output.
    * @param value the value to set.
    */
-  public void setProduction(java.util.List<java.lang.Double> value) {
+  public void setProduction(com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto value) {
     this.production = value;
   }
 
@@ -258,7 +258,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * Gets the value of the 'demand' field.
    * @return Household power demand.
    */
-  public java.util.List<java.lang.Double> getDemand() {
+  public com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto getDemand() {
     return demand;
   }
 
@@ -268,7 +268,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
    * Household power demand.
    * @param value the value to set.
    */
-  public void setDemand(java.util.List<java.lang.Double> value) {
+  public void setDemand(com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto value) {
     this.demand = value;
   }
 
@@ -327,45 +327,45 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
   }
 
   /**
-   * Creates a new Task RecordBuilder.
-   * @return A new Task RecordBuilder
+   * Creates a new TaskDto RecordBuilder.
+   * @return A new TaskDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder newBuilder() {
-    return new com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder();
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder newBuilder() {
+    return new com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder();
   }
 
   /**
-   * Creates a new Task RecordBuilder by copying an existing Builder.
+   * Creates a new TaskDto RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new Task RecordBuilder
+   * @return A new TaskDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder(other);
     }
   }
 
   /**
-   * Creates a new Task RecordBuilder by copying an existing Task instance.
+   * Creates a new TaskDto RecordBuilder by copying an existing TaskDto instance.
    * @param other The existing instance to copy.
-   * @return A new Task RecordBuilder
+   * @return A new TaskDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.Task other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for Task instances.
+   * RecordBuilder for TaskDto instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Task>
-    implements org.apache.avro.data.RecordBuilder<Task> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<TaskDto>
+    implements org.apache.avro.data.RecordBuilder<TaskDto> {
 
     /** Task identifier */
     private long id;
@@ -376,9 +376,11 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
     /** Time length of task intervals. */
     private java.util.List<java.lang.Double> intervals;
     /** PV installation power output. */
-    private java.util.List<java.lang.Double> production;
+    private com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto production;
+    private com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto.Builder productionBuilder;
     /** Household power demand. */
-    private java.util.List<java.lang.Double> demand;
+    private com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand;
+    private com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.Builder demandBuilder;
     /** List of electricity purchase and sell contracts. */
     private java.util.List<java.lang.Object> contracts;
     /** List of electric energy storages. */
@@ -395,7 +397,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -417,9 +419,15 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
         this.production = data().deepCopy(fields()[4].schema(), other.production);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
+      if (other.hasProductionBuilder()) {
+        this.productionBuilder = com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto.newBuilder(other.getProductionBuilder());
+      }
       if (isValidValue(fields()[5], other.demand)) {
         this.demand = data().deepCopy(fields()[5].schema(), other.demand);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
+      }
+      if (other.hasDemandBuilder()) {
+        this.demandBuilder = com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.newBuilder(other.getDemandBuilder());
       }
       if (isValidValue(fields()[6], other.contracts)) {
         this.contracts = data().deepCopy(fields()[6].schema(), other.contracts);
@@ -436,10 +444,10 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
     }
 
     /**
-     * Creates a Builder by copying an existing Task instance
+     * Creates a Builder by copying an existing TaskDto instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.Task other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -461,10 +469,12 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
         this.production = data().deepCopy(fields()[4].schema(), other.production);
         fieldSetFlags()[4] = true;
       }
+      this.productionBuilder = null;
       if (isValidValue(fields()[5], other.demand)) {
         this.demand = data().deepCopy(fields()[5].schema(), other.demand);
         fieldSetFlags()[5] = true;
       }
+      this.demandBuilder = null;
       if (isValidValue(fields()[6], other.contracts)) {
         this.contracts = data().deepCopy(fields()[6].schema(), other.contracts);
         fieldSetFlags()[6] = true;
@@ -495,7 +505,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setId(long value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -517,7 +527,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * Task identifier
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearId() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -538,7 +548,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'timeoutSeconds'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setTimeoutSeconds(long value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setTimeoutSeconds(long value) {
       validate(fields()[1], value);
       this.timeoutSeconds = value;
       fieldSetFlags()[1] = true;
@@ -560,7 +570,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * Time after which optimization has to stop.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearTimeoutSeconds() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearTimeoutSeconds() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -581,7 +591,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'relativeGap'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setRelativeGap(double value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setRelativeGap(double value) {
       validate(fields()[2], value);
       this.relativeGap = value;
       fieldSetFlags()[2] = true;
@@ -603,7 +613,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * Relative gap below which optimization has to stop.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearRelativeGap() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearRelativeGap() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -624,7 +634,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'intervals'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setIntervals(java.util.List<java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setIntervals(java.util.List<java.lang.Double> value) {
       validate(fields()[3], value);
       this.intervals = value;
       fieldSetFlags()[3] = true;
@@ -646,7 +656,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * Time length of task intervals.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearIntervals() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearIntervals() {
       intervals = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -657,7 +667,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * PV installation power output.
       * @return The value.
       */
-    public java.util.List<java.lang.Double> getProduction() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto getProduction() {
       return production;
     }
 
@@ -668,8 +678,9 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'production'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setProduction(java.util.List<java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setProduction(com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto value) {
       validate(fields()[4], value);
+      this.productionBuilder = null;
       this.production = value;
       fieldSetFlags()[4] = true;
       return this;
@@ -684,14 +695,52 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       return fieldSetFlags()[4];
     }
 
+    /**
+     * Gets the Builder instance for the 'production' field and creates one if it doesn't exist yet.
+     * PV installation power output.
+     * @return This builder.
+     */
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto.Builder getProductionBuilder() {
+      if (productionBuilder == null) {
+        if (hasProduction()) {
+          setProductionBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto.newBuilder(production));
+        } else {
+          setProductionBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto.newBuilder());
+        }
+      }
+      return productionBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'production' field
+     * PV installation power output.
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setProductionBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto.Builder value) {
+      clearProduction();
+      productionBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'production' field has an active Builder instance
+     * PV installation power output.
+     * @return True if the 'production' field has an active Builder instance
+     */
+    public boolean hasProductionBuilder() {
+      return productionBuilder != null;
+    }
 
     /**
       * Clears the value of the 'production' field.
       * PV installation power output.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearProduction() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearProduction() {
       production = null;
+      productionBuilder = null;
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -701,7 +750,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * Household power demand.
       * @return The value.
       */
-    public java.util.List<java.lang.Double> getDemand() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto getDemand() {
       return demand;
     }
 
@@ -712,8 +761,9 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'demand'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setDemand(java.util.List<java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setDemand(com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto value) {
       validate(fields()[5], value);
+      this.demandBuilder = null;
       this.demand = value;
       fieldSetFlags()[5] = true;
       return this;
@@ -728,14 +778,52 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       return fieldSetFlags()[5];
     }
 
+    /**
+     * Gets the Builder instance for the 'demand' field and creates one if it doesn't exist yet.
+     * Household power demand.
+     * @return This builder.
+     */
+    public com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.Builder getDemandBuilder() {
+      if (demandBuilder == null) {
+        if (hasDemand()) {
+          setDemandBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.newBuilder(demand));
+        } else {
+          setDemandBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.newBuilder());
+        }
+      }
+      return demandBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'demand' field
+     * Household power demand.
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setDemandBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.Builder value) {
+      clearDemand();
+      demandBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'demand' field has an active Builder instance
+     * Household power demand.
+     * @return True if the 'demand' field has an active Builder instance
+     */
+    public boolean hasDemandBuilder() {
+      return demandBuilder != null;
+    }
 
     /**
       * Clears the value of the 'demand' field.
       * Household power demand.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearDemand() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearDemand() {
       demand = null;
+      demandBuilder = null;
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -756,7 +844,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'contracts'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setContracts(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setContracts(java.util.List<java.lang.Object> value) {
       validate(fields()[6], value);
       this.contracts = value;
       fieldSetFlags()[6] = true;
@@ -778,7 +866,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * List of electricity purchase and sell contracts.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearContracts() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearContracts() {
       contracts = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -800,7 +888,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'storages'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setStorages(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setStorages(java.util.List<java.lang.Object> value) {
       validate(fields()[7], value);
       this.storages = value;
       fieldSetFlags()[7] = true;
@@ -822,7 +910,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * List of electric energy storages.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearStorages() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearStorages() {
       storages = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -844,7 +932,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'movableDemands'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder setMovableDemands(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setMovableDemands(java.util.List<java.lang.Object> value) {
       validate(fields()[8], value);
       this.movableDemands = value;
       fieldSetFlags()[8] = true;
@@ -866,7 +954,7 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
       * Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Task.Builder clearMovableDemands() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder clearMovableDemands() {
       movableDemands = null;
       fieldSetFlags()[8] = false;
       return this;
@@ -874,15 +962,33 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
 
     @Override
     @SuppressWarnings("unchecked")
-    public Task build() {
+    public TaskDto build() {
       try {
-        Task record = new Task();
+        TaskDto record = new TaskDto();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.timeoutSeconds = fieldSetFlags()[1] ? this.timeoutSeconds : (java.lang.Long) defaultValue(fields()[1]);
         record.relativeGap = fieldSetFlags()[2] ? this.relativeGap : (java.lang.Double) defaultValue(fields()[2]);
         record.intervals = fieldSetFlags()[3] ? this.intervals : (java.util.List<java.lang.Double>) defaultValue(fields()[3]);
-        record.production = fieldSetFlags()[4] ? this.production : (java.util.List<java.lang.Double>) defaultValue(fields()[4]);
-        record.demand = fieldSetFlags()[5] ? this.demand : (java.util.List<java.lang.Double>) defaultValue(fields()[5]);
+        if (productionBuilder != null) {
+          try {
+            record.production = this.productionBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("production"));
+            throw e;
+          }
+        } else {
+          record.production = fieldSetFlags()[4] ? this.production : (com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto) defaultValue(fields()[4]);
+        }
+        if (demandBuilder != null) {
+          try {
+            record.demand = this.demandBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("demand"));
+            throw e;
+          }
+        } else {
+          record.demand = fieldSetFlags()[5] ? this.demand : (com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto) defaultValue(fields()[5]);
+        }
         record.contracts = fieldSetFlags()[6] ? this.contracts : (java.util.List<java.lang.Object>) defaultValue(fields()[6]);
         record.storages = fieldSetFlags()[7] ? this.storages : (java.util.List<java.lang.Object>) defaultValue(fields()[7]);
         record.movableDemands = fieldSetFlags()[8] ? this.movableDemands : (java.util.List<java.lang.Object>) defaultValue(fields()[8]);
@@ -896,8 +1002,8 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Task>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Task>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<TaskDto>
+    WRITER$ = (org.apache.avro.io.DatumWriter<TaskDto>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -905,8 +1011,8 @@ public class Task extends org.apache.avro.specific.SpecificRecordBase implements
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Task>
-    READER$ = (org.apache.avro.io.DatumReader<Task>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<TaskDto>
+    READER$ = (org.apache.avro.io.DatumReader<TaskDto>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

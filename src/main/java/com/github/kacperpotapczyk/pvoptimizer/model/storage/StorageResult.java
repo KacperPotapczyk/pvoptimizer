@@ -11,5 +11,5 @@ import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
  * @param energy energy stored profile
  * @param storageMode storage mode profile
  */
-public record StorageResult(int id, String name, Profile charge, Profile discharge, Profile energy, StorageModeProfile storageMode) {
+public record StorageResult(long id, String name, Profile charge, Profile discharge, Profile energy, StorageModeProfile storageMode) {
 }

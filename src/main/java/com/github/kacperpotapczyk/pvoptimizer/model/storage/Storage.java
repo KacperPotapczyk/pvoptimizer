@@ -18,7 +18,7 @@ public class Storage {
     /**
      * Storage id
      */
-    private final int id;
+    private final long id;
     /**
      * Storage name
      */
@@ -203,7 +203,7 @@ public class Storage {
      */
     @Override
     public int hashCode() {
-        return getId();
+        return Long.hashCode(getId());
     }
 
     /**

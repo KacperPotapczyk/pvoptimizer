@@ -71,6 +71,7 @@ class OptimizerTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .timeoutSeconds(maxTime)
                 .relativeGap(relativeGap)
                 .intervals(intervals)
@@ -107,7 +108,7 @@ class OptimizerTest {
     }
 
     @Test
-    @Disabled
+    @Disabled("Long running test (5 minutes).")
     public void completeTestFifteenMinutesIntervals() {
 
         Profile intervals = new Profile(96, 0.25);
@@ -139,6 +140,7 @@ class OptimizerTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)

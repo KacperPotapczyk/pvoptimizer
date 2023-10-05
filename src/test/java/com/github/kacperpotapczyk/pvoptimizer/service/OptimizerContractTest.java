@@ -44,6 +44,7 @@ public class OptimizerContractTest {
         Contract purchaseContract = new Contract(1, "purchase", unitPrice, ContractDirection.PURCHASE);
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -92,6 +93,7 @@ public class OptimizerContractTest {
         Contract purchaseContract2 = new Contract(2, "purchase", unitPrice2, ContractDirection.PURCHASE);
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -140,6 +142,7 @@ public class OptimizerContractTest {
         Contract sellContract2 = new Contract(2, "sell_2", unitPrice2, ContractDirection.SELL);
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -194,6 +197,7 @@ public class OptimizerContractTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -254,6 +258,7 @@ public class OptimizerContractTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -309,6 +314,7 @@ public class OptimizerContractTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -357,6 +363,7 @@ public class OptimizerContractTest {
 
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)

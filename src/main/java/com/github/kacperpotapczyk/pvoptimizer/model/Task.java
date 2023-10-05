@@ -8,6 +8,7 @@ import com.github.kacperpotapczyk.pvoptimizer.model.storage.Storage;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Singular;
 
 import java.util.Set;
@@ -19,6 +20,11 @@ import java.util.Set;
 @Getter
 public class Task {
 
+    /**
+     * Task identifier.
+     */
+    @NonNull
+    private final Long id;
     /**
      * Time in seconds after which optimization solver has to stop calculations.
      */

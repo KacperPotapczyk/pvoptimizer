@@ -1,6 +1,6 @@
 package com.github.kacperpotapczyk.pvoptimizer.kafka;
 
-import com.github.kacperpotapczyk.pvoptimizer.dto.Task;
+import com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -20,12 +20,12 @@ public class KafkaMockupProducerConfig {
     private final KafkaProperties kafkaProperties;
 
     @Bean
-    public KafkaTemplate<String, Task> kafkaTemplate(final ProducerFactory<String, Task> producerFactory) {
+    public KafkaTemplate<String, TaskDto> kafkaTemplate(final ProducerFactory<String, TaskDto> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 
     @Bean
-    public ProducerFactory<String, Task> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties(), StringSerializer::new, SpecificAvroSerializer<Task>::new);
+    public ProducerFactory<String, TaskDto> producerFactory() {
+        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties(), StringSerializer::new, SpecificAvroSerializer<TaskDto>::new);
     }
 }

@@ -2,16 +2,14 @@ package com.github.kacperpotapczyk.pvoptimizer.model.sourcesink;
 
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
-abstract class FixedSourceSink {
+public class FixedSourceSink {
 
     /**
      * Profile id
      */
-    private final int id;
+    private final long id;
     /**
      * Profile name
      */
@@ -20,4 +18,10 @@ abstract class FixedSourceSink {
      * Values profile
      */
     private final Profile profile;
+
+    protected FixedSourceSink(long id, String name, Profile profile) {
+        this.id = id;
+        this.name = name;
+        this.profile = profile;
+    }
 }

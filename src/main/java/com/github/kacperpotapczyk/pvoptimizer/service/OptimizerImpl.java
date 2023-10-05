@@ -47,6 +47,7 @@ public class OptimizerImpl implements Optimizer {
     public Result solve(Task task) {
 
         Result.ResultBuilder resultBuilder = Result.builder();
+        resultBuilder.id(task.getId());
         try {
             Solver solver = new LpSolveSolver();
             solver.setTimeOut(Math.min(task.getTimeoutSeconds(), maxAllowedTimeOut));
@@ -57,9 +58,9 @@ public class OptimizerImpl implements Optimizer {
                     .boxed()
                     .toList();
 
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes = new HashMap<>(task.getContracts().size());
-            Map<Integer, StorageVariablesStartIndexes> storageStartIndexes = new HashMap<>(task.getStorages().size());
-            Map<Integer, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesIndexes = new HashMap<>(task.getMovableDemands().size());
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes = new HashMap<>(task.getContracts().size());
+            Map<Long, StorageVariablesStartIndexes> storageStartIndexes = new HashMap<>(task.getStorages().size());
+            Map<Long, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesIndexes = new HashMap<>(task.getMovableDemands().size());
 
             assignContractsVariables(task, solver, contractStartIndexes);
             assignStoragesVariables(task, solver, storageStartIndexes);
@@ -96,7 +97,7 @@ public class OptimizerImpl implements Optimizer {
     private void assignContractsVariables(
             Task task,
             Solver solver,
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
 
         for (Contract contract : task.getContracts()) {
             int contractLength = Math.min(contract.getContractLength(), task.optimizationHorizonLength() - contract.getStartInterval());
@@ -114,7 +115,7 @@ public class OptimizerImpl implements Optimizer {
     private void assignStoragesVariables(
             Task task,
             Solver solver,
-            Map<Integer, StorageVariablesStartIndexes> storageStartIndex) throws SolverException {
+            Map<Long, StorageVariablesStartIndexes> storageStartIndex) throws SolverException {
 
         int taskLength = task.getIntervals().getLength();
 
@@ -134,7 +135,7 @@ public class OptimizerImpl implements Optimizer {
     private void assignMovableDemandVariables(
             Task task,
             Solver solver,
-            Map<Integer, Set<MovableDemandVariablesStartIndexes>> movableDemandStartIndexes) throws SolverException {
+            Map<Long, Set<MovableDemandVariablesStartIndexes>> movableDemandStartIndexes) throws SolverException {
 
         int optimizationHorizonLength = task.optimizationHorizonLength();
 
@@ -175,9 +176,9 @@ public class OptimizerImpl implements Optimizer {
             Task task,
             Solver solver,
             List<Integer> intervals,
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes,
-            Map<Integer, StorageVariablesStartIndexes> storageStartIndexes,
-            Map<Integer, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesIndexes) throws SolverException {
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes,
+            Map<Long, StorageVariablesStartIndexes> storageStartIndexes,
+            Map<Long, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesIndexes) throws SolverException {
 
         List<Double> powerBalance = new ArrayList<>(task.optimizationHorizonLength());
         intervals.forEach(interval ->
@@ -237,7 +238,7 @@ public class OptimizerImpl implements Optimizer {
             Task task,
             Solver solver,
             List<Integer> intervals,
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
 
         Profile taskIntervals = task.getIntervals();
 
@@ -319,11 +320,11 @@ public class OptimizerImpl implements Optimizer {
             Task task,
             Solver solver,
             List<Integer> intervals,
-            Map<Integer, StorageVariablesStartIndexes> storageStartIndexes) throws SolverException {
+            Map<Long, StorageVariablesStartIndexes> storageStartIndexes) throws SolverException {
 
         for (Storage storage : task.getStorages()) {
 
-            int storageId = storage.getId();
+            long storageId = storage.getId();
             int energyStartIndex = storageStartIndexes.get(storageId).energy();
             int chargeStartIndex = storageStartIndexes.get(storageId).charge();
             int chargeIndicatorStartIndex = storageStartIndexes.get(storageId).chargeIndicator();
@@ -540,7 +541,7 @@ public class OptimizerImpl implements Optimizer {
     private void setUpMovableDemandConstraints(
             Task task,
             Solver solver,
-            Map<Integer, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesIndexes) throws SolverException {
+            Map<Long, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesIndexes) throws SolverException {
 
         for (MovableDemand movableDemand : task.getMovableDemands()) {
 
@@ -574,7 +575,7 @@ public class OptimizerImpl implements Optimizer {
             Task task,
             Solver solver,
             List<Integer> intervals,
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes) throws SolverException {
 
         Map<Integer, Double> costCoefficients = new HashMap<>();
         Profile taskIntervals = task.getIntervals();
@@ -610,9 +611,9 @@ public class OptimizerImpl implements Optimizer {
             Task task,
             Solver solver,
             Result.ResultBuilder resultBuilder,
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes,
-            Map<Integer, StorageVariablesStartIndexes> storageStartIndexes,
-            Map<Integer, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesData) throws SolverException {
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes,
+            Map<Long, StorageVariablesStartIndexes> storageStartIndexes,
+            Map<Long, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesData) throws SolverException {
 
         resultBuilder
                 .optimizationStatus(OptimizationStatus.SOLUTION_FOUND)
@@ -630,7 +631,7 @@ public class OptimizerImpl implements Optimizer {
     private void getContractsResults(
             Task task,
             Result.ResultBuilder resultBuilder,
-            Map<Integer, ContractVariablesStartIndexes> contractStartIndexes,
+            Map<Long, ContractVariablesStartIndexes> contractStartIndexes,
             Map<Integer, Double> variableResults) {
 
         for (Contract contract : task.getContracts()) {
@@ -672,7 +673,7 @@ public class OptimizerImpl implements Optimizer {
     private void getStoragesResults(
             Task task,
             Result.ResultBuilder resultBuilder,
-            Map<Integer, StorageVariablesStartIndexes> storageStartIndexes,
+            Map<Long, StorageVariablesStartIndexes> storageStartIndexes,
             Map<Integer, Double> variableResults) {
 
         for (Storage storage : task.getStorages()) {
@@ -763,7 +764,7 @@ public class OptimizerImpl implements Optimizer {
     private void getMovableDemandResults(
             Task task,
             Result.ResultBuilder resultBuilder,
-            Map<Integer, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesData,
+            Map<Long, Set<MovableDemandVariablesStartIndexes>> movableDemandVariablesData,
             Map<Integer, Double> variableResults) {
 
         for (MovableDemand movableDemand : task.getMovableDemands()) {

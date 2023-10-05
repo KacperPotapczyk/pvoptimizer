@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5715394981634087812L;
+public class MovableDemandDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -5637598795078244623L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MovableDemand\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"profile\",\"type\":{\"type\":\"array\",\"items\":\"double\"}},{\"name\":\"startIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MovableDemandDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"profile\",\"type\":{\"type\":\"array\",\"items\":\"double\"}},{\"name\":\"startIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<MovableDemand> ENCODER =
+  private static final BinaryMessageEncoder<MovableDemandDto> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<MovableDemand> DECODER =
+  private static final BinaryMessageDecoder<MovableDemandDto> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<MovableDemand> getEncoder() {
+  public static BinaryMessageEncoder<MovableDemandDto> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<MovableDemand> getDecoder() {
+  public static BinaryMessageDecoder<MovableDemandDto> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<MovableDemand> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<MovableDemandDto> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this MovableDemand to a ByteBuffer.
+   * Serializes this MovableDemandDto to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,17 +63,17 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /**
-   * Deserializes a MovableDemand from a ByteBuffer.
+   * Deserializes a MovableDemandDto from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a MovableDemand instance decoded from the given buffer
+   * @return a MovableDemandDto instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static MovableDemand fromByteBuffer(
+  public static MovableDemandDto fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  private int id;
+  private long id;
   private java.lang.CharSequence name;
   private java.util.List<java.lang.Double> profile;
   private java.util.List<java.lang.Integer> startIntervals;
@@ -83,7 +83,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public MovableDemand() {}
+  public MovableDemandDto() {}
 
   /**
    * All-args constructor.
@@ -92,7 +92,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
    * @param profile The new value for profile
    * @param startIntervals The new value for startIntervals
    */
-  public MovableDemand(java.lang.Integer id, java.lang.CharSequence name, java.util.List<java.lang.Double> profile, java.util.List<java.lang.Integer> startIntervals) {
+  public MovableDemandDto(java.lang.Long id, java.lang.CharSequence name, java.util.List<java.lang.Double> profile, java.util.List<java.lang.Integer> startIntervals) {
     this.id = id;
     this.name = name;
     this.profile = profile;
@@ -122,7 +122,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.Integer)value$; break;
+    case 0: id = (java.lang.Long)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
     case 2: profile = (java.util.List<java.lang.Double>)value$; break;
     case 3: startIntervals = (java.util.List<java.lang.Integer>)value$; break;
@@ -134,7 +134,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public int getId() {
+  public long getId() {
     return id;
   }
 
@@ -143,7 +143,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(int value) {
+  public void setId(long value) {
     this.id = value;
   }
 
@@ -199,47 +199,47 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /**
-   * Creates a new MovableDemand RecordBuilder.
-   * @return A new MovableDemand RecordBuilder
+   * Creates a new MovableDemandDto RecordBuilder.
+   * @return A new MovableDemandDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder newBuilder() {
-    return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder();
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder newBuilder() {
+    return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder();
   }
 
   /**
-   * Creates a new MovableDemand RecordBuilder by copying an existing Builder.
+   * Creates a new MovableDemandDto RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new MovableDemand RecordBuilder
+   * @return A new MovableDemandDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder(other);
     }
   }
 
   /**
-   * Creates a new MovableDemand RecordBuilder by copying an existing MovableDemand instance.
+   * Creates a new MovableDemandDto RecordBuilder by copying an existing MovableDemandDto instance.
    * @param other The existing instance to copy.
-   * @return A new MovableDemand RecordBuilder
+   * @return A new MovableDemandDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for MovableDemand instances.
+   * RecordBuilder for MovableDemandDto instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<MovableDemand>
-    implements org.apache.avro.data.RecordBuilder<MovableDemand> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<MovableDemandDto>
+    implements org.apache.avro.data.RecordBuilder<MovableDemandDto> {
 
-    private int id;
+    private long id;
     private java.lang.CharSequence name;
     private java.util.List<java.lang.Double> profile;
     private java.util.List<java.lang.Integer> startIntervals;
@@ -253,7 +253,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -274,10 +274,10 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
     }
 
     /**
-     * Creates a Builder by copying an existing MovableDemand instance
+     * Creates a Builder by copying an existing MovableDemandDto instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -301,7 +301,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public int getId() {
+    public long getId() {
       return id;
     }
 
@@ -311,7 +311,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder setId(int value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -331,7 +331,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder clearId() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -350,7 +350,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder setName(java.lang.CharSequence value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -370,7 +370,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'name' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder clearName() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -390,7 +390,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'profile'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder setProfile(java.util.List<java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder setProfile(java.util.List<java.lang.Double> value) {
       validate(fields()[2], value);
       this.profile = value;
       fieldSetFlags()[2] = true;
@@ -410,7 +410,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'profile' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder clearProfile() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder clearProfile() {
       profile = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -430,7 +430,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'startIntervals'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder setStartIntervals(java.util.List<java.lang.Integer> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder setStartIntervals(java.util.List<java.lang.Integer> value) {
       validate(fields()[3], value);
       this.startIntervals = value;
       fieldSetFlags()[3] = true;
@@ -450,7 +450,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'startIntervals' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemand.Builder clearStartIntervals() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto.Builder clearStartIntervals() {
       startIntervals = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -458,10 +458,10 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
 
     @Override
     @SuppressWarnings("unchecked")
-    public MovableDemand build() {
+    public MovableDemandDto build() {
       try {
-        MovableDemand record = new MovableDemand();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Integer) defaultValue(fields()[0]);
+        MovableDemandDto record = new MovableDemandDto();
+        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.profile = fieldSetFlags()[2] ? this.profile : (java.util.List<java.lang.Double>) defaultValue(fields()[2]);
         record.startIntervals = fieldSetFlags()[3] ? this.startIntervals : (java.util.List<java.lang.Integer>) defaultValue(fields()[3]);
@@ -475,8 +475,8 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<MovableDemand>
-    WRITER$ = (org.apache.avro.io.DatumWriter<MovableDemand>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<MovableDemandDto>
+    WRITER$ = (org.apache.avro.io.DatumWriter<MovableDemandDto>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -484,8 +484,8 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<MovableDemand>
-    READER$ = (org.apache.avro.io.DatumReader<MovableDemand>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<MovableDemandDto>
+    READER$ = (org.apache.avro.io.DatumReader<MovableDemandDto>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -497,7 +497,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeInt(this.id);
+    out.writeLong(this.id);
 
     out.writeString(this.name);
 
@@ -534,7 +534,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.id = in.readInt();
+      this.id = in.readLong();
 
       this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
 
@@ -572,7 +572,7 @@ public class MovableDemand extends org.apache.avro.specific.SpecificRecordBase i
       for (int i = 0; i < 4; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.id = in.readInt();
+          this.id = in.readLong();
           break;
 
         case 1:

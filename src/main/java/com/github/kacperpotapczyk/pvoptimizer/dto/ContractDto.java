@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Contract extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5108909788327928133L;
+public class ContractDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 8649206047429824002L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Contract\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirection\",\"symbols\":[\"Purchase\",\"Sell\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraint\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraint\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ContractDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirectionDto\",\"symbols\":[\"Purchase\",\"Sell\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraintDto\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraintDto\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Contract> ENCODER =
+  private static final BinaryMessageEncoder<ContractDto> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Contract> DECODER =
+  private static final BinaryMessageDecoder<ContractDto> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Contract> getEncoder() {
+  public static BinaryMessageEncoder<ContractDto> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Contract> getDecoder() {
+  public static BinaryMessageDecoder<ContractDto> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Contract> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<ContractDto> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this Contract to a ByteBuffer.
+   * Serializes this ContractDto to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,12 +63,12 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   /**
-   * Deserializes a Contract from a ByteBuffer.
+   * Deserializes a ContractDto from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Contract instance decoded from the given buffer
+   * @return a ContractDto instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Contract fromByteBuffer(
+  public static ContractDto fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -78,7 +78,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
   /** Contract name */
   private java.lang.CharSequence name;
   /** Defines if it is purchase or sell contract */
-  private com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection contractDirection;
+  private com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto contractDirection;
   /** Energy unit price */
   private java.util.List<java.lang.Double> unitPrice;
   /** Constraints on minimal power for intervals */
@@ -86,16 +86,16 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
   /** Constraints on maximal power for intervals */
   private java.util.Map<java.lang.CharSequence,java.lang.Double> maxPower;
   /** Constraint on minimal energy over intervals range */
-  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> minEnergy;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> minEnergy;
   /** Constraint on maximal energy over intervals range */
-  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> maxEnergy;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> maxEnergy;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Contract() {}
+  public ContractDto() {}
 
   /**
    * All-args constructor.
@@ -108,7 +108,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * @param minEnergy Constraint on minimal energy over intervals range
    * @param maxEnergy Constraint on maximal energy over intervals range
    */
-  public Contract(java.lang.Long id, java.lang.CharSequence name, com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection contractDirection, java.util.List<java.lang.Double> unitPrice, java.util.Map<java.lang.CharSequence,java.lang.Double> minPower, java.util.Map<java.lang.CharSequence,java.lang.Double> maxPower, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> minEnergy, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> maxEnergy) {
+  public ContractDto(java.lang.Long id, java.lang.CharSequence name, com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto contractDirection, java.util.List<java.lang.Double> unitPrice, java.util.Map<java.lang.CharSequence,java.lang.Double> minPower, java.util.Map<java.lang.CharSequence,java.lang.Double> maxPower, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> minEnergy, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> maxEnergy) {
     this.id = id;
     this.name = name;
     this.contractDirection = contractDirection;
@@ -148,12 +148,12 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
     switch (field$) {
     case 0: id = (java.lang.Long)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
-    case 2: contractDirection = (com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection)value$; break;
+    case 2: contractDirection = (com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto)value$; break;
     case 3: unitPrice = (java.util.List<java.lang.Double>)value$; break;
     case 4: minPower = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
     case 5: maxPower = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
-    case 6: minEnergy = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>)value$; break;
-    case 7: maxEnergy = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>)value$; break;
+    case 6: minEnergy = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>)value$; break;
+    case 7: maxEnergy = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -198,7 +198,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'contractDirection' field.
    * @return Defines if it is purchase or sell contract
    */
-  public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection getContractDirection() {
+  public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto getContractDirection() {
     return contractDirection;
   }
 
@@ -208,7 +208,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Defines if it is purchase or sell contract
    * @param value the value to set.
    */
-  public void setContractDirection(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection value) {
+  public void setContractDirection(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto value) {
     this.contractDirection = value;
   }
 
@@ -270,7 +270,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'minEnergy' field.
    * @return Constraint on minimal energy over intervals range
    */
-  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> getMinEnergy() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> getMinEnergy() {
     return minEnergy;
   }
 
@@ -280,7 +280,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Constraint on minimal energy over intervals range
    * @param value the value to set.
    */
-  public void setMinEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> value) {
+  public void setMinEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> value) {
     this.minEnergy = value;
   }
 
@@ -288,7 +288,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'maxEnergy' field.
    * @return Constraint on maximal energy over intervals range
    */
-  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> getMaxEnergy() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> getMaxEnergy() {
     return maxEnergy;
   }
 
@@ -298,57 +298,57 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
    * Constraint on maximal energy over intervals range
    * @param value the value to set.
    */
-  public void setMaxEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> value) {
+  public void setMaxEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> value) {
     this.maxEnergy = value;
   }
 
   /**
-   * Creates a new Contract RecordBuilder.
-   * @return A new Contract RecordBuilder
+   * Creates a new ContractDto RecordBuilder.
+   * @return A new ContractDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder newBuilder() {
-    return new com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder();
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder newBuilder() {
+    return new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder();
   }
 
   /**
-   * Creates a new Contract RecordBuilder by copying an existing Builder.
+   * Creates a new ContractDto RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new Contract RecordBuilder
+   * @return A new ContractDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder(other);
     }
   }
 
   /**
-   * Creates a new Contract RecordBuilder by copying an existing Contract instance.
+   * Creates a new ContractDto RecordBuilder by copying an existing ContractDto instance.
    * @param other The existing instance to copy.
-   * @return A new Contract RecordBuilder
+   * @return A new ContractDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.Contract other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for Contract instances.
+   * RecordBuilder for ContractDto instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Contract>
-    implements org.apache.avro.data.RecordBuilder<Contract> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ContractDto>
+    implements org.apache.avro.data.RecordBuilder<ContractDto> {
 
     /** Contract id */
     private long id;
     /** Contract name */
     private java.lang.CharSequence name;
     /** Defines if it is purchase or sell contract */
-    private com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection contractDirection;
+    private com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto contractDirection;
     /** Energy unit price */
     private java.util.List<java.lang.Double> unitPrice;
     /** Constraints on minimal power for intervals */
@@ -356,9 +356,9 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
     /** Constraints on maximal power for intervals */
     private java.util.Map<java.lang.CharSequence,java.lang.Double> maxPower;
     /** Constraint on minimal energy over intervals range */
-    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> minEnergy;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> minEnergy;
     /** Constraint on maximal energy over intervals range */
-    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> maxEnergy;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> maxEnergy;
 
     /** Creates a new Builder */
     private Builder() {
@@ -369,7 +369,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -406,10 +406,10 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
     }
 
     /**
-     * Creates a Builder by copying an existing Contract instance
+     * Creates a Builder by copying an existing ContractDto instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.Contract other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -461,7 +461,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setId(long value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -483,7 +483,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Contract id
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearId() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -504,7 +504,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setName(java.lang.CharSequence value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -526,7 +526,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Contract name
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearName() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -537,7 +537,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Defines if it is purchase or sell contract
       * @return The value.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection getContractDirection() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto getContractDirection() {
       return contractDirection;
     }
 
@@ -548,7 +548,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'contractDirection'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setContractDirection(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setContractDirection(com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto value) {
       validate(fields()[2], value);
       this.contractDirection = value;
       fieldSetFlags()[2] = true;
@@ -570,7 +570,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Defines if it is purchase or sell contract
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearContractDirection() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearContractDirection() {
       contractDirection = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -592,7 +592,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'unitPrice'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setUnitPrice(java.util.List<java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setUnitPrice(java.util.List<java.lang.Double> value) {
       validate(fields()[3], value);
       this.unitPrice = value;
       fieldSetFlags()[3] = true;
@@ -614,7 +614,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Energy unit price
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearUnitPrice() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearUnitPrice() {
       unitPrice = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -636,7 +636,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'minPower'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setMinPower(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setMinPower(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[4], value);
       this.minPower = value;
       fieldSetFlags()[4] = true;
@@ -658,7 +658,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Constraints on minimal power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearMinPower() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearMinPower() {
       minPower = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -680,7 +680,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'maxPower'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setMaxPower(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setMaxPower(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[5], value);
       this.maxPower = value;
       fieldSetFlags()[5] = true;
@@ -702,7 +702,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Constraints on maximal power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearMaxPower() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearMaxPower() {
       maxPower = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -713,7 +713,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Constraint on minimal energy over intervals range
       * @return The value.
       */
-    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> getMinEnergy() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> getMinEnergy() {
       return minEnergy;
     }
 
@@ -724,7 +724,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'minEnergy'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setMinEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setMinEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> value) {
       validate(fields()[6], value);
       this.minEnergy = value;
       fieldSetFlags()[6] = true;
@@ -746,7 +746,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Constraint on minimal energy over intervals range
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearMinEnergy() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearMinEnergy() {
       minEnergy = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -757,7 +757,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Constraint on maximal energy over intervals range
       * @return The value.
       */
-    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> getMaxEnergy() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> getMaxEnergy() {
       return maxEnergy;
     }
 
@@ -768,7 +768,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'maxEnergy'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder setMaxEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder setMaxEnergy(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> value) {
       validate(fields()[7], value);
       this.maxEnergy = value;
       fieldSetFlags()[7] = true;
@@ -790,7 +790,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       * Constraint on maximal energy over intervals range
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.Contract.Builder clearMaxEnergy() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto.Builder clearMaxEnergy() {
       maxEnergy = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -798,17 +798,17 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
 
     @Override
     @SuppressWarnings("unchecked")
-    public Contract build() {
+    public ContractDto build() {
       try {
-        Contract record = new Contract();
+        ContractDto record = new ContractDto();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.contractDirection = fieldSetFlags()[2] ? this.contractDirection : (com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection) defaultValue(fields()[2]);
+        record.contractDirection = fieldSetFlags()[2] ? this.contractDirection : (com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto) defaultValue(fields()[2]);
         record.unitPrice = fieldSetFlags()[3] ? this.unitPrice : (java.util.List<java.lang.Double>) defaultValue(fields()[3]);
         record.minPower = fieldSetFlags()[4] ? this.minPower : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[4]);
         record.maxPower = fieldSetFlags()[5] ? this.maxPower : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[5]);
-        record.minEnergy = fieldSetFlags()[6] ? this.minEnergy : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>) defaultValue(fields()[6]);
-        record.maxEnergy = fieldSetFlags()[7] ? this.maxEnergy : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>) defaultValue(fields()[7]);
+        record.minEnergy = fieldSetFlags()[6] ? this.minEnergy : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>) defaultValue(fields()[6]);
+        record.maxEnergy = fieldSetFlags()[7] ? this.maxEnergy : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>) defaultValue(fields()[7]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -819,8 +819,8 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Contract>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Contract>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<ContractDto>
+    WRITER$ = (org.apache.avro.io.DatumWriter<ContractDto>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -828,8 +828,8 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Contract>
-    READER$ = (org.apache.avro.io.DatumReader<Contract>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<ContractDto>
+    READER$ = (org.apache.avro.io.DatumReader<ContractDto>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -906,7 +906,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
     out.writeArrayStart();
     out.setItemCount(size3);
     long actualSize3 = 0;
-    for (com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint e3: this.minEnergy) {
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto e3: this.minEnergy) {
       actualSize3++;
       out.startItem();
       e3.customEncode(out);
@@ -919,7 +919,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
     out.writeArrayStart();
     out.setItemCount(size4);
     long actualSize4 = 0;
-    for (com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint e4: this.maxEnergy) {
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto e4: this.maxEnergy) {
       actualSize4++;
       out.startItem();
       e4.customEncode(out);
@@ -939,7 +939,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
 
       this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
 
-      this.contractDirection = com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection.values()[in.readEnum()];
+      this.contractDirection = com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto.values()[in.readEnum()];
 
       long size0 = in.readArrayStart();
       java.util.List<java.lang.Double> a0 = this.unitPrice;
@@ -999,17 +999,17 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       }
 
       long size3 = in.readArrayStart();
-      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> a3 = this.minEnergy;
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> a3 = this.minEnergy;
       if (a3 == null) {
-        a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>((int)size3, SCHEMA$.getField("minEnergy").schema());
+        a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>((int)size3, SCHEMA$.getField("minEnergy").schema());
         this.minEnergy = a3;
       } else a3.clear();
-      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>)a3 : null);
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>)a3 : null);
       for ( ; 0 < size3; size3 = in.arrayNext()) {
         for ( ; size3 != 0; size3--) {
-          com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint e3 = (ga3 != null ? ga3.peek() : null);
+          com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto e3 = (ga3 != null ? ga3.peek() : null);
           if (e3 == null) {
-            e3 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint();
+            e3 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto();
           }
           e3.customDecode(in);
           a3.add(e3);
@@ -1017,17 +1017,17 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
       }
 
       long size4 = in.readArrayStart();
-      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> a4 = this.maxEnergy;
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> a4 = this.maxEnergy;
       if (a4 == null) {
-        a4 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>((int)size4, SCHEMA$.getField("maxEnergy").schema());
+        a4 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>((int)size4, SCHEMA$.getField("maxEnergy").schema());
         this.maxEnergy = a4;
       } else a4.clear();
-      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> ga4 = (a4 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>)a4 : null);
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> ga4 = (a4 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>)a4 : null);
       for ( ; 0 < size4; size4 = in.arrayNext()) {
         for ( ; size4 != 0; size4--) {
-          com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint e4 = (ga4 != null ? ga4.peek() : null);
+          com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto e4 = (ga4 != null ? ga4.peek() : null);
           if (e4 == null) {
-            e4 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint();
+            e4 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto();
           }
           e4.customDecode(in);
           a4.add(e4);
@@ -1046,7 +1046,7 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
           break;
 
         case 2:
-          this.contractDirection = com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection.values()[in.readEnum()];
+          this.contractDirection = com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirectionDto.values()[in.readEnum()];
           break;
 
         case 3:
@@ -1114,17 +1114,17 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
 
         case 6:
           long size3 = in.readArrayStart();
-          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> a3 = this.minEnergy;
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> a3 = this.minEnergy;
           if (a3 == null) {
-            a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>((int)size3, SCHEMA$.getField("minEnergy").schema());
+            a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>((int)size3, SCHEMA$.getField("minEnergy").schema());
             this.minEnergy = a3;
           } else a3.clear();
-          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>)a3 : null);
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>)a3 : null);
           for ( ; 0 < size3; size3 = in.arrayNext()) {
             for ( ; size3 != 0; size3--) {
-              com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint e3 = (ga3 != null ? ga3.peek() : null);
+              com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto e3 = (ga3 != null ? ga3.peek() : null);
               if (e3 == null) {
-                e3 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint();
+                e3 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto();
               }
               e3.customDecode(in);
               a3.add(e3);
@@ -1134,17 +1134,17 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
 
         case 7:
           long size4 = in.readArrayStart();
-          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> a4 = this.maxEnergy;
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> a4 = this.maxEnergy;
           if (a4 == null) {
-            a4 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>((int)size4, SCHEMA$.getField("maxEnergy").schema());
+            a4 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>((int)size4, SCHEMA$.getField("maxEnergy").schema());
             this.maxEnergy = a4;
           } else a4.clear();
-          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint> ga4 = (a4 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint>)a4 : null);
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto> ga4 = (a4 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto>)a4 : null);
           for ( ; 0 < size4; size4 = in.arrayNext()) {
             for ( ; size4 != 0; size4--) {
-              com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint e4 = (ga4 != null ? ga4.peek() : null);
+              com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto e4 = (ga4 != null ? ga4.peek() : null);
               if (e4 == null) {
-                e4 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint();
+                e4 = new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto();
               }
               e4.customDecode(in);
               a4.add(e4);

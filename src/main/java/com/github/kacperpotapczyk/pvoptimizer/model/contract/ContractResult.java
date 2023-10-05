@@ -10,5 +10,5 @@ import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
  * @param energy contract energy intervals profile
  * @param cost contract cost/profit intervals profile
  */
-public record ContractResult(int id, String name, Profile power, Profile energy, Profile cost) {
+public record ContractResult(long id, String name, Profile power, Profile energy, Profile cost) {
 }

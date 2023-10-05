@@ -6,6 +6,7 @@ import com.github.kacperpotapczyk.pvoptimizer.model.storage.StorageResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.OptimizationStatus;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Singular;
 
 import java.util.List;
@@ -17,6 +18,11 @@ import java.util.List;
 @Getter
 public class Result {
 
+    /**
+     * Result identifier. Corresponds to {@link Task#getId() identifier}
+     */
+    @NonNull
+    private final Long id;
     /**
      * Optimization status.
      */

@@ -13,7 +13,7 @@ public class Demand extends FixedSourceSink {
      * @param name demand name
      * @param demandProfile demand profile
      */
-    public Demand(int id, String name, Profile demandProfile) {
+    public Demand(long id, String name, Profile demandProfile) {
         super(id, name, demandProfile);
     }
 }

@@ -17,7 +17,7 @@ public class Contract {
     /**
      * Contract id
      */
-    private final int id;
+    private final long id;
     /**
      * Contract name
      */
@@ -55,7 +55,7 @@ public class Contract {
      * @param contractDirection Purchase or sell contract direction
      * @return contract builder
      */
-    public static ContractBuilder builder(int id, String name, Profile unitPrice, ContractDirection contractDirection) {
+    public static ContractBuilder builder(long id, String name, Profile unitPrice, ContractDirection contractDirection) {
         return new ContractBuilder(id, name, unitPrice, contractDirection);
     }
 
@@ -187,11 +187,12 @@ public class Contract {
 
     /**
      * Two contracts are considered equal when their ids are equal
+     *
      * @return id value
      */
     @Override
     public int hashCode() {
-        return getId();
+        return Long.hashCode(getId());
     }
 
     /**
@@ -200,7 +201,7 @@ public class Contract {
     @RequiredArgsConstructor
     public static class ContractBuilder {
 
-        private final int id;
+        private final long id;
         private final String name;
         private final Profile unitPrice;
         private final ContractDirection contractDirection;

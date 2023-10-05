@@ -41,6 +41,7 @@ public class OptimizerMovableDemandTest {
         MovableDemand movableDemand = new MovableDemand(1, "movable demand", Arrays.asList(5.0, 5.0), Set.of(0, 2, 3));
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -71,6 +72,7 @@ public class OptimizerMovableDemandTest {
         MovableDemand movableDemand = new MovableDemand(1, "movable demand", Arrays.asList(5.0, 5.0), Set.of(0, 2, 3));
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -101,6 +103,7 @@ public class OptimizerMovableDemandTest {
         Contract purchaseContract = new Contract(1, "purchase", unitPrice, ContractDirection.PURCHASE);
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -146,6 +149,7 @@ public class OptimizerMovableDemandTest {
         Contract purchaseContract = new Contract(1, "purchase", unitPrice, ContractDirection.PURCHASE);
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)

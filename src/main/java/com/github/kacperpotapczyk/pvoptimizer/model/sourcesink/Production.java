@@ -13,7 +13,7 @@ public class Production extends FixedSourceSink {
      * @param name production name
      * @param generationProfile pv power generation profile
      */
-    public Production(int id, String name, Profile generationProfile) {
+    public Production(long id, String name, Profile generationProfile) {
         super(id, name, generationProfile);
     }
 }

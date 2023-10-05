@@ -10,7 +10,7 @@ import java.util.Set;
  * @param profile demand profile
  * @param startIntervals set of start intervals from which optimizer can choose
  */
-public record MovableDemand(int id, String name, List<Double> profile, Set<Integer> startIntervals) {
+public record MovableDemand(long id, String name, List<Double> profile, Set<Integer> startIntervals) {
 
     /**
      * Two movable demands are consider equal when they have the same id.
@@ -31,6 +31,6 @@ public record MovableDemand(int id, String name, List<Double> profile, Set<Integ
      */
     @Override
     public int hashCode() {
-        return id();
+        return Long.hashCode(id());
     }
 }

@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3829218350365397002L;
+public class SumConstraintDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -4419315720677383460L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SumConstraint\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SumConstraintDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<SumConstraint> ENCODER =
+  private static final BinaryMessageEncoder<SumConstraintDto> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<SumConstraint> DECODER =
+  private static final BinaryMessageDecoder<SumConstraintDto> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<SumConstraint> getEncoder() {
+  public static BinaryMessageEncoder<SumConstraintDto> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<SumConstraint> getDecoder() {
+  public static BinaryMessageDecoder<SumConstraintDto> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<SumConstraint> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<SumConstraintDto> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this SumConstraint to a ByteBuffer.
+   * Serializes this SumConstraintDto to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,12 +63,12 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /**
-   * Deserializes a SumConstraint from a ByteBuffer.
+   * Deserializes a SumConstraintDto from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a SumConstraint instance decoded from the given buffer
+   * @return a SumConstraintDto instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static SumConstraint fromByteBuffer(
+  public static SumConstraintDto fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -82,7 +82,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public SumConstraint() {}
+  public SumConstraintDto() {}
 
   /**
    * All-args constructor.
@@ -90,7 +90,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
    * @param endInterval The new value for endInterval
    * @param sum The new value for sum
    */
-  public SumConstraint(java.lang.Integer startInterval, java.lang.Integer endInterval, java.lang.Double sum) {
+  public SumConstraintDto(java.lang.Integer startInterval, java.lang.Integer endInterval, java.lang.Double sum) {
     this.startInterval = startInterval;
     this.endInterval = endInterval;
     this.sum = sum;
@@ -177,45 +177,45 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /**
-   * Creates a new SumConstraint RecordBuilder.
-   * @return A new SumConstraint RecordBuilder
+   * Creates a new SumConstraintDto RecordBuilder.
+   * @return A new SumConstraintDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder newBuilder() {
-    return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder();
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder newBuilder() {
+    return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder();
   }
 
   /**
-   * Creates a new SumConstraint RecordBuilder by copying an existing Builder.
+   * Creates a new SumConstraintDto RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new SumConstraint RecordBuilder
+   * @return A new SumConstraintDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder(other);
     }
   }
 
   /**
-   * Creates a new SumConstraint RecordBuilder by copying an existing SumConstraint instance.
+   * Creates a new SumConstraintDto RecordBuilder by copying an existing SumConstraintDto instance.
    * @param other The existing instance to copy.
-   * @return A new SumConstraint RecordBuilder
+   * @return A new SumConstraintDto RecordBuilder
    */
-  public static com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint other) {
+  public static com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder newBuilder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto other) {
     if (other == null) {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder();
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder();
     } else {
-      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder(other);
+      return new com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for SumConstraint instances.
+   * RecordBuilder for SumConstraintDto instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<SumConstraint>
-    implements org.apache.avro.data.RecordBuilder<SumConstraint> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<SumConstraintDto>
+    implements org.apache.avro.data.RecordBuilder<SumConstraintDto> {
 
     private int startInterval;
     private int endInterval;
@@ -230,7 +230,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.startInterval)) {
         this.startInterval = data().deepCopy(fields()[0].schema(), other.startInterval);
@@ -247,10 +247,10 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
     }
 
     /**
-     * Creates a Builder by copying an existing SumConstraint instance
+     * Creates a Builder by copying an existing SumConstraintDto instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint other) {
+    private Builder(com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.startInterval)) {
         this.startInterval = data().deepCopy(fields()[0].schema(), other.startInterval);
@@ -280,7 +280,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'startInterval'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder setStartInterval(int value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder setStartInterval(int value) {
       validate(fields()[0], value);
       this.startInterval = value;
       fieldSetFlags()[0] = true;
@@ -300,7 +300,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'startInterval' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder clearStartInterval() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder clearStartInterval() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -319,7 +319,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'endInterval'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder setEndInterval(int value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder setEndInterval(int value) {
       validate(fields()[1], value);
       this.endInterval = value;
       fieldSetFlags()[1] = true;
@@ -339,7 +339,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'endInterval' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder clearEndInterval() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder clearEndInterval() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -358,7 +358,7 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'sum'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder setSum(double value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder setSum(double value) {
       validate(fields()[2], value);
       this.sum = value;
       fieldSetFlags()[2] = true;
@@ -378,16 +378,16 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'sum' field.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint.Builder clearSum() {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto.Builder clearSum() {
       fieldSetFlags()[2] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public SumConstraint build() {
+    public SumConstraintDto build() {
       try {
-        SumConstraint record = new SumConstraint();
+        SumConstraintDto record = new SumConstraintDto();
         record.startInterval = fieldSetFlags()[0] ? this.startInterval : (java.lang.Integer) defaultValue(fields()[0]);
         record.endInterval = fieldSetFlags()[1] ? this.endInterval : (java.lang.Integer) defaultValue(fields()[1]);
         record.sum = fieldSetFlags()[2] ? this.sum : (java.lang.Double) defaultValue(fields()[2]);
@@ -401,8 +401,8 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<SumConstraint>
-    WRITER$ = (org.apache.avro.io.DatumWriter<SumConstraint>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<SumConstraintDto>
+    WRITER$ = (org.apache.avro.io.DatumWriter<SumConstraintDto>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -410,8 +410,8 @@ public class SumConstraint extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<SumConstraint>
-    READER$ = (org.apache.avro.io.DatumReader<SumConstraint>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<SumConstraintDto>
+    READER$ = (org.apache.avro.io.DatumReader<SumConstraintDto>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

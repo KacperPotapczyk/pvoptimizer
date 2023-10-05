@@ -50,6 +50,7 @@ public class OptimizerStorageTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -109,6 +110,7 @@ public class OptimizerStorageTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -169,6 +171,7 @@ public class OptimizerStorageTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)
@@ -234,6 +237,7 @@ public class OptimizerStorageTest {
                 .build();
 
         Task task = Task.builder()
+                .id(1L)
                 .intervals(intervals)
                 .production(production)
                 .demand(demand)

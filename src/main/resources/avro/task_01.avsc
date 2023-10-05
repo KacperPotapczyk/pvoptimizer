@@ -1,7 +1,7 @@
 {
   "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
   "type": "record",
-  "name": "Task",
+  "name": "TaskDto",
   "fields": [
     {
       "name": "id",
@@ -31,16 +31,56 @@
     {
       "name": "production",
       "type": {
-        "type": "array",
-        "items": "double"
+        "type": "record",
+        "name": "ProductionDto",
+        "fields": [
+          {
+            "name": "id",
+            "type": "long",
+            "doc": "Production id"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "doc": "Production name"
+          },
+          {
+            "name": "productionProfile",
+            "type": {
+              "type": "array",
+              "items": "double"
+            },
+            "doc": "Production profile"
+          }
+        ]
       },
       "doc": "PV installation power output."
     },
     {
       "name": "demand",
       "type": {
-        "type": "array",
-        "items": "double"
+        "type": "record",
+        "name": "DemandDto",
+        "fields": [
+          {
+            "name": "id",
+            "type": "long",
+            "doc": "Demand id"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "doc": "Demand name"
+          },
+          {
+            "name": "demandProfile",
+            "type": {
+              "type": "array",
+              "items": "double"
+            },
+            "doc": "Demand profile"
+          }
+        ]
       },
       "doc": "Household power demand."
     },
@@ -51,7 +91,7 @@
         "type": "array",
         "items": [
           {
-            "name": "Contract",
+            "name": "ContractDto",
             "type": "record",
             "fields": [
               {
@@ -68,7 +108,7 @@
                 "name": "contractDirection",
                 "type": {
                   "type": "enum",
-                  "name": "ContractDirection",
+                  "name": "ContractDirectionDto",
                   "symbols": ["Purchase", "Sell"]
                 },
                 "doc": "Defines if it is purchase or sell contract"
@@ -106,7 +146,7 @@
                   "type": "array",
                   "items": {
                     "type": "record",
-                    "name": "SumConstraint",
+                    "name": "SumConstraintDto",
                     "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
                     "fields": [
                       {
@@ -131,7 +171,7 @@
                 "doc": "Constraint on maximal energy over intervals range",
                 "type": {
                   "type": "array",
-                  "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint"
+                  "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto"
                 },
                 "default": []
               }
@@ -147,12 +187,12 @@
         "type": "array",
         "items": [
           {
-            "name": "Storage",
+            "name": "StorageDto",
             "type": "record",
             "fields": [
               {
                 "name": "id",
-                "type": "int"
+                "type": "long"
               },
               {
                 "name": "name",
@@ -259,12 +299,12 @@
         "type": "array",
         "items": [
           {
-            "name": "MovableDemand",
+            "name": "MovableDemandDto",
             "type": "record",
             "fields": [
               {
                 "name": "id",
-                "type": "int"
+                "type": "long"
               },
               {
                 "name": "name",

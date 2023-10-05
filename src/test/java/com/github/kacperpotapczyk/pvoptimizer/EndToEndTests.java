@@ -1,8 +1,6 @@
 package com.github.kacperpotapczyk.pvoptimizer;
 
-import com.github.kacperpotapczyk.pvoptimizer.dto.Contract;
-import com.github.kacperpotapczyk.pvoptimizer.dto.ContractDirection;
-import com.github.kacperpotapczyk.pvoptimizer.dto.Task;
+import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.kafka.KafkaMockupProducer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +29,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
                 "port=9092"})
 public class EndToEndTests {
 
-    private final KafkaTemplate<String, Task> kafkaTemplate;
+    private final KafkaTemplate<String, TaskDto> kafkaTemplate;
 
     @Autowired
-    public EndToEndTests(KafkaTemplate<String, Task> kafkaTemplate) {
+    public EndToEndTests(KafkaTemplate<String, TaskDto> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
@@ -42,21 +40,33 @@ public class EndToEndTests {
     public void mockupProducerWorks() throws InterruptedException {
 
         List<Double> intervals = Arrays.asList(1.0, 1.0);
-        List<Double> demand = Arrays.asList(0.0, 0.0);
-        List<Double> production = Arrays.asList(0.0, 0.0);
+        List<Double> demandProfile = Arrays.asList(0.0, 0.0);
+        List<Double> productionProfile = Arrays.asList(0.0, 0.0);
         List<Double> unitPrice = Arrays.asList(10.0, 10.0);
 
-        Contract contract = Contract.newBuilder()
+        ContractDto contract = ContractDto.newBuilder()
                 .setId(10L)
                 .setName("Test")
-                .setContractDirection(ContractDirection.Purchase)
+                .setContractDirection(ContractDirectionDto.Purchase)
                 .setUnitPrice(unitPrice)
                 .build();
 
         List<Object> contracts = new ArrayList<>();
         contracts.add(contract);
 
-        Task task = Task.newBuilder()
+        DemandDto demand = DemandDto.newBuilder()
+                .setId(2L)
+                .setName("Test demand")
+                .setDemandProfile(demandProfile)
+                .build();
+
+        ProductionDto production = ProductionDto.newBuilder()
+                .setId(2L)
+                .setName("Test production")
+                .setProductionProfile(productionProfile)
+                .build();
+
+        TaskDto task = TaskDto.newBuilder()
                 .setId(1L)
                 .setTimeoutSeconds(300L)
                 .setIntervals(intervals)
