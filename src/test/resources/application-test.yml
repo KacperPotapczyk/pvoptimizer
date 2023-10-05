@@ -1,0 +1,15 @@
+optimizer:
+  maxAllowedTimeOut: 300
+  numericalZero: 1e-11
+
+spring:
+  kafka:
+    consumer:
+      groupId: pvoptimizer
+      topic: pvoptimizer
+      properties:
+        schema.registry.url: mock://test-schema
+    producer:
+      topic: pvoptimizer
+      properties:
+        schema.registry.url: mock://test-schema

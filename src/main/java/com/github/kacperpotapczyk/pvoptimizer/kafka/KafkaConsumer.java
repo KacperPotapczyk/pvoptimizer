@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @Component
-public class kafkaConsumer {
+public class KafkaConsumer {
 
     @KafkaListener(topics = "${spring.kafka.consumer.topic}")
     public void listener(@Payload ConsumerRecord<String, Task> consumerRecord, Acknowledgment acknowledgment) {
