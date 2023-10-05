@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Contract extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3243101395501572592L;
+  private static final long serialVersionUID = -5108909788327928133L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Contract\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirection\",\"symbols\":[\"Purchase\",\"Sell\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on minimal power for intervals\"},{\"name\":\"maxPower\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on maximal power for intervals\"},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraint\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\"},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraint\"},\"doc\":\"Constraint on maximal energy over intervals range\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Contract\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirection\",\"symbols\":[\"Purchase\",\"Sell\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraint\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraint\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -860,35 +860,47 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
     if (actualSize0 != size0)
       throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
 
-    long size1 = this.minPower.size();
-    out.writeMapStart();
-    out.setItemCount(size1);
-    long actualSize1 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e1: this.minPower.entrySet()) {
-      actualSize1++;
-      out.startItem();
-      out.writeString(e1.getKey());
-      java.lang.Double v1 = e1.getValue();
-      out.writeDouble(v1);
-    }
-    out.writeMapEnd();
-    if (actualSize1 != size1)
+    if (this.minPower == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size1 = this.minPower.size();
+      out.writeMapStart();
+      out.setItemCount(size1);
+      long actualSize1 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e1: this.minPower.entrySet()) {
+        actualSize1++;
+        out.startItem();
+        out.writeString(e1.getKey());
+        java.lang.Double v1 = e1.getValue();
+        out.writeDouble(v1);
+      }
+      out.writeMapEnd();
+      if (actualSize1 != size1)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size1 + ", but element count was " + actualSize1 + ".");
-
-    long size2 = this.maxPower.size();
-    out.writeMapStart();
-    out.setItemCount(size2);
-    long actualSize2 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e2: this.maxPower.entrySet()) {
-      actualSize2++;
-      out.startItem();
-      out.writeString(e2.getKey());
-      java.lang.Double v2 = e2.getValue();
-      out.writeDouble(v2);
     }
-    out.writeMapEnd();
-    if (actualSize2 != size2)
+
+    if (this.maxPower == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size2 = this.maxPower.size();
+      out.writeMapStart();
+      out.setItemCount(size2);
+      long actualSize2 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e2: this.maxPower.entrySet()) {
+        actualSize2++;
+        out.startItem();
+        out.writeString(e2.getKey());
+        java.lang.Double v2 = e2.getValue();
+        out.writeDouble(v2);
+      }
+      out.writeMapEnd();
+      if (actualSize2 != size2)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size2 + ", but element count was " + actualSize2 + ".");
+    }
 
     long size3 = this.minEnergy.size();
     out.writeArrayStart();
@@ -944,35 +956,45 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
         }
       }
 
-      long size1 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.minPower; // Need fresh name due to limitation of macro system
-      if (m1 == null) {
-        m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
-        this.minPower = m1;
-      } else m1.clear();
-      for ( ; 0 < size1; size1 = in.mapNext()) {
-        for ( ; size1 != 0; size1--) {
-          java.lang.CharSequence k1 = null;
-          k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
-          java.lang.Double v1 = null;
-          v1 = in.readDouble();
-          m1.put(k1, v1);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.minPower = null;
+      } else {
+        long size1 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.minPower; // Need fresh name due to limitation of macro system
+        if (m1 == null) {
+          m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
+          this.minPower = m1;
+        } else m1.clear();
+        for ( ; 0 < size1; size1 = in.mapNext()) {
+          for ( ; size1 != 0; size1--) {
+            java.lang.CharSequence k1 = null;
+            k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
+            java.lang.Double v1 = null;
+            v1 = in.readDouble();
+            m1.put(k1, v1);
+          }
         }
       }
 
-      long size2 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.maxPower; // Need fresh name due to limitation of macro system
-      if (m2 == null) {
-        m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
-        this.maxPower = m2;
-      } else m2.clear();
-      for ( ; 0 < size2; size2 = in.mapNext()) {
-        for ( ; size2 != 0; size2--) {
-          java.lang.CharSequence k2 = null;
-          k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
-          java.lang.Double v2 = null;
-          v2 = in.readDouble();
-          m2.put(k2, v2);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.maxPower = null;
+      } else {
+        long size2 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.maxPower; // Need fresh name due to limitation of macro system
+        if (m2 == null) {
+          m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
+          this.maxPower = m2;
+        } else m2.clear();
+        for ( ; 0 < size2; size2 = in.mapNext()) {
+          for ( ; size2 != 0; size2--) {
+            java.lang.CharSequence k2 = null;
+            k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
+            java.lang.Double v2 = null;
+            v2 = in.readDouble();
+            m2.put(k2, v2);
+          }
         }
       }
 
@@ -1045,37 +1067,47 @@ public class Contract extends org.apache.avro.specific.SpecificRecordBase implem
           break;
 
         case 4:
-          long size1 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.minPower; // Need fresh name due to limitation of macro system
-          if (m1 == null) {
-            m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
-            this.minPower = m1;
-          } else m1.clear();
-          for ( ; 0 < size1; size1 = in.mapNext()) {
-            for ( ; size1 != 0; size1--) {
-              java.lang.CharSequence k1 = null;
-              k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
-              java.lang.Double v1 = null;
-              v1 = in.readDouble();
-              m1.put(k1, v1);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.minPower = null;
+          } else {
+            long size1 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.minPower; // Need fresh name due to limitation of macro system
+            if (m1 == null) {
+              m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
+              this.minPower = m1;
+            } else m1.clear();
+            for ( ; 0 < size1; size1 = in.mapNext()) {
+              for ( ; size1 != 0; size1--) {
+                java.lang.CharSequence k1 = null;
+                k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
+                java.lang.Double v1 = null;
+                v1 = in.readDouble();
+                m1.put(k1, v1);
+              }
             }
           }
           break;
 
         case 5:
-          long size2 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.maxPower; // Need fresh name due to limitation of macro system
-          if (m2 == null) {
-            m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
-            this.maxPower = m2;
-          } else m2.clear();
-          for ( ; 0 < size2; size2 = in.mapNext()) {
-            for ( ; size2 != 0; size2--) {
-              java.lang.CharSequence k2 = null;
-              k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
-              java.lang.Double v2 = null;
-              v2 = in.readDouble();
-              m2.put(k2, v2);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.maxPower = null;
+          } else {
+            long size2 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.maxPower; // Need fresh name due to limitation of macro system
+            if (m2 == null) {
+              m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
+              this.maxPower = m2;
+            } else m2.clear();
+            for ( ; 0 < size2; size2 = in.mapNext()) {
+              for ( ; size2 != 0; size2--) {
+                java.lang.CharSequence k2 = null;
+                k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
+                java.lang.Double v2 = null;
+                v2 = in.readDouble();
+                m2.put(k2, v2);
+              }
             }
           }
           break;

@@ -84,18 +84,20 @@
               {
                 "name": "minPower",
                 "doc": "Constraints on minimal power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "maxPower",
                 "doc": "Constraints on maximal power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "minEnergy",
@@ -121,7 +123,8 @@
                       }
                     ]
                   }
-                }
+                },
+                "default": []
               },
               {
                 "name": "maxEnergy",
@@ -129,7 +132,8 @@
                 "type": {
                   "type": "array",
                   "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraint"
-                }
+                },
+                "default": []
               }
             ]
           }]
@@ -173,50 +177,56 @@
               {
                 "name": "minCharge",
                 "doc": "Constraints on minimal charging power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "maxChargeConstraints",
                 "doc": "Constraints on maximal charging power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "minDischargeConstraints",
                 "doc": "Constraints on minimal discharging power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "maxDischargeConstraints",
                 "doc": "Constraints on maximal discharging power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "minEnergyConstraints",
                 "doc": "Constraints on minimal stored energy for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "maxEnergyConstraints",
                 "doc": "Constraints on maximal stored energy power for intervals",
-                "type": {
+                "type": ["null", {
                   "type": "map",
                   "values": "double"
-                }
+                }],
+                "default": null
               },
               {
                 "name": "forbiddenChargeIntervals",
@@ -224,7 +234,8 @@
                 "type": {
                   "type": "array",
                   "items": "int"
-                }
+                },
+                "default": []
               },
               {
                 "name": "forbiddenDischargeIntervals",
@@ -232,7 +243,8 @@
                 "type": {
                   "type": "array",
                   "items": "int"
-                }
+                },
+                "default": []
               }
             ]
           }

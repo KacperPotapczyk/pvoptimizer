@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Storage extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2000620924431632143L;
+  private static final long serialVersionUID = 4137566361717063821L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Storage\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on minimal charging power for intervals\"},{\"name\":\"maxChargeConstraints\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on maximal charging power for intervals\"},{\"name\":\"minDischargeConstraints\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on minimal discharging power for intervals\"},{\"name\":\"maxDischargeConstraints\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on maximal discharging power for intervals\"},{\"name\":\"minEnergyConstraints\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on minimal stored energy for intervals\"},{\"name\":\"maxEnergyConstraints\",\"type\":{\"type\":\"map\",\"values\":\"double\"},\"doc\":\"Constraints on maximal stored energy power for intervals\"},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\"},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Storage\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -1281,95 +1281,131 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
 
     out.writeDouble(this.initialEnergy);
 
-    long size0 = this.minCharge.size();
-    out.writeMapStart();
-    out.setItemCount(size0);
-    long actualSize0 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e0: this.minCharge.entrySet()) {
-      actualSize0++;
-      out.startItem();
-      out.writeString(e0.getKey());
-      java.lang.Double v0 = e0.getValue();
-      out.writeDouble(v0);
-    }
-    out.writeMapEnd();
-    if (actualSize0 != size0)
+    if (this.minCharge == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size0 = this.minCharge.size();
+      out.writeMapStart();
+      out.setItemCount(size0);
+      long actualSize0 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e0: this.minCharge.entrySet()) {
+        actualSize0++;
+        out.startItem();
+        out.writeString(e0.getKey());
+        java.lang.Double v0 = e0.getValue();
+        out.writeDouble(v0);
+      }
+      out.writeMapEnd();
+      if (actualSize0 != size0)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size0 + ", but element count was " + actualSize0 + ".");
-
-    long size1 = this.maxChargeConstraints.size();
-    out.writeMapStart();
-    out.setItemCount(size1);
-    long actualSize1 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e1: this.maxChargeConstraints.entrySet()) {
-      actualSize1++;
-      out.startItem();
-      out.writeString(e1.getKey());
-      java.lang.Double v1 = e1.getValue();
-      out.writeDouble(v1);
     }
-    out.writeMapEnd();
-    if (actualSize1 != size1)
+
+    if (this.maxChargeConstraints == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size1 = this.maxChargeConstraints.size();
+      out.writeMapStart();
+      out.setItemCount(size1);
+      long actualSize1 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e1: this.maxChargeConstraints.entrySet()) {
+        actualSize1++;
+        out.startItem();
+        out.writeString(e1.getKey());
+        java.lang.Double v1 = e1.getValue();
+        out.writeDouble(v1);
+      }
+      out.writeMapEnd();
+      if (actualSize1 != size1)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size1 + ", but element count was " + actualSize1 + ".");
-
-    long size2 = this.minDischargeConstraints.size();
-    out.writeMapStart();
-    out.setItemCount(size2);
-    long actualSize2 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e2: this.minDischargeConstraints.entrySet()) {
-      actualSize2++;
-      out.startItem();
-      out.writeString(e2.getKey());
-      java.lang.Double v2 = e2.getValue();
-      out.writeDouble(v2);
     }
-    out.writeMapEnd();
-    if (actualSize2 != size2)
+
+    if (this.minDischargeConstraints == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size2 = this.minDischargeConstraints.size();
+      out.writeMapStart();
+      out.setItemCount(size2);
+      long actualSize2 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e2: this.minDischargeConstraints.entrySet()) {
+        actualSize2++;
+        out.startItem();
+        out.writeString(e2.getKey());
+        java.lang.Double v2 = e2.getValue();
+        out.writeDouble(v2);
+      }
+      out.writeMapEnd();
+      if (actualSize2 != size2)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size2 + ", but element count was " + actualSize2 + ".");
-
-    long size3 = this.maxDischargeConstraints.size();
-    out.writeMapStart();
-    out.setItemCount(size3);
-    long actualSize3 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e3: this.maxDischargeConstraints.entrySet()) {
-      actualSize3++;
-      out.startItem();
-      out.writeString(e3.getKey());
-      java.lang.Double v3 = e3.getValue();
-      out.writeDouble(v3);
     }
-    out.writeMapEnd();
-    if (actualSize3 != size3)
+
+    if (this.maxDischargeConstraints == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size3 = this.maxDischargeConstraints.size();
+      out.writeMapStart();
+      out.setItemCount(size3);
+      long actualSize3 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e3: this.maxDischargeConstraints.entrySet()) {
+        actualSize3++;
+        out.startItem();
+        out.writeString(e3.getKey());
+        java.lang.Double v3 = e3.getValue();
+        out.writeDouble(v3);
+      }
+      out.writeMapEnd();
+      if (actualSize3 != size3)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size3 + ", but element count was " + actualSize3 + ".");
-
-    long size4 = this.minEnergyConstraints.size();
-    out.writeMapStart();
-    out.setItemCount(size4);
-    long actualSize4 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e4: this.minEnergyConstraints.entrySet()) {
-      actualSize4++;
-      out.startItem();
-      out.writeString(e4.getKey());
-      java.lang.Double v4 = e4.getValue();
-      out.writeDouble(v4);
     }
-    out.writeMapEnd();
-    if (actualSize4 != size4)
+
+    if (this.minEnergyConstraints == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size4 = this.minEnergyConstraints.size();
+      out.writeMapStart();
+      out.setItemCount(size4);
+      long actualSize4 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e4: this.minEnergyConstraints.entrySet()) {
+        actualSize4++;
+        out.startItem();
+        out.writeString(e4.getKey());
+        java.lang.Double v4 = e4.getValue();
+        out.writeDouble(v4);
+      }
+      out.writeMapEnd();
+      if (actualSize4 != size4)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size4 + ", but element count was " + actualSize4 + ".");
-
-    long size5 = this.maxEnergyConstraints.size();
-    out.writeMapStart();
-    out.setItemCount(size5);
-    long actualSize5 = 0;
-    for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e5: this.maxEnergyConstraints.entrySet()) {
-      actualSize5++;
-      out.startItem();
-      out.writeString(e5.getKey());
-      java.lang.Double v5 = e5.getValue();
-      out.writeDouble(v5);
     }
-    out.writeMapEnd();
-    if (actualSize5 != size5)
+
+    if (this.maxEnergyConstraints == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      long size5 = this.maxEnergyConstraints.size();
+      out.writeMapStart();
+      out.setItemCount(size5);
+      long actualSize5 = 0;
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e5: this.maxEnergyConstraints.entrySet()) {
+        actualSize5++;
+        out.startItem();
+        out.writeString(e5.getKey());
+        java.lang.Double v5 = e5.getValue();
+        out.writeDouble(v5);
+      }
+      out.writeMapEnd();
+      if (actualSize5 != size5)
       throw new java.util.ConcurrentModificationException("Map-size written was " + size5 + ", but element count was " + actualSize5 + ".");
+    }
 
     long size6 = this.forbiddenChargeIntervals.size();
     out.writeArrayStart();
@@ -1416,99 +1452,129 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
 
       this.initialEnergy = in.readDouble();
 
-      long size0 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minCharge; // Need fresh name due to limitation of macro system
-      if (m0 == null) {
-        m0 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size0);
-        this.minCharge = m0;
-      } else m0.clear();
-      for ( ; 0 < size0; size0 = in.mapNext()) {
-        for ( ; size0 != 0; size0--) {
-          java.lang.CharSequence k0 = null;
-          k0 = in.readString(k0 instanceof Utf8 ? (Utf8)k0 : null);
-          java.lang.Double v0 = null;
-          v0 = in.readDouble();
-          m0.put(k0, v0);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.minCharge = null;
+      } else {
+        long size0 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minCharge; // Need fresh name due to limitation of macro system
+        if (m0 == null) {
+          m0 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size0);
+          this.minCharge = m0;
+        } else m0.clear();
+        for ( ; 0 < size0; size0 = in.mapNext()) {
+          for ( ; size0 != 0; size0--) {
+            java.lang.CharSequence k0 = null;
+            k0 = in.readString(k0 instanceof Utf8 ? (Utf8)k0 : null);
+            java.lang.Double v0 = null;
+            v0 = in.readDouble();
+            m0.put(k0, v0);
+          }
         }
       }
 
-      long size1 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.maxChargeConstraints; // Need fresh name due to limitation of macro system
-      if (m1 == null) {
-        m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
-        this.maxChargeConstraints = m1;
-      } else m1.clear();
-      for ( ; 0 < size1; size1 = in.mapNext()) {
-        for ( ; size1 != 0; size1--) {
-          java.lang.CharSequence k1 = null;
-          k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
-          java.lang.Double v1 = null;
-          v1 = in.readDouble();
-          m1.put(k1, v1);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.maxChargeConstraints = null;
+      } else {
+        long size1 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.maxChargeConstraints; // Need fresh name due to limitation of macro system
+        if (m1 == null) {
+          m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
+          this.maxChargeConstraints = m1;
+        } else m1.clear();
+        for ( ; 0 < size1; size1 = in.mapNext()) {
+          for ( ; size1 != 0; size1--) {
+            java.lang.CharSequence k1 = null;
+            k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
+            java.lang.Double v1 = null;
+            v1 = in.readDouble();
+            m1.put(k1, v1);
+          }
         }
       }
 
-      long size2 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.minDischargeConstraints; // Need fresh name due to limitation of macro system
-      if (m2 == null) {
-        m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
-        this.minDischargeConstraints = m2;
-      } else m2.clear();
-      for ( ; 0 < size2; size2 = in.mapNext()) {
-        for ( ; size2 != 0; size2--) {
-          java.lang.CharSequence k2 = null;
-          k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
-          java.lang.Double v2 = null;
-          v2 = in.readDouble();
-          m2.put(k2, v2);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.minDischargeConstraints = null;
+      } else {
+        long size2 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.minDischargeConstraints; // Need fresh name due to limitation of macro system
+        if (m2 == null) {
+          m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
+          this.minDischargeConstraints = m2;
+        } else m2.clear();
+        for ( ; 0 < size2; size2 = in.mapNext()) {
+          for ( ; size2 != 0; size2--) {
+            java.lang.CharSequence k2 = null;
+            k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
+            java.lang.Double v2 = null;
+            v2 = in.readDouble();
+            m2.put(k2, v2);
+          }
         }
       }
 
-      long size3 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m3 = this.maxDischargeConstraints; // Need fresh name due to limitation of macro system
-      if (m3 == null) {
-        m3 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size3);
-        this.maxDischargeConstraints = m3;
-      } else m3.clear();
-      for ( ; 0 < size3; size3 = in.mapNext()) {
-        for ( ; size3 != 0; size3--) {
-          java.lang.CharSequence k3 = null;
-          k3 = in.readString(k3 instanceof Utf8 ? (Utf8)k3 : null);
-          java.lang.Double v3 = null;
-          v3 = in.readDouble();
-          m3.put(k3, v3);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.maxDischargeConstraints = null;
+      } else {
+        long size3 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m3 = this.maxDischargeConstraints; // Need fresh name due to limitation of macro system
+        if (m3 == null) {
+          m3 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size3);
+          this.maxDischargeConstraints = m3;
+        } else m3.clear();
+        for ( ; 0 < size3; size3 = in.mapNext()) {
+          for ( ; size3 != 0; size3--) {
+            java.lang.CharSequence k3 = null;
+            k3 = in.readString(k3 instanceof Utf8 ? (Utf8)k3 : null);
+            java.lang.Double v3 = null;
+            v3 = in.readDouble();
+            m3.put(k3, v3);
+          }
         }
       }
 
-      long size4 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m4 = this.minEnergyConstraints; // Need fresh name due to limitation of macro system
-      if (m4 == null) {
-        m4 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size4);
-        this.minEnergyConstraints = m4;
-      } else m4.clear();
-      for ( ; 0 < size4; size4 = in.mapNext()) {
-        for ( ; size4 != 0; size4--) {
-          java.lang.CharSequence k4 = null;
-          k4 = in.readString(k4 instanceof Utf8 ? (Utf8)k4 : null);
-          java.lang.Double v4 = null;
-          v4 = in.readDouble();
-          m4.put(k4, v4);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.minEnergyConstraints = null;
+      } else {
+        long size4 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m4 = this.minEnergyConstraints; // Need fresh name due to limitation of macro system
+        if (m4 == null) {
+          m4 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size4);
+          this.minEnergyConstraints = m4;
+        } else m4.clear();
+        for ( ; 0 < size4; size4 = in.mapNext()) {
+          for ( ; size4 != 0; size4--) {
+            java.lang.CharSequence k4 = null;
+            k4 = in.readString(k4 instanceof Utf8 ? (Utf8)k4 : null);
+            java.lang.Double v4 = null;
+            v4 = in.readDouble();
+            m4.put(k4, v4);
+          }
         }
       }
 
-      long size5 = in.readMapStart();
-      java.util.Map<java.lang.CharSequence,java.lang.Double> m5 = this.maxEnergyConstraints; // Need fresh name due to limitation of macro system
-      if (m5 == null) {
-        m5 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size5);
-        this.maxEnergyConstraints = m5;
-      } else m5.clear();
-      for ( ; 0 < size5; size5 = in.mapNext()) {
-        for ( ; size5 != 0; size5--) {
-          java.lang.CharSequence k5 = null;
-          k5 = in.readString(k5 instanceof Utf8 ? (Utf8)k5 : null);
-          java.lang.Double v5 = null;
-          v5 = in.readDouble();
-          m5.put(k5, v5);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.maxEnergyConstraints = null;
+      } else {
+        long size5 = in.readMapStart();
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m5 = this.maxEnergyConstraints; // Need fresh name due to limitation of macro system
+        if (m5 == null) {
+          m5 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size5);
+          this.maxEnergyConstraints = m5;
+        } else m5.clear();
+        for ( ; 0 < size5; size5 = in.mapNext()) {
+          for ( ; size5 != 0; size5--) {
+            java.lang.CharSequence k5 = null;
+            k5 = in.readString(k5 instanceof Utf8 ? (Utf8)k5 : null);
+            java.lang.Double v5 = null;
+            v5 = in.readDouble();
+            m5.put(k5, v5);
+          }
         }
       }
 
@@ -1570,109 +1636,139 @@ public class Storage extends org.apache.avro.specific.SpecificRecordBase impleme
           break;
 
         case 6:
-          long size0 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minCharge; // Need fresh name due to limitation of macro system
-          if (m0 == null) {
-            m0 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size0);
-            this.minCharge = m0;
-          } else m0.clear();
-          for ( ; 0 < size0; size0 = in.mapNext()) {
-            for ( ; size0 != 0; size0--) {
-              java.lang.CharSequence k0 = null;
-              k0 = in.readString(k0 instanceof Utf8 ? (Utf8)k0 : null);
-              java.lang.Double v0 = null;
-              v0 = in.readDouble();
-              m0.put(k0, v0);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.minCharge = null;
+          } else {
+            long size0 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minCharge; // Need fresh name due to limitation of macro system
+            if (m0 == null) {
+              m0 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size0);
+              this.minCharge = m0;
+            } else m0.clear();
+            for ( ; 0 < size0; size0 = in.mapNext()) {
+              for ( ; size0 != 0; size0--) {
+                java.lang.CharSequence k0 = null;
+                k0 = in.readString(k0 instanceof Utf8 ? (Utf8)k0 : null);
+                java.lang.Double v0 = null;
+                v0 = in.readDouble();
+                m0.put(k0, v0);
+              }
             }
           }
           break;
 
         case 7:
-          long size1 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.maxChargeConstraints; // Need fresh name due to limitation of macro system
-          if (m1 == null) {
-            m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
-            this.maxChargeConstraints = m1;
-          } else m1.clear();
-          for ( ; 0 < size1; size1 = in.mapNext()) {
-            for ( ; size1 != 0; size1--) {
-              java.lang.CharSequence k1 = null;
-              k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
-              java.lang.Double v1 = null;
-              v1 = in.readDouble();
-              m1.put(k1, v1);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.maxChargeConstraints = null;
+          } else {
+            long size1 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m1 = this.maxChargeConstraints; // Need fresh name due to limitation of macro system
+            if (m1 == null) {
+              m1 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size1);
+              this.maxChargeConstraints = m1;
+            } else m1.clear();
+            for ( ; 0 < size1; size1 = in.mapNext()) {
+              for ( ; size1 != 0; size1--) {
+                java.lang.CharSequence k1 = null;
+                k1 = in.readString(k1 instanceof Utf8 ? (Utf8)k1 : null);
+                java.lang.Double v1 = null;
+                v1 = in.readDouble();
+                m1.put(k1, v1);
+              }
             }
           }
           break;
 
         case 8:
-          long size2 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.minDischargeConstraints; // Need fresh name due to limitation of macro system
-          if (m2 == null) {
-            m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
-            this.minDischargeConstraints = m2;
-          } else m2.clear();
-          for ( ; 0 < size2; size2 = in.mapNext()) {
-            for ( ; size2 != 0; size2--) {
-              java.lang.CharSequence k2 = null;
-              k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
-              java.lang.Double v2 = null;
-              v2 = in.readDouble();
-              m2.put(k2, v2);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.minDischargeConstraints = null;
+          } else {
+            long size2 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m2 = this.minDischargeConstraints; // Need fresh name due to limitation of macro system
+            if (m2 == null) {
+              m2 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size2);
+              this.minDischargeConstraints = m2;
+            } else m2.clear();
+            for ( ; 0 < size2; size2 = in.mapNext()) {
+              for ( ; size2 != 0; size2--) {
+                java.lang.CharSequence k2 = null;
+                k2 = in.readString(k2 instanceof Utf8 ? (Utf8)k2 : null);
+                java.lang.Double v2 = null;
+                v2 = in.readDouble();
+                m2.put(k2, v2);
+              }
             }
           }
           break;
 
         case 9:
-          long size3 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m3 = this.maxDischargeConstraints; // Need fresh name due to limitation of macro system
-          if (m3 == null) {
-            m3 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size3);
-            this.maxDischargeConstraints = m3;
-          } else m3.clear();
-          for ( ; 0 < size3; size3 = in.mapNext()) {
-            for ( ; size3 != 0; size3--) {
-              java.lang.CharSequence k3 = null;
-              k3 = in.readString(k3 instanceof Utf8 ? (Utf8)k3 : null);
-              java.lang.Double v3 = null;
-              v3 = in.readDouble();
-              m3.put(k3, v3);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.maxDischargeConstraints = null;
+          } else {
+            long size3 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m3 = this.maxDischargeConstraints; // Need fresh name due to limitation of macro system
+            if (m3 == null) {
+              m3 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size3);
+              this.maxDischargeConstraints = m3;
+            } else m3.clear();
+            for ( ; 0 < size3; size3 = in.mapNext()) {
+              for ( ; size3 != 0; size3--) {
+                java.lang.CharSequence k3 = null;
+                k3 = in.readString(k3 instanceof Utf8 ? (Utf8)k3 : null);
+                java.lang.Double v3 = null;
+                v3 = in.readDouble();
+                m3.put(k3, v3);
+              }
             }
           }
           break;
 
         case 10:
-          long size4 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m4 = this.minEnergyConstraints; // Need fresh name due to limitation of macro system
-          if (m4 == null) {
-            m4 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size4);
-            this.minEnergyConstraints = m4;
-          } else m4.clear();
-          for ( ; 0 < size4; size4 = in.mapNext()) {
-            for ( ; size4 != 0; size4--) {
-              java.lang.CharSequence k4 = null;
-              k4 = in.readString(k4 instanceof Utf8 ? (Utf8)k4 : null);
-              java.lang.Double v4 = null;
-              v4 = in.readDouble();
-              m4.put(k4, v4);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.minEnergyConstraints = null;
+          } else {
+            long size4 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m4 = this.minEnergyConstraints; // Need fresh name due to limitation of macro system
+            if (m4 == null) {
+              m4 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size4);
+              this.minEnergyConstraints = m4;
+            } else m4.clear();
+            for ( ; 0 < size4; size4 = in.mapNext()) {
+              for ( ; size4 != 0; size4--) {
+                java.lang.CharSequence k4 = null;
+                k4 = in.readString(k4 instanceof Utf8 ? (Utf8)k4 : null);
+                java.lang.Double v4 = null;
+                v4 = in.readDouble();
+                m4.put(k4, v4);
+              }
             }
           }
           break;
 
         case 11:
-          long size5 = in.readMapStart();
-          java.util.Map<java.lang.CharSequence,java.lang.Double> m5 = this.maxEnergyConstraints; // Need fresh name due to limitation of macro system
-          if (m5 == null) {
-            m5 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size5);
-            this.maxEnergyConstraints = m5;
-          } else m5.clear();
-          for ( ; 0 < size5; size5 = in.mapNext()) {
-            for ( ; size5 != 0; size5--) {
-              java.lang.CharSequence k5 = null;
-              k5 = in.readString(k5 instanceof Utf8 ? (Utf8)k5 : null);
-              java.lang.Double v5 = null;
-              v5 = in.readDouble();
-              m5.put(k5, v5);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.maxEnergyConstraints = null;
+          } else {
+            long size5 = in.readMapStart();
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m5 = this.maxEnergyConstraints; // Need fresh name due to limitation of macro system
+            if (m5 == null) {
+              m5 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size5);
+              this.maxEnergyConstraints = m5;
+            } else m5.clear();
+            for ( ; 0 < size5; size5 = in.mapNext()) {
+              for ( ; size5 != 0; size5--) {
+                java.lang.CharSequence k5 = null;
+                k5 = in.readString(k5 instanceof Utf8 ? (Utf8)k5 : null);
+                java.lang.Double v5 = null;
+                v5 = in.readDouble();
+                m5.put(k5, v5);
+              }
             }
           }
           break;
