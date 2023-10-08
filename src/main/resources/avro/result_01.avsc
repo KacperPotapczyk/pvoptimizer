@@ -1,0 +1,183 @@
+{
+  "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+  "type": "record",
+  "name": "ResultDto",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long",
+      "doc": "Task identifier"
+    },
+    {
+      "name": "optimizationStatus",
+      "type": {
+        "type": "enum",
+        "name": "OptimizationStatusDto",
+        "symbols": ["SOLUTION_FOUND", "SOLUTION_NOT_FOUND"]
+      }
+    },
+    {
+      "name": "objectiveFunctionValue",
+      "type": "double",
+      "doc": "Objective function optimal value"
+    },
+    {
+      "name": "relativeGap",
+      "type": "double",
+      "doc": "Relative gap between relaxed solution and returned integer solution"
+    },
+    {
+      "name": "elapsedTime",
+      "type": "double",
+      "doc": "Optimization elapsed time"
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "default": "",
+      "doc": "Error messages returned by optimizer"
+    },
+    {
+      "name": "contractResults",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "ContractResultDto",
+            "type": "record",
+            "fields": [
+              {
+                "name": "id",
+                "type": "long",
+                "doc": "Contract id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "doc": "Contract name"
+              },
+              {
+                "name": "power",
+                "type": {
+                  "type": "array",
+                  "items": ["double"]
+                },
+                "doc": "Result power profile"
+              },
+              {
+                "name": "energy",
+                "type": {
+                  "type": "array",
+                  "items": ["double"]
+                },
+                "doc": "Result energy profile"
+              },
+              {
+                "name": "cost",
+                "type": {
+                  "type": "array",
+                  "items": ["double"]
+                },
+                "doc": "Result cost/income profile"
+              }
+            ]
+          }
+        ]
+      },
+      "default": []
+    },
+    {
+      "name": "storageResults",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "StorageResultDto",
+            "type": "record",
+            "fields": [
+              {
+                "name": "id",
+                "type": "long",
+                "doc": "Storage id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "doc": "Storage name"
+              },
+              {
+                "name": "charge",
+                "type": {
+                  "type": "array",
+                  "items": ["double"]
+                },
+                "doc": "Storage charging profile"
+              },
+              {
+                "name": "discharge",
+                "type": {
+                  "type": "array",
+                  "items": ["double"]
+                },
+                "doc": "Storage discharging profile"
+              },
+              {
+                "name": "energy",
+                "type": {
+                  "type": "array",
+                  "items": ["double"]
+                },
+                "doc": "Storage storage energy profile"
+              },
+              {
+                "name": "storageMode",
+                "type": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "name": "StorageModeDto",
+                      "type": "enum",
+                      "symbols": ["DISABLED", "CHARGING", "DISCHARGING"]
+                    }
+                  ]
+                },
+                "doc": "Storage mode profile"
+              }
+            ]
+          }
+        ]
+      },
+      "default": []
+    },
+    {
+      "name": "movableDemandResults",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "name": "MovableDemandResultDto",
+            "type": "record",
+            "fields": [
+              {
+                "name": "id",
+                "type": "long",
+                "doc": "Movable demand id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "doc": "Movable demand name"
+              },
+              {
+                "name": "startInterval",
+                "type": "int",
+                "doc": "Optimal start interval"
+              }
+            ]
+          }
+        ]
+      },
+      "default": []
+    }
+  ]
+}

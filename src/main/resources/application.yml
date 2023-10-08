@@ -10,3 +10,8 @@ spring:
       bootstrapServers: localhost:9092
       properties:
         schema.registry.url: http://localhost:8081
+    producer:
+      topic: pvoptimizer-result
+      bootstrapServers: localhost:9092
+      properties:
+        schema.registry.url: http://localhost:8081

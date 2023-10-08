@@ -2,9 +2,12 @@ package com.github.kacperpotapczyk.pvoptimizer;
 
 import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.kafka.KafkaMockupProducer;
+import com.github.kacperpotapczyk.pvoptimizer.kafka.KafkaMockupProducerConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
@@ -21,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @ActiveProfiles("test")
+@Import(KafkaMockupProducerConfig.class)
 @DirtiesContext
 @EmbeddedKafka(
         partitions = 1,
@@ -32,7 +36,8 @@ public class EndToEndTests {
     private final KafkaTemplate<String, TaskDto> kafkaTemplate;
 
     @Autowired
-    public EndToEndTests(KafkaTemplate<String, TaskDto> kafkaTemplate) {
+    public EndToEndTests(@Qualifier("mockupKafkaTemplate") KafkaTemplate<String, TaskDto> kafkaTemplate) {
+
         this.kafkaTemplate = kafkaTemplate;
     }
 

@@ -1,32 +1,32 @@
 package com.github.kacperpotapczyk.pvoptimizer.kafka;
 
-import com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto;
+import com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
 @EnableKafka
-@TestConfiguration
+@Configuration
 @RequiredArgsConstructor
-public class KafkaMockupProducerConfig {
+public class KafkaProducerConfig {
 
     private final KafkaProperties kafkaProperties;
 
-    @Bean("mockupKafkaTemplate")
-    public KafkaTemplate<String, TaskDto> kafkaTemplate(@Qualifier("mockupProducerFactory") final ProducerFactory<String, TaskDto> producerFactory) {
+    @Bean
+    public KafkaTemplate<String, ResultDto> kafkaTemplate(final ProducerFactory<String, ResultDto> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 
-    @Bean("mockupProducerFactory")
-    public ProducerFactory<String, TaskDto> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties(), StringSerializer::new, SpecificAvroSerializer<TaskDto>::new);
+    @Bean
+    public ProducerFactory<String, ResultDto> producerFactory() {
+        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties(), StringSerializer::new, SpecificAvroSerializer<ResultDto>::new);
     }
 }

@@ -10,6 +10,6 @@ spring:
       properties:
         schema.registry.url: mock://test-schema
     producer:
-      topic: pvoptimizer
+      topic: pvoptimizer-test
       properties:
         schema.registry.url: mock://test-schema
