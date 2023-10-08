@@ -3,6 +3,7 @@ package com.github.kacperpotapczyk.pvoptimizer;
 import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.kafka.KafkaMockupProducer;
 import com.github.kacperpotapczyk.pvoptimizer.kafka.KafkaMockupProducerConfig;
+import com.github.kacperpotapczyk.pvoptimizer.kafka.KafkaTestResultConsumer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,18 +14,15 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@Import(KafkaMockupProducerConfig.class)
+@Import({KafkaMockupProducerConfig.class, KafkaTestResultConsumer.class})
 @DirtiesContext
 @EmbeddedKafka(
         partitions = 1,
@@ -34,11 +32,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class EndToEndTests {
 
     private final KafkaTemplate<String, TaskDto> kafkaTemplate;
+    private final KafkaTestResultConsumer kafkaTestResultConsumer;
 
     @Autowired
-    public EndToEndTests(@Qualifier("mockupKafkaTemplate") KafkaTemplate<String, TaskDto> kafkaTemplate) {
+    public EndToEndTests(
+            @Qualifier("mockupKafkaTemplate") KafkaTemplate<String, TaskDto> kafkaTemplate,
+            KafkaTestResultConsumer kafkaTestResultConsumer) {
 
         this.kafkaTemplate = kafkaTemplate;
+        this.kafkaTestResultConsumer = kafkaTestResultConsumer;
     }
 
     @Test
@@ -85,8 +87,14 @@ public class EndToEndTests {
         CountDownLatch producerCountDown = new CountDownLatch(1);
         KafkaMockupProducer kafkaMockupProducer = new KafkaMockupProducer(kafkaTemplate, producerCountDown);
         kafkaMockupProducer.send("pvoptimizer","1", task);
+        assertTrue(producerCountDown.await(1000L, TimeUnit.MILLISECONDS));
 
-        boolean allSend = producerCountDown.await(1000L, TimeUnit.MILLISECONDS);
-        assertTrue(allSend);
+        Thread.sleep(1000L);
+        assertEquals(1, kafkaTestResultConsumer.getResultDtoList().size());
+
+        Optional<ResultDto> resultDto = kafkaTestResultConsumer.getResultById(1L);
+        assertTrue(resultDto.isPresent());
+        assertEquals(42.0, resultDto.get().getObjectiveFunctionValue());
+        assertEquals(10.0, resultDto.get().getElapsedTime());
     }
 }
