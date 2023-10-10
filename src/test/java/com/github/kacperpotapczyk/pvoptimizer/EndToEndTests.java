@@ -54,7 +54,7 @@ public class EndToEndTests {
         ContractDto contract = ContractDto.newBuilder()
                 .setId(10L)
                 .setName("Test")
-                .setContractDirection(ContractDirectionDto.Purchase)
+                .setContractDirection(ContractDirectionDto.PURCHASE)
                 .setUnitPrice(unitPrice)
                 .build();
 

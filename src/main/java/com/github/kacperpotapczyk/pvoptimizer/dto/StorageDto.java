@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class StorageDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3451241610659496374L;
+  private static final long serialVersionUID = 2808086666732272114L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StorageDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minCharge\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StorageDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -80,7 +80,7 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
   private double maxCapacity;
   private double initialEnergy;
   /** Constraints on minimal charging power for intervals */
-  private java.util.Map<java.lang.CharSequence,java.lang.Double> minCharge;
+  private java.util.Map<java.lang.CharSequence,java.lang.Double> minChargeConstraints;
   /** Constraints on maximal charging power for intervals */
   private java.util.Map<java.lang.CharSequence,java.lang.Double> maxChargeConstraints;
   /** Constraints on minimal discharging power for intervals */
@@ -111,7 +111,7 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
    * @param maxDischarge The new value for maxDischarge
    * @param maxCapacity The new value for maxCapacity
    * @param initialEnergy The new value for initialEnergy
-   * @param minCharge Constraints on minimal charging power for intervals
+   * @param minChargeConstraints Constraints on minimal charging power for intervals
    * @param maxChargeConstraints Constraints on maximal charging power for intervals
    * @param minDischargeConstraints Constraints on minimal discharging power for intervals
    * @param maxDischargeConstraints Constraints on maximal discharging power for intervals
@@ -120,14 +120,14 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
    * @param forbiddenChargeIntervals Set of intervals at which charging is forbidden
    * @param forbiddenDischargeIntervals Set of intervals at which discharging is forbidden
    */
-  public StorageDto(java.lang.Long id, java.lang.CharSequence name, java.lang.Double maxCharge, java.lang.Double maxDischarge, java.lang.Double maxCapacity, java.lang.Double initialEnergy, java.util.Map<java.lang.CharSequence,java.lang.Double> minCharge, java.util.Map<java.lang.CharSequence,java.lang.Double> maxChargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minEnergyConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxEnergyConstraints, java.util.List<java.lang.Integer> forbiddenChargeIntervals, java.util.List<java.lang.Integer> forbiddenDischargeIntervals) {
+  public StorageDto(java.lang.Long id, java.lang.CharSequence name, java.lang.Double maxCharge, java.lang.Double maxDischarge, java.lang.Double maxCapacity, java.lang.Double initialEnergy, java.util.Map<java.lang.CharSequence,java.lang.Double> minChargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxChargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxDischargeConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> minEnergyConstraints, java.util.Map<java.lang.CharSequence,java.lang.Double> maxEnergyConstraints, java.util.List<java.lang.Integer> forbiddenChargeIntervals, java.util.List<java.lang.Integer> forbiddenDischargeIntervals) {
     this.id = id;
     this.name = name;
     this.maxCharge = maxCharge;
     this.maxDischarge = maxDischarge;
     this.maxCapacity = maxCapacity;
     this.initialEnergy = initialEnergy;
-    this.minCharge = minCharge;
+    this.minChargeConstraints = minChargeConstraints;
     this.maxChargeConstraints = maxChargeConstraints;
     this.minDischargeConstraints = minDischargeConstraints;
     this.maxDischargeConstraints = maxDischargeConstraints;
@@ -153,7 +153,7 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
     case 3: return maxDischarge;
     case 4: return maxCapacity;
     case 5: return initialEnergy;
-    case 6: return minCharge;
+    case 6: return minChargeConstraints;
     case 7: return maxChargeConstraints;
     case 8: return minDischargeConstraints;
     case 9: return maxDischargeConstraints;
@@ -176,7 +176,7 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
     case 3: maxDischarge = (java.lang.Double)value$; break;
     case 4: maxCapacity = (java.lang.Double)value$; break;
     case 5: initialEnergy = (java.lang.Double)value$; break;
-    case 6: minCharge = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
+    case 6: minChargeConstraints = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
     case 7: maxChargeConstraints = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
     case 8: minDischargeConstraints = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
     case 9: maxDischargeConstraints = (java.util.Map<java.lang.CharSequence,java.lang.Double>)value$; break;
@@ -291,21 +291,21 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /**
-   * Gets the value of the 'minCharge' field.
+   * Gets the value of the 'minChargeConstraints' field.
    * @return Constraints on minimal charging power for intervals
    */
-  public java.util.Map<java.lang.CharSequence,java.lang.Double> getMinCharge() {
-    return minCharge;
+  public java.util.Map<java.lang.CharSequence,java.lang.Double> getMinChargeConstraints() {
+    return minChargeConstraints;
   }
 
 
   /**
-   * Sets the value of the 'minCharge' field.
+   * Sets the value of the 'minChargeConstraints' field.
    * Constraints on minimal charging power for intervals
    * @param value the value to set.
    */
-  public void setMinCharge(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
-    this.minCharge = value;
+  public void setMinChargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    this.minChargeConstraints = value;
   }
 
   /**
@@ -482,7 +482,7 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
     private double maxCapacity;
     private double initialEnergy;
     /** Constraints on minimal charging power for intervals */
-    private java.util.Map<java.lang.CharSequence,java.lang.Double> minCharge;
+    private java.util.Map<java.lang.CharSequence,java.lang.Double> minChargeConstraints;
     /** Constraints on maximal charging power for intervals */
     private java.util.Map<java.lang.CharSequence,java.lang.Double> maxChargeConstraints;
     /** Constraints on minimal discharging power for intervals */
@@ -533,8 +533,8 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
         this.initialEnergy = data().deepCopy(fields()[5].schema(), other.initialEnergy);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
-      if (isValidValue(fields()[6], other.minCharge)) {
-        this.minCharge = data().deepCopy(fields()[6].schema(), other.minCharge);
+      if (isValidValue(fields()[6], other.minChargeConstraints)) {
+        this.minChargeConstraints = data().deepCopy(fields()[6].schema(), other.minChargeConstraints);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
       if (isValidValue(fields()[7], other.maxChargeConstraints)) {
@@ -597,8 +597,8 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
         this.initialEnergy = data().deepCopy(fields()[5].schema(), other.initialEnergy);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.minCharge)) {
-        this.minCharge = data().deepCopy(fields()[6].schema(), other.minCharge);
+      if (isValidValue(fields()[6], other.minChargeConstraints)) {
+        this.minChargeConstraints = data().deepCopy(fields()[6].schema(), other.minChargeConstraints);
         fieldSetFlags()[6] = true;
       }
       if (isValidValue(fields()[7], other.maxChargeConstraints)) {
@@ -867,45 +867,45 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
     }
 
     /**
-      * Gets the value of the 'minCharge' field.
+      * Gets the value of the 'minChargeConstraints' field.
       * Constraints on minimal charging power for intervals
       * @return The value.
       */
-    public java.util.Map<java.lang.CharSequence,java.lang.Double> getMinCharge() {
-      return minCharge;
+    public java.util.Map<java.lang.CharSequence,java.lang.Double> getMinChargeConstraints() {
+      return minChargeConstraints;
     }
 
 
     /**
-      * Sets the value of the 'minCharge' field.
+      * Sets the value of the 'minChargeConstraints' field.
       * Constraints on minimal charging power for intervals
-      * @param value The value of 'minCharge'.
+      * @param value The value of 'minChargeConstraints'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMinCharge(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder setMinChargeConstraints(java.util.Map<java.lang.CharSequence,java.lang.Double> value) {
       validate(fields()[6], value);
-      this.minCharge = value;
+      this.minChargeConstraints = value;
       fieldSetFlags()[6] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'minCharge' field has been set.
+      * Checks whether the 'minChargeConstraints' field has been set.
       * Constraints on minimal charging power for intervals
-      * @return True if the 'minCharge' field has been set, false otherwise.
+      * @return True if the 'minChargeConstraints' field has been set, false otherwise.
       */
-    public boolean hasMinCharge() {
+    public boolean hasMinChargeConstraints() {
       return fieldSetFlags()[6];
     }
 
 
     /**
-      * Clears the value of the 'minCharge' field.
+      * Clears the value of the 'minChargeConstraints' field.
       * Constraints on minimal charging power for intervals
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMinCharge() {
-      minCharge = null;
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto.Builder clearMinChargeConstraints() {
+      minChargeConstraints = null;
       fieldSetFlags()[6] = false;
       return this;
     }
@@ -1229,7 +1229,7 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
         record.maxDischarge = fieldSetFlags()[3] ? this.maxDischarge : (java.lang.Double) defaultValue(fields()[3]);
         record.maxCapacity = fieldSetFlags()[4] ? this.maxCapacity : (java.lang.Double) defaultValue(fields()[4]);
         record.initialEnergy = fieldSetFlags()[5] ? this.initialEnergy : (java.lang.Double) defaultValue(fields()[5]);
-        record.minCharge = fieldSetFlags()[6] ? this.minCharge : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[6]);
+        record.minChargeConstraints = fieldSetFlags()[6] ? this.minChargeConstraints : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[6]);
         record.maxChargeConstraints = fieldSetFlags()[7] ? this.maxChargeConstraints : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[7]);
         record.minDischargeConstraints = fieldSetFlags()[8] ? this.minDischargeConstraints : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[8]);
         record.maxDischargeConstraints = fieldSetFlags()[9] ? this.maxDischargeConstraints : (java.util.Map<java.lang.CharSequence,java.lang.Double>) defaultValue(fields()[9]);
@@ -1281,16 +1281,16 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
 
     out.writeDouble(this.initialEnergy);
 
-    if (this.minCharge == null) {
+    if (this.minChargeConstraints == null) {
       out.writeIndex(0);
       out.writeNull();
     } else {
       out.writeIndex(1);
-      long size0 = this.minCharge.size();
+      long size0 = this.minChargeConstraints.size();
       out.writeMapStart();
       out.setItemCount(size0);
       long actualSize0 = 0;
-      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e0: this.minCharge.entrySet()) {
+      for (java.util.Map.Entry<java.lang.CharSequence, java.lang.Double> e0: this.minChargeConstraints.entrySet()) {
         actualSize0++;
         out.startItem();
         out.writeString(e0.getKey());
@@ -1454,13 +1454,13 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
 
       if (in.readIndex() != 1) {
         in.readNull();
-        this.minCharge = null;
+        this.minChargeConstraints = null;
       } else {
         long size0 = in.readMapStart();
-        java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minCharge; // Need fresh name due to limitation of macro system
+        java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minChargeConstraints; // Need fresh name due to limitation of macro system
         if (m0 == null) {
           m0 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size0);
-          this.minCharge = m0;
+          this.minChargeConstraints = m0;
         } else m0.clear();
         for ( ; 0 < size0; size0 = in.mapNext()) {
           for ( ; size0 != 0; size0--) {
@@ -1638,13 +1638,13 @@ public class StorageDto extends org.apache.avro.specific.SpecificRecordBase impl
         case 6:
           if (in.readIndex() != 1) {
             in.readNull();
-            this.minCharge = null;
+            this.minChargeConstraints = null;
           } else {
             long size0 = in.readMapStart();
-            java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minCharge; // Need fresh name due to limitation of macro system
+            java.util.Map<java.lang.CharSequence,java.lang.Double> m0 = this.minChargeConstraints; // Need fresh name due to limitation of macro system
             if (m0 == null) {
               m0 = new java.util.HashMap<java.lang.CharSequence,java.lang.Double>((int)size0);
-              this.minCharge = m0;
+              this.minChargeConstraints = m0;
             } else m0.clear();
             for ( ; 0 < size0; size0 = in.mapNext()) {
               for ( ; size0 != 0; size0--) {

@@ -109,9 +109,15 @@
                 "type": {
                   "type": "enum",
                   "name": "ContractDirectionDto",
-                  "symbols": ["Purchase", "Sell"]
+                  "symbols": ["PURCHASE", "SELL"]
                 },
                 "doc": "Defines if it is purchase or sell contract"
+              },
+              {
+                "name": "startInterval",
+                "type": "int",
+                "doc": "Interval at which contract starts",
+                "default": 0
               },
               {
                 "name": "unitPrice",
@@ -215,7 +221,7 @@
                 "type": "double"
               },
               {
-                "name": "minCharge",
+                "name": "minChargeConstraints",
                 "doc": "Constraints on minimal charging power for intervals",
                 "type": ["null", {
                   "type": "map",

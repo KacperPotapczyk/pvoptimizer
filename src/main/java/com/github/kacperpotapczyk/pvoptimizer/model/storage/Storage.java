@@ -211,7 +211,7 @@ public class Storage {
      */
     @RequiredArgsConstructor
     public static class StorageBuilder {
-        private final int id;
+        private final long id;
         private final String name;
         private final double maxCharge;
         private final double maxDischarge;
