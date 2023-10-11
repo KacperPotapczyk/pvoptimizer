@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class TaskDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2078439646803419706L;
+  private static final long serialVersionUID = 7081950707401584453L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TaskDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Task identifier\"},{\"name\":\"timeoutSeconds\",\"type\":\"long\",\"doc\":\"Time after which optimization has to stop.\",\"default\":0},{\"name\":\"relativeGap\",\"type\":\"double\",\"doc\":\"Relative gap below which optimization has to stop.\",\"default\":0},{\"name\":\"intervals\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Time length of task intervals.\"},{\"name\":\"production\",\"type\":{\"type\":\"record\",\"name\":\"ProductionDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Production id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Production name\"},{\"name\":\"productionProfile\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Production profile\"}]},\"doc\":\"PV installation power output.\"},{\"name\":\"demand\",\"type\":{\"type\":\"record\",\"name\":\"DemandDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Demand id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Demand name\"},{\"name\":\"demandProfile\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Demand profile\"}]},\"doc\":\"Household power demand.\"},{\"name\":\"contracts\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"ContractDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirectionDto\",\"symbols\":[\"PURCHASE\",\"SELL\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"startInterval\",\"type\":\"int\",\"doc\":\"Interval at which contract starts\",\"default\":0},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraintDto\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraintDto\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}]},\"doc\":\"List of electricity purchase and sell contracts.\",\"default\":[]},{\"name\":\"storages\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"StorageDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}]},\"doc\":\"List of electric energy storages.\",\"default\":[]},{\"name\":\"movableDemands\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"MovableDemandDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"profile\",\"type\":{\"type\":\"array\",\"items\":\"double\"}},{\"name\":\"startIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}]}]},\"doc\":\"Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.\",\"default\":[]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TaskDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Task identifier\"},{\"name\":\"timeoutSeconds\",\"type\":\"long\",\"doc\":\"Time after which optimization has to stop.\",\"default\":0},{\"name\":\"relativeGap\",\"type\":\"double\",\"doc\":\"Relative gap below which optimization has to stop.\",\"default\":0},{\"name\":\"intervals\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Time length of task intervals.\"},{\"name\":\"production\",\"type\":{\"type\":\"record\",\"name\":\"ProductionDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Production id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Production name\"},{\"name\":\"productionProfile\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Production profile\"}]},\"doc\":\"PV installation power output.\"},{\"name\":\"demand\",\"type\":{\"type\":\"record\",\"name\":\"DemandDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Demand id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Demand name\"},{\"name\":\"demandProfile\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Demand profile\"}]},\"doc\":\"Household power demand.\"},{\"name\":\"contracts\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"ContractDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"contractDirection\",\"type\":{\"type\":\"enum\",\"name\":\"ContractDirectionDto\",\"symbols\":[\"PURCHASE\",\"SELL\"]},\"doc\":\"Defines if it is purchase or sell contract\"},{\"name\":\"startInterval\",\"type\":\"int\",\"doc\":\"Interval at which contract starts\",\"default\":0},{\"name\":\"unitPrice\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Energy unit price\"},{\"name\":\"minPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal power for intervals\",\"default\":null},{\"name\":\"maxPower\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal power for intervals\",\"default\":null},{\"name\":\"minEnergy\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"SumConstraintDto\",\"fields\":[{\"name\":\"startInterval\",\"type\":\"int\"},{\"name\":\"endInterval\",\"type\":\"int\"},{\"name\":\"sum\",\"type\":\"double\"}]}},\"doc\":\"Constraint on minimal energy over intervals range\",\"default\":[]},{\"name\":\"maxEnergy\",\"type\":{\"type\":\"array\",\"items\":\"SumConstraintDto\"},\"doc\":\"Constraint on maximal energy over intervals range\",\"default\":[]}]}},\"doc\":\"List of electricity purchase and sell contracts.\",\"default\":[]},{\"name\":\"storages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"StorageDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"maxCharge\",\"type\":\"double\"},{\"name\":\"maxDischarge\",\"type\":\"double\"},{\"name\":\"maxCapacity\",\"type\":\"double\"},{\"name\":\"initialEnergy\",\"type\":\"double\"},{\"name\":\"minChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal charging power for intervals\",\"default\":null},{\"name\":\"maxChargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal charging power for intervals\",\"default\":null},{\"name\":\"minDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal discharging power for intervals\",\"default\":null},{\"name\":\"maxDischargeConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal discharging power for intervals\",\"default\":null},{\"name\":\"minEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on minimal stored energy for intervals\",\"default\":null},{\"name\":\"maxEnergyConstraints\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"double\"}],\"doc\":\"Constraints on maximal stored energy power for intervals\",\"default\":null},{\"name\":\"forbiddenChargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which charging is forbidden\",\"default\":[]},{\"name\":\"forbiddenDischargeIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Set of intervals at which discharging is forbidden\",\"default\":[]}]}},\"doc\":\"List of electric energy storages.\",\"default\":[]},{\"name\":\"movableDemands\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"MovableDemandDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"profile\",\"type\":{\"type\":\"array\",\"items\":\"double\"}},{\"name\":\"startIntervals\",\"type\":{\"type\":\"array\",\"items\":\"int\"}}]}},\"doc\":\"Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -86,11 +86,11 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
   /** Household power demand. */
   private com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand;
   /** List of electricity purchase and sell contracts. */
-  private java.util.List<java.lang.Object> contracts;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> contracts;
   /** List of electric energy storages. */
-  private java.util.List<java.lang.Object> storages;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> storages;
   /** Defines demand that has fixed profile but its starting interval can be adjusted by optimizer. */
-  private java.util.List<java.lang.Object> movableDemands;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> movableDemands;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -111,7 +111,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param storages List of electric energy storages.
    * @param movableDemands Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.
    */
-  public TaskDto(java.lang.Long id, java.lang.Long timeoutSeconds, java.lang.Double relativeGap, java.util.List<java.lang.Double> intervals, com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto production, com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand, java.util.List<java.lang.Object> contracts, java.util.List<java.lang.Object> storages, java.util.List<java.lang.Object> movableDemands) {
+  public TaskDto(java.lang.Long id, java.lang.Long timeoutSeconds, java.lang.Double relativeGap, java.util.List<java.lang.Double> intervals, com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto production, com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> contracts, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> storages, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> movableDemands) {
     this.id = id;
     this.timeoutSeconds = timeoutSeconds;
     this.relativeGap = relativeGap;
@@ -157,9 +157,9 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
     case 3: intervals = (java.util.List<java.lang.Double>)value$; break;
     case 4: production = (com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto)value$; break;
     case 5: demand = (com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto)value$; break;
-    case 6: contracts = (java.util.List<java.lang.Object>)value$; break;
-    case 7: storages = (java.util.List<java.lang.Object>)value$; break;
-    case 8: movableDemands = (java.util.List<java.lang.Object>)value$; break;
+    case 6: contracts = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto>)value$; break;
+    case 7: storages = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto>)value$; break;
+    case 8: movableDemands = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -276,7 +276,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'contracts' field.
    * @return List of electricity purchase and sell contracts.
    */
-  public java.util.List<java.lang.Object> getContracts() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> getContracts() {
     return contracts;
   }
 
@@ -286,7 +286,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * List of electricity purchase and sell contracts.
    * @param value the value to set.
    */
-  public void setContracts(java.util.List<java.lang.Object> value) {
+  public void setContracts(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> value) {
     this.contracts = value;
   }
 
@@ -294,7 +294,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'storages' field.
    * @return List of electric energy storages.
    */
-  public java.util.List<java.lang.Object> getStorages() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> getStorages() {
     return storages;
   }
 
@@ -304,7 +304,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * List of electric energy storages.
    * @param value the value to set.
    */
-  public void setStorages(java.util.List<java.lang.Object> value) {
+  public void setStorages(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> value) {
     this.storages = value;
   }
 
@@ -312,7 +312,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'movableDemands' field.
    * @return Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.
    */
-  public java.util.List<java.lang.Object> getMovableDemands() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> getMovableDemands() {
     return movableDemands;
   }
 
@@ -322,7 +322,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
    * Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.
    * @param value the value to set.
    */
-  public void setMovableDemands(java.util.List<java.lang.Object> value) {
+  public void setMovableDemands(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> value) {
     this.movableDemands = value;
   }
 
@@ -382,11 +382,11 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
     private com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto demand;
     private com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto.Builder demandBuilder;
     /** List of electricity purchase and sell contracts. */
-    private java.util.List<java.lang.Object> contracts;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> contracts;
     /** List of electric energy storages. */
-    private java.util.List<java.lang.Object> storages;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> storages;
     /** Defines demand that has fixed profile but its starting interval can be adjusted by optimizer. */
-    private java.util.List<java.lang.Object> movableDemands;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> movableDemands;
 
     /** Creates a new Builder */
     private Builder() {
@@ -833,7 +833,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
       * List of electricity purchase and sell contracts.
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getContracts() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> getContracts() {
       return contracts;
     }
 
@@ -844,7 +844,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'contracts'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setContracts(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setContracts(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> value) {
       validate(fields()[6], value);
       this.contracts = value;
       fieldSetFlags()[6] = true;
@@ -877,7 +877,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
       * List of electric energy storages.
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getStorages() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> getStorages() {
       return storages;
     }
 
@@ -888,7 +888,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'storages'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setStorages(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setStorages(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> value) {
       validate(fields()[7], value);
       this.storages = value;
       fieldSetFlags()[7] = true;
@@ -921,7 +921,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
       * Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getMovableDemands() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> getMovableDemands() {
       return movableDemands;
     }
 
@@ -932,7 +932,7 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'movableDemands'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setMovableDemands(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.TaskDto.Builder setMovableDemands(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> value) {
       validate(fields()[8], value);
       this.movableDemands = value;
       fieldSetFlags()[8] = true;
@@ -989,9 +989,9 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
         } else {
           record.demand = fieldSetFlags()[5] ? this.demand : (com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto) defaultValue(fields()[5]);
         }
-        record.contracts = fieldSetFlags()[6] ? this.contracts : (java.util.List<java.lang.Object>) defaultValue(fields()[6]);
-        record.storages = fieldSetFlags()[7] ? this.storages : (java.util.List<java.lang.Object>) defaultValue(fields()[7]);
-        record.movableDemands = fieldSetFlags()[8] ? this.movableDemands : (java.util.List<java.lang.Object>) defaultValue(fields()[8]);
+        record.contracts = fieldSetFlags()[6] ? this.contracts : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto>) defaultValue(fields()[6]);
+        record.storages = fieldSetFlags()[7] ? this.storages : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto>) defaultValue(fields()[7]);
+        record.movableDemands = fieldSetFlags()[8] ? this.movableDemands : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto>) defaultValue(fields()[8]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -1019,6 +1019,277 @@ public class TaskDto extends org.apache.avro.specific.SpecificRecordBase impleme
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeLong(this.id);
+
+    out.writeLong(this.timeoutSeconds);
+
+    out.writeDouble(this.relativeGap);
+
+    long size0 = this.intervals.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.lang.Double e0: this.intervals) {
+      actualSize0++;
+      out.startItem();
+      out.writeDouble(e0);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
+    this.production.customEncode(out);
+
+    this.demand.customEncode(out);
+
+    long size1 = this.contracts.size();
+    out.writeArrayStart();
+    out.setItemCount(size1);
+    long actualSize1 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto e1: this.contracts) {
+      actualSize1++;
+      out.startItem();
+      e1.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize1 != size1)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size1 + ", but element count was " + actualSize1 + ".");
+
+    long size2 = this.storages.size();
+    out.writeArrayStart();
+    out.setItemCount(size2);
+    long actualSize2 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto e2: this.storages) {
+      actualSize2++;
+      out.startItem();
+      e2.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize2 != size2)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size2 + ", but element count was " + actualSize2 + ".");
+
+    long size3 = this.movableDemands.size();
+    out.writeArrayStart();
+    out.setItemCount(size3);
+    long actualSize3 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto e3: this.movableDemands) {
+      actualSize3++;
+      out.startItem();
+      e3.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize3 != size3)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size3 + ", but element count was " + actualSize3 + ".");
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.id = in.readLong();
+
+      this.timeoutSeconds = in.readLong();
+
+      this.relativeGap = in.readDouble();
+
+      long size0 = in.readArrayStart();
+      java.util.List<java.lang.Double> a0 = this.intervals;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<java.lang.Double>((int)size0, SCHEMA$.getField("intervals").schema());
+        this.intervals = a0;
+      } else a0.clear();
+      SpecificData.Array<java.lang.Double> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          java.lang.Double e0 = (ga0 != null ? ga0.peek() : null);
+          e0 = in.readDouble();
+          a0.add(e0);
+        }
+      }
+
+      if (this.production == null) {
+        this.production = new com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto();
+      }
+      this.production.customDecode(in);
+
+      if (this.demand == null) {
+        this.demand = new com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto();
+      }
+      this.demand.customDecode(in);
+
+      long size1 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> a1 = this.contracts;
+      if (a1 == null) {
+        a1 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto>((int)size1, SCHEMA$.getField("contracts").schema());
+        this.contracts = a1;
+      } else a1.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto>)a1 : null);
+      for ( ; 0 < size1; size1 = in.arrayNext()) {
+        for ( ; size1 != 0; size1--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto e1 = (ga1 != null ? ga1.peek() : null);
+          if (e1 == null) {
+            e1 = new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto();
+          }
+          e1.customDecode(in);
+          a1.add(e1);
+        }
+      }
+
+      long size2 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> a2 = this.storages;
+      if (a2 == null) {
+        a2 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto>((int)size2, SCHEMA$.getField("storages").schema());
+        this.storages = a2;
+      } else a2.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto>)a2 : null);
+      for ( ; 0 < size2; size2 = in.arrayNext()) {
+        for ( ; size2 != 0; size2--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto e2 = (ga2 != null ? ga2.peek() : null);
+          if (e2 == null) {
+            e2 = new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto();
+          }
+          e2.customDecode(in);
+          a2.add(e2);
+        }
+      }
+
+      long size3 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> a3 = this.movableDemands;
+      if (a3 == null) {
+        a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto>((int)size3, SCHEMA$.getField("movableDemands").schema());
+        this.movableDemands = a3;
+      } else a3.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto>)a3 : null);
+      for ( ; 0 < size3; size3 = in.arrayNext()) {
+        for ( ; size3 != 0; size3--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto e3 = (ga3 != null ? ga3.peek() : null);
+          if (e3 == null) {
+            e3 = new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto();
+          }
+          e3.customDecode(in);
+          a3.add(e3);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 9; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.id = in.readLong();
+          break;
+
+        case 1:
+          this.timeoutSeconds = in.readLong();
+          break;
+
+        case 2:
+          this.relativeGap = in.readDouble();
+          break;
+
+        case 3:
+          long size0 = in.readArrayStart();
+          java.util.List<java.lang.Double> a0 = this.intervals;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<java.lang.Double>((int)size0, SCHEMA$.getField("intervals").schema());
+            this.intervals = a0;
+          } else a0.clear();
+          SpecificData.Array<java.lang.Double> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              java.lang.Double e0 = (ga0 != null ? ga0.peek() : null);
+              e0 = in.readDouble();
+              a0.add(e0);
+            }
+          }
+          break;
+
+        case 4:
+          if (this.production == null) {
+            this.production = new com.github.kacperpotapczyk.pvoptimizer.dto.ProductionDto();
+          }
+          this.production.customDecode(in);
+          break;
+
+        case 5:
+          if (this.demand == null) {
+            this.demand = new com.github.kacperpotapczyk.pvoptimizer.dto.DemandDto();
+          }
+          this.demand.customDecode(in);
+          break;
+
+        case 6:
+          long size1 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> a1 = this.contracts;
+          if (a1 == null) {
+            a1 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto>((int)size1, SCHEMA$.getField("contracts").schema());
+            this.contracts = a1;
+          } else a1.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto>)a1 : null);
+          for ( ; 0 < size1; size1 = in.arrayNext()) {
+            for ( ; size1 != 0; size1--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto e1 = (ga1 != null ? ga1.peek() : null);
+              if (e1 == null) {
+                e1 = new com.github.kacperpotapczyk.pvoptimizer.dto.ContractDto();
+              }
+              e1.customDecode(in);
+              a1.add(e1);
+            }
+          }
+          break;
+
+        case 7:
+          long size2 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> a2 = this.storages;
+          if (a2 == null) {
+            a2 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto>((int)size2, SCHEMA$.getField("storages").schema());
+            this.storages = a2;
+          } else a2.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto>)a2 : null);
+          for ( ; 0 < size2; size2 = in.arrayNext()) {
+            for ( ; size2 != 0; size2--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto e2 = (ga2 != null ? ga2.peek() : null);
+              if (e2 == null) {
+                e2 = new com.github.kacperpotapczyk.pvoptimizer.dto.StorageDto();
+              }
+              e2.customDecode(in);
+              a2.add(e2);
+            }
+          }
+          break;
+
+        case 8:
+          long size3 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> a3 = this.movableDemands;
+          if (a3 == null) {
+            a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto>((int)size3, SCHEMA$.getField("movableDemands").schema());
+            this.movableDemands = a3;
+          } else a3.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto>)a3 : null);
+          for ( ; 0 < size3; size3 = in.arrayNext()) {
+            for ( ; size3 != 0; size3--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto e3 = (ga3 != null ? ga3.peek() : null);
+              if (e3 == null) {
+                e3 = new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandDto();
+              }
+              e3.customDecode(in);
+              a3.add(e3);
+            }
+          }
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
 
 

@@ -58,7 +58,7 @@ public class EndToEndTests {
                 .setUnitPrice(unitPrice)
                 .build();
 
-        List<Object> contracts = new ArrayList<>();
+        List<ContractDto> contracts = new ArrayList<>();
         contracts.add(contract);
 
         DemandDto demand = DemandDto.newBuilder()

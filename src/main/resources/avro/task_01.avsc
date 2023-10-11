@@ -89,100 +89,99 @@
       "doc": "List of electricity purchase and sell contracts.",
       "type": {
         "type": "array",
-        "items": [
-          {
-            "name": "ContractDto",
-            "type": "record",
-            "fields": [
-              {
-                "name": "id",
-                "type": "long",
-                "doc": "Contract id"
+        "items": {
+          "name": "ContractDto",
+          "type": "record",
+          "fields": [
+            {
+              "name": "id",
+              "type": "long",
+              "doc": "Contract id"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "doc": "Contract name"
+            },
+            {
+              "name": "contractDirection",
+              "type": {
+                "type": "enum",
+                "name": "ContractDirectionDto",
+                "symbols": ["PURCHASE", "SELL"]
               },
-              {
-                "name": "name",
-                "type": "string",
-                "doc": "Contract name"
+              "doc": "Defines if it is purchase or sell contract"
+            },
+            {
+              "name": "startInterval",
+              "type": "int",
+              "doc": "Interval at which contract starts",
+              "default": 0
+            },
+            {
+              "name": "unitPrice",
+              "type": {
+                "type": "array",
+                "items": "double"
               },
-              {
-                "name": "contractDirection",
-                "type": {
-                  "type": "enum",
-                  "name": "ContractDirectionDto",
-                  "symbols": ["PURCHASE", "SELL"]
-                },
-                "doc": "Defines if it is purchase or sell contract"
+              "doc": "Energy unit price"
+            },
+            {
+              "name": "minPower",
+              "doc": "Constraints on minimal power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "maxPower",
+              "doc": "Constraints on maximal power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "minEnergy",
+              "doc": "Constraint on minimal energy over intervals range",
+              "type": {
+                "type": "array",
+                "items": {
+                  "type": "record",
+                  "name": "SumConstraintDto",
+                  "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+                  "fields": [
+                    {
+                      "type": "int",
+                      "name": "startInterval"
+                    },
+                    {
+                      "type": "int",
+                      "name": "endInterval"
+                    },
+                    {
+                      "type": "double",
+                      "name": "sum"
+                    }
+                  ]
+                }
               },
-              {
-                "name": "startInterval",
-                "type": "int",
-                "doc": "Interval at which contract starts",
-                "default": 0
+              "default": []
+            },
+            {
+              "name": "maxEnergy",
+              "doc": "Constraint on maximal energy over intervals range",
+              "type": {
+                "type": "array",
+                "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto"
               },
-              {
-                "name": "unitPrice",
-                "type": {
-                  "type": "array",
-                  "items": "double"
-                },
-                "doc": "Energy unit price"
-              },
-              {
-                "name": "minPower",
-                "doc": "Constraints on minimal power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "maxPower",
-                "doc": "Constraints on maximal power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "minEnergy",
-                "doc": "Constraint on minimal energy over intervals range",
-                "type": {
-                  "type": "array",
-                  "items": {
-                    "type": "record",
-                    "name": "SumConstraintDto",
-                    "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
-                    "fields": [
-                      {
-                        "type": "int",
-                        "name": "startInterval"
-                      },
-                      {
-                        "type": "int",
-                        "name": "endInterval"
-                      },
-                      {
-                        "type": "double",
-                        "name": "sum"
-                      }
-                    ]
-                  }
-                },
-                "default": []
-              },
-              {
-                "name": "maxEnergy",
-                "doc": "Constraint on maximal energy over intervals range",
-                "type": {
-                  "type": "array",
-                  "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto"
-                },
-                "default": []
-              }
-            ]
-          }]
+              "default": []
+            }
+          ]
+        }
       },
       "default": []
     },
@@ -191,110 +190,108 @@
       "doc": "List of electric energy storages.",
       "type": {
         "type": "array",
-        "items": [
-          {
-            "name": "StorageDto",
-            "type": "record",
-            "fields": [
-              {
-                "name": "id",
-                "type": "long"
+        "items": {
+          "name": "StorageDto",
+          "type": "record",
+          "fields": [
+            {
+              "name": "id",
+              "type": "long"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "maxCharge",
+              "type": "double"
+            },
+            {
+              "name": "maxDischarge",
+              "type": "double"
+            },
+            {
+              "name": "maxCapacity",
+              "type": "double"
+            },
+            {
+              "name": "initialEnergy",
+              "type": "double"
+            },
+            {
+              "name": "minChargeConstraints",
+              "doc": "Constraints on minimal charging power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "maxChargeConstraints",
+              "doc": "Constraints on maximal charging power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "minDischargeConstraints",
+              "doc": "Constraints on minimal discharging power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "maxDischargeConstraints",
+              "doc": "Constraints on maximal discharging power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "minEnergyConstraints",
+              "doc": "Constraints on minimal stored energy for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "maxEnergyConstraints",
+              "doc": "Constraints on maximal stored energy power for intervals",
+              "type": ["null", {
+                "type": "map",
+                "values": "double"
+              }],
+              "default": null
+            },
+            {
+              "name": "forbiddenChargeIntervals",
+              "doc": "Set of intervals at which charging is forbidden",
+              "type": {
+                "type": "array",
+                "items": "int"
               },
-              {
-                "name": "name",
-                "type": "string"
+              "default": []
+            },
+            {
+              "name": "forbiddenDischargeIntervals",
+              "doc": "Set of intervals at which discharging is forbidden",
+              "type": {
+                "type": "array",
+                "items": "int"
               },
-              {
-                "name": "maxCharge",
-                "type": "double"
-              },
-              {
-                "name": "maxDischarge",
-                "type": "double"
-              },
-              {
-                "name": "maxCapacity",
-                "type": "double"
-              },
-              {
-                "name": "initialEnergy",
-                "type": "double"
-              },
-              {
-                "name": "minChargeConstraints",
-                "doc": "Constraints on minimal charging power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "maxChargeConstraints",
-                "doc": "Constraints on maximal charging power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "minDischargeConstraints",
-                "doc": "Constraints on minimal discharging power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "maxDischargeConstraints",
-                "doc": "Constraints on maximal discharging power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "minEnergyConstraints",
-                "doc": "Constraints on minimal stored energy for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "maxEnergyConstraints",
-                "doc": "Constraints on maximal stored energy power for intervals",
-                "type": ["null", {
-                  "type": "map",
-                  "values": "double"
-                }],
-                "default": null
-              },
-              {
-                "name": "forbiddenChargeIntervals",
-                "doc": "Set of intervals at which charging is forbidden",
-                "type": {
-                  "type": "array",
-                  "items": "int"
-                },
-                "default": []
-              },
-              {
-                "name": "forbiddenDischargeIntervals",
-                "doc": "Set of intervals at which discharging is forbidden",
-                "type": {
-                  "type": "array",
-                  "items": "int"
-                },
-                "default": []
-              }
-            ]
-          }
-        ]
+              "default": []
+            }
+          ]
+        }
       },
       "default": []
     },
@@ -303,36 +300,34 @@
       "doc": "Defines demand that has fixed profile but its starting interval can be adjusted by optimizer.",
       "type": {
         "type": "array",
-        "items": [
-          {
-            "name": "MovableDemandDto",
-            "type": "record",
-            "fields": [
-              {
-                "name": "id",
-                "type": "long"
-              },
-              {
-                "name": "name",
-                "type": "string"
-              },
-              {
-                "name": "profile",
-                "type": {
-                  "type": "array",
-                  "items": "double"
-                }
-              },
-              {
-                "name": "startIntervals",
-                "type": {
-                  "type": "array",
-                  "items": "int"
-                }
+        "items": {
+          "name": "MovableDemandDto",
+          "type": "record",
+          "fields": [
+            {
+              "name": "id",
+              "type": "long"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "profile",
+              "type": {
+                "type": "array",
+                "items": "double"
               }
-            ]
-          }
-        ]
+            },
+            {
+              "name": "startIntervals",
+              "type": {
+                "type": "array",
+                "items": "int"
+              }
+            }
+          ]
+        }
       },
       "default": []
     }

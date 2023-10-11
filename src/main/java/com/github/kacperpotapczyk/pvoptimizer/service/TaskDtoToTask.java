@@ -56,10 +56,10 @@ public class TaskDtoToTask implements Mapper<TaskDto, Task> {
     }
 
     private void mapContracts(TaskDto taskDto, Task.TaskBuilder taskBuilder) {
-        List<Object> contractDtoList = taskDto.getContracts();
-        for (Object contractDtoObject : contractDtoList) {
 
-            ContractDto contractDto = (ContractDto) contractDtoObject;
+        List<ContractDto> contractDtoList = taskDto.getContracts();
+        for (ContractDto contractDto : contractDtoList) {
+
             Contract.ContractBuilder contractBuilder = new Contract.ContractBuilder(
                     contractDto.getId(),
                     contractDto.getName().toString(),
@@ -98,10 +98,9 @@ public class TaskDtoToTask implements Mapper<TaskDto, Task> {
     }
 
     private void mapStorages(TaskDto taskDto, Task.TaskBuilder taskBuilder) {
-        List<Object> storagesDtoList = taskDto.getStorages();
-        for (Object storageDtoObject : storagesDtoList) {
 
-            StorageDto storageDto = (StorageDto) storageDtoObject;
+        List<StorageDto> storagesDtoList = taskDto.getStorages();
+        for (StorageDto storageDto : storagesDtoList) {
 
             Storage.StorageBuilder storageBuilder = new Storage.StorageBuilder(
                     storageDto.getId(),
@@ -158,10 +157,9 @@ public class TaskDtoToTask implements Mapper<TaskDto, Task> {
     }
 
     private void mapMovableDemands(TaskDto taskDto, Task.TaskBuilder taskBuilder) {
-        List<Object> movableDemandDtoList = taskDto.getMovableDemands();
-        for (Object movableDemantDtoObject : movableDemandDtoList) {
 
-            MovableDemandDto movableDemandDto = (MovableDemandDto) movableDemantDtoObject;
+        List<MovableDemandDto> movableDemandDtoList = taskDto.getMovableDemands();
+        for (MovableDemandDto movableDemandDto : movableDemandDtoList) {
 
             taskBuilder.movableDemand(new MovableDemand(
                     movableDemandDto.getId(),
