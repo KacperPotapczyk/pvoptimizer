@@ -56,7 +56,7 @@ public class OptimizerMovableDemandTest {
         expectedMovableDemandStartIntervals.add(2);
 
         resultValidator.assertMovableDemandResults(expectedMovableDemandStartIntervals, result.getMovableDemandResults());
-        assertNull(result.getErrorMessage());
+        assertEquals("", result.getErrorMessage());
     }
 
     @Test

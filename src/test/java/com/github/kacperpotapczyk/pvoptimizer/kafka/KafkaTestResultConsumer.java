@@ -10,7 +10,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.concurrent.CountDownLatch;
 
 @Getter
 @TestConfiguration
@@ -18,6 +18,8 @@ import java.util.Optional;
 public class KafkaTestResultConsumer {
 
     private final List<ResultDto> resultDtoList = new ArrayList<>();
+    @Getter
+    private final CountDownLatch countDownLatch = new CountDownLatch(2);
 
     @KafkaListener(topics = "${spring.kafka.producer.topic}")
     public void listener(@Payload ConsumerRecord<String, ResultDto> consumerRecord) {
@@ -25,11 +27,6 @@ public class KafkaTestResultConsumer {
         ResultDto resultDto = consumerRecord.value();
         System.out.println("Received results: " + resultDto);
         resultDtoList.add(resultDto);
-    }
-
-    public Optional<ResultDto> getResultById(long id) {
-        return resultDtoList.stream()
-                .filter(resultDto -> resultDto.getId() == id)
-                .findFirst();
+        countDownLatch.countDown();
     }
 }

@@ -617,6 +617,7 @@ public class OptimizerImpl implements Optimizer {
 
         resultBuilder
                 .optimizationStatus(OptimizationStatus.SOLUTION_FOUND)
+                .errorMessage("")
                 .relativeGap(solver.getSolutionRelativeGap())
                 .elapsedTime(solver.getSolutionElapsedTime())
                 .objectiveFunctionValue(solver.getObjectiveValue());
