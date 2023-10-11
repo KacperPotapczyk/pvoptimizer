@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2592763226448500138L;
+  private static final long serialVersionUID = -2490363041241168265L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ContractResultDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"power\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Result power profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Result energy profile\"},{\"name\":\"cost\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Result cost/income profile\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ContractResultDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"power\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Result power profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Result energy profile\"},{\"name\":\"cost\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Result cost/income profile\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -78,11 +78,11 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
   /** Contract name */
   private java.lang.CharSequence name;
   /** Result power profile */
-  private java.util.List<java.lang.Object> power;
+  private java.util.List<java.lang.Double> power;
   /** Result energy profile */
-  private java.util.List<java.lang.Object> energy;
+  private java.util.List<java.lang.Double> energy;
   /** Result cost/income profile */
-  private java.util.List<java.lang.Object> cost;
+  private java.util.List<java.lang.Double> cost;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -99,7 +99,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * @param energy Result energy profile
    * @param cost Result cost/income profile
    */
-  public ContractResultDto(java.lang.Long id, java.lang.CharSequence name, java.util.List<java.lang.Object> power, java.util.List<java.lang.Object> energy, java.util.List<java.lang.Object> cost) {
+  public ContractResultDto(java.lang.Long id, java.lang.CharSequence name, java.util.List<java.lang.Double> power, java.util.List<java.lang.Double> energy, java.util.List<java.lang.Double> cost) {
     this.id = id;
     this.name = name;
     this.power = power;
@@ -133,9 +133,9 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
     switch (field$) {
     case 0: id = (java.lang.Long)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
-    case 2: power = (java.util.List<java.lang.Object>)value$; break;
-    case 3: energy = (java.util.List<java.lang.Object>)value$; break;
-    case 4: cost = (java.util.List<java.lang.Object>)value$; break;
+    case 2: power = (java.util.List<java.lang.Double>)value$; break;
+    case 3: energy = (java.util.List<java.lang.Double>)value$; break;
+    case 4: cost = (java.util.List<java.lang.Double>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -180,7 +180,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'power' field.
    * @return Result power profile
    */
-  public java.util.List<java.lang.Object> getPower() {
+  public java.util.List<java.lang.Double> getPower() {
     return power;
   }
 
@@ -190,7 +190,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * Result power profile
    * @param value the value to set.
    */
-  public void setPower(java.util.List<java.lang.Object> value) {
+  public void setPower(java.util.List<java.lang.Double> value) {
     this.power = value;
   }
 
@@ -198,7 +198,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'energy' field.
    * @return Result energy profile
    */
-  public java.util.List<java.lang.Object> getEnergy() {
+  public java.util.List<java.lang.Double> getEnergy() {
     return energy;
   }
 
@@ -208,7 +208,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * Result energy profile
    * @param value the value to set.
    */
-  public void setEnergy(java.util.List<java.lang.Object> value) {
+  public void setEnergy(java.util.List<java.lang.Double> value) {
     this.energy = value;
   }
 
@@ -216,7 +216,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'cost' field.
    * @return Result cost/income profile
    */
-  public java.util.List<java.lang.Object> getCost() {
+  public java.util.List<java.lang.Double> getCost() {
     return cost;
   }
 
@@ -226,7 +226,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
    * Result cost/income profile
    * @param value the value to set.
    */
-  public void setCost(java.util.List<java.lang.Object> value) {
+  public void setCost(java.util.List<java.lang.Double> value) {
     this.cost = value;
   }
 
@@ -276,11 +276,11 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
     /** Contract name */
     private java.lang.CharSequence name;
     /** Result power profile */
-    private java.util.List<java.lang.Object> power;
+    private java.util.List<java.lang.Double> power;
     /** Result energy profile */
-    private java.util.List<java.lang.Object> energy;
+    private java.util.List<java.lang.Double> energy;
     /** Result cost/income profile */
-    private java.util.List<java.lang.Object> cost;
+    private java.util.List<java.lang.Double> cost;
 
     /** Creates a new Builder */
     private Builder() {
@@ -435,7 +435,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
       * Result power profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getPower() {
+    public java.util.List<java.lang.Double> getPower() {
       return power;
     }
 
@@ -446,7 +446,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'power'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto.Builder setPower(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto.Builder setPower(java.util.List<java.lang.Double> value) {
       validate(fields()[2], value);
       this.power = value;
       fieldSetFlags()[2] = true;
@@ -479,7 +479,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
       * Result energy profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getEnergy() {
+    public java.util.List<java.lang.Double> getEnergy() {
       return energy;
     }
 
@@ -490,7 +490,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'energy'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto.Builder setEnergy(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto.Builder setEnergy(java.util.List<java.lang.Double> value) {
       validate(fields()[3], value);
       this.energy = value;
       fieldSetFlags()[3] = true;
@@ -523,7 +523,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
       * Result cost/income profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getCost() {
+    public java.util.List<java.lang.Double> getCost() {
       return cost;
     }
 
@@ -534,7 +534,7 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'cost'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto.Builder setCost(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto.Builder setCost(java.util.List<java.lang.Double> value) {
       validate(fields()[4], value);
       this.cost = value;
       fieldSetFlags()[4] = true;
@@ -569,9 +569,9 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
         ContractResultDto record = new ContractResultDto();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.power = fieldSetFlags()[2] ? this.power : (java.util.List<java.lang.Object>) defaultValue(fields()[2]);
-        record.energy = fieldSetFlags()[3] ? this.energy : (java.util.List<java.lang.Object>) defaultValue(fields()[3]);
-        record.cost = fieldSetFlags()[4] ? this.cost : (java.util.List<java.lang.Object>) defaultValue(fields()[4]);
+        record.power = fieldSetFlags()[2] ? this.power : (java.util.List<java.lang.Double>) defaultValue(fields()[2]);
+        record.energy = fieldSetFlags()[3] ? this.energy : (java.util.List<java.lang.Double>) defaultValue(fields()[3]);
+        record.cost = fieldSetFlags()[4] ? this.cost : (java.util.List<java.lang.Double>) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -599,6 +599,178 @@ public class ContractResultDto extends org.apache.avro.specific.SpecificRecordBa
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeLong(this.id);
+
+    out.writeString(this.name);
+
+    long size0 = this.power.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.lang.Double e0: this.power) {
+      actualSize0++;
+      out.startItem();
+      out.writeDouble(e0);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
+    long size1 = this.energy.size();
+    out.writeArrayStart();
+    out.setItemCount(size1);
+    long actualSize1 = 0;
+    for (java.lang.Double e1: this.energy) {
+      actualSize1++;
+      out.startItem();
+      out.writeDouble(e1);
+    }
+    out.writeArrayEnd();
+    if (actualSize1 != size1)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size1 + ", but element count was " + actualSize1 + ".");
+
+    long size2 = this.cost.size();
+    out.writeArrayStart();
+    out.setItemCount(size2);
+    long actualSize2 = 0;
+    for (java.lang.Double e2: this.cost) {
+      actualSize2++;
+      out.startItem();
+      out.writeDouble(e2);
+    }
+    out.writeArrayEnd();
+    if (actualSize2 != size2)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size2 + ", but element count was " + actualSize2 + ".");
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.id = in.readLong();
+
+      this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+
+      long size0 = in.readArrayStart();
+      java.util.List<java.lang.Double> a0 = this.power;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<java.lang.Double>((int)size0, SCHEMA$.getField("power").schema());
+        this.power = a0;
+      } else a0.clear();
+      SpecificData.Array<java.lang.Double> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          java.lang.Double e0 = (ga0 != null ? ga0.peek() : null);
+          e0 = in.readDouble();
+          a0.add(e0);
+        }
+      }
+
+      long size1 = in.readArrayStart();
+      java.util.List<java.lang.Double> a1 = this.energy;
+      if (a1 == null) {
+        a1 = new SpecificData.Array<java.lang.Double>((int)size1, SCHEMA$.getField("energy").schema());
+        this.energy = a1;
+      } else a1.clear();
+      SpecificData.Array<java.lang.Double> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a1 : null);
+      for ( ; 0 < size1; size1 = in.arrayNext()) {
+        for ( ; size1 != 0; size1--) {
+          java.lang.Double e1 = (ga1 != null ? ga1.peek() : null);
+          e1 = in.readDouble();
+          a1.add(e1);
+        }
+      }
+
+      long size2 = in.readArrayStart();
+      java.util.List<java.lang.Double> a2 = this.cost;
+      if (a2 == null) {
+        a2 = new SpecificData.Array<java.lang.Double>((int)size2, SCHEMA$.getField("cost").schema());
+        this.cost = a2;
+      } else a2.clear();
+      SpecificData.Array<java.lang.Double> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a2 : null);
+      for ( ; 0 < size2; size2 = in.arrayNext()) {
+        for ( ; size2 != 0; size2--) {
+          java.lang.Double e2 = (ga2 != null ? ga2.peek() : null);
+          e2 = in.readDouble();
+          a2.add(e2);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 5; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.id = in.readLong();
+          break;
+
+        case 1:
+          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+          break;
+
+        case 2:
+          long size0 = in.readArrayStart();
+          java.util.List<java.lang.Double> a0 = this.power;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<java.lang.Double>((int)size0, SCHEMA$.getField("power").schema());
+            this.power = a0;
+          } else a0.clear();
+          SpecificData.Array<java.lang.Double> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              java.lang.Double e0 = (ga0 != null ? ga0.peek() : null);
+              e0 = in.readDouble();
+              a0.add(e0);
+            }
+          }
+          break;
+
+        case 3:
+          long size1 = in.readArrayStart();
+          java.util.List<java.lang.Double> a1 = this.energy;
+          if (a1 == null) {
+            a1 = new SpecificData.Array<java.lang.Double>((int)size1, SCHEMA$.getField("energy").schema());
+            this.energy = a1;
+          } else a1.clear();
+          SpecificData.Array<java.lang.Double> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a1 : null);
+          for ( ; 0 < size1; size1 = in.arrayNext()) {
+            for ( ; size1 != 0; size1--) {
+              java.lang.Double e1 = (ga1 != null ? ga1.peek() : null);
+              e1 = in.readDouble();
+              a1.add(e1);
+            }
+          }
+          break;
+
+        case 4:
+          long size2 = in.readArrayStart();
+          java.util.List<java.lang.Double> a2 = this.cost;
+          if (a2 == null) {
+            a2 = new SpecificData.Array<java.lang.Double>((int)size2, SCHEMA$.getField("cost").schema());
+            this.cost = a2;
+          } else a2.clear();
+          SpecificData.Array<java.lang.Double> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a2 : null);
+          for ( ; 0 < size2; size2 = in.arrayNext()) {
+            for ( ; size2 != 0; size2--) {
+              java.lang.Double e2 = (ga2 != null ? ga2.peek() : null);
+              e2 = in.readDouble();
+              a2.add(e2);
+            }
+          }
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
 
 

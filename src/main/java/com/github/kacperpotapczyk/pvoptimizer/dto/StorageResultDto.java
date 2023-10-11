@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1549956044086701181L;
+  private static final long serialVersionUID = 8423768443766361256L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StorageResultDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Storage id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Storage name\"},{\"name\":\"charge\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Storage charging profile\"},{\"name\":\"discharge\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Storage discharging profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Storage storage energy profile\"},{\"name\":\"storageMode\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"enum\",\"name\":\"StorageModeDto\",\"symbols\":[\"DISABLED\",\"CHARGING\",\"DISCHARGING\"]}]},\"doc\":\"Storage mode profile\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StorageResultDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Storage id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Storage name\"},{\"name\":\"charge\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Storage charging profile\"},{\"name\":\"discharge\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Storage discharging profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Storage storage energy profile\"},{\"name\":\"storageMode\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"enum\",\"name\":\"StorageModeDto\",\"symbols\":[\"DISABLED\",\"CHARGING\",\"DISCHARGING\"]}},\"doc\":\"Storage mode profile\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -78,13 +78,13 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
   /** Storage name */
   private java.lang.CharSequence name;
   /** Storage charging profile */
-  private java.util.List<java.lang.Object> charge;
+  private java.util.List<java.lang.Double> charge;
   /** Storage discharging profile */
-  private java.util.List<java.lang.Object> discharge;
+  private java.util.List<java.lang.Double> discharge;
   /** Storage storage energy profile */
-  private java.util.List<java.lang.Object> energy;
+  private java.util.List<java.lang.Double> energy;
   /** Storage mode profile */
-  private java.util.List<java.lang.Object> storageMode;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> storageMode;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -102,7 +102,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * @param energy Storage storage energy profile
    * @param storageMode Storage mode profile
    */
-  public StorageResultDto(java.lang.Long id, java.lang.CharSequence name, java.util.List<java.lang.Object> charge, java.util.List<java.lang.Object> discharge, java.util.List<java.lang.Object> energy, java.util.List<java.lang.Object> storageMode) {
+  public StorageResultDto(java.lang.Long id, java.lang.CharSequence name, java.util.List<java.lang.Double> charge, java.util.List<java.lang.Double> discharge, java.util.List<java.lang.Double> energy, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> storageMode) {
     this.id = id;
     this.name = name;
     this.charge = charge;
@@ -138,10 +138,10 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
     switch (field$) {
     case 0: id = (java.lang.Long)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
-    case 2: charge = (java.util.List<java.lang.Object>)value$; break;
-    case 3: discharge = (java.util.List<java.lang.Object>)value$; break;
-    case 4: energy = (java.util.List<java.lang.Object>)value$; break;
-    case 5: storageMode = (java.util.List<java.lang.Object>)value$; break;
+    case 2: charge = (java.util.List<java.lang.Double>)value$; break;
+    case 3: discharge = (java.util.List<java.lang.Double>)value$; break;
+    case 4: energy = (java.util.List<java.lang.Double>)value$; break;
+    case 5: storageMode = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -186,7 +186,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Gets the value of the 'charge' field.
    * @return Storage charging profile
    */
-  public java.util.List<java.lang.Object> getCharge() {
+  public java.util.List<java.lang.Double> getCharge() {
     return charge;
   }
 
@@ -196,7 +196,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Storage charging profile
    * @param value the value to set.
    */
-  public void setCharge(java.util.List<java.lang.Object> value) {
+  public void setCharge(java.util.List<java.lang.Double> value) {
     this.charge = value;
   }
 
@@ -204,7 +204,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Gets the value of the 'discharge' field.
    * @return Storage discharging profile
    */
-  public java.util.List<java.lang.Object> getDischarge() {
+  public java.util.List<java.lang.Double> getDischarge() {
     return discharge;
   }
 
@@ -214,7 +214,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Storage discharging profile
    * @param value the value to set.
    */
-  public void setDischarge(java.util.List<java.lang.Object> value) {
+  public void setDischarge(java.util.List<java.lang.Double> value) {
     this.discharge = value;
   }
 
@@ -222,7 +222,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Gets the value of the 'energy' field.
    * @return Storage storage energy profile
    */
-  public java.util.List<java.lang.Object> getEnergy() {
+  public java.util.List<java.lang.Double> getEnergy() {
     return energy;
   }
 
@@ -232,7 +232,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Storage storage energy profile
    * @param value the value to set.
    */
-  public void setEnergy(java.util.List<java.lang.Object> value) {
+  public void setEnergy(java.util.List<java.lang.Double> value) {
     this.energy = value;
   }
 
@@ -240,7 +240,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Gets the value of the 'storageMode' field.
    * @return Storage mode profile
    */
-  public java.util.List<java.lang.Object> getStorageMode() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> getStorageMode() {
     return storageMode;
   }
 
@@ -250,7 +250,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
    * Storage mode profile
    * @param value the value to set.
    */
-  public void setStorageMode(java.util.List<java.lang.Object> value) {
+  public void setStorageMode(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> value) {
     this.storageMode = value;
   }
 
@@ -300,13 +300,13 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
     /** Storage name */
     private java.lang.CharSequence name;
     /** Storage charging profile */
-    private java.util.List<java.lang.Object> charge;
+    private java.util.List<java.lang.Double> charge;
     /** Storage discharging profile */
-    private java.util.List<java.lang.Object> discharge;
+    private java.util.List<java.lang.Double> discharge;
     /** Storage storage energy profile */
-    private java.util.List<java.lang.Object> energy;
+    private java.util.List<java.lang.Double> energy;
     /** Storage mode profile */
-    private java.util.List<java.lang.Object> storageMode;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> storageMode;
 
     /** Creates a new Builder */
     private Builder() {
@@ -469,7 +469,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * Storage charging profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getCharge() {
+    public java.util.List<java.lang.Double> getCharge() {
       return charge;
     }
 
@@ -480,7 +480,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'charge'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setCharge(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setCharge(java.util.List<java.lang.Double> value) {
       validate(fields()[2], value);
       this.charge = value;
       fieldSetFlags()[2] = true;
@@ -513,7 +513,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * Storage discharging profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getDischarge() {
+    public java.util.List<java.lang.Double> getDischarge() {
       return discharge;
     }
 
@@ -524,7 +524,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'discharge'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setDischarge(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setDischarge(java.util.List<java.lang.Double> value) {
       validate(fields()[3], value);
       this.discharge = value;
       fieldSetFlags()[3] = true;
@@ -557,7 +557,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * Storage storage energy profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getEnergy() {
+    public java.util.List<java.lang.Double> getEnergy() {
       return energy;
     }
 
@@ -568,7 +568,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'energy'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setEnergy(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setEnergy(java.util.List<java.lang.Double> value) {
       validate(fields()[4], value);
       this.energy = value;
       fieldSetFlags()[4] = true;
@@ -601,7 +601,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * Storage mode profile
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getStorageMode() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> getStorageMode() {
       return storageMode;
     }
 
@@ -612,7 +612,7 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'storageMode'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setStorageMode(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto.Builder setStorageMode(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> value) {
       validate(fields()[5], value);
       this.storageMode = value;
       fieldSetFlags()[5] = true;
@@ -647,10 +647,10 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
         StorageResultDto record = new StorageResultDto();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.charge = fieldSetFlags()[2] ? this.charge : (java.util.List<java.lang.Object>) defaultValue(fields()[2]);
-        record.discharge = fieldSetFlags()[3] ? this.discharge : (java.util.List<java.lang.Object>) defaultValue(fields()[3]);
-        record.energy = fieldSetFlags()[4] ? this.energy : (java.util.List<java.lang.Object>) defaultValue(fields()[4]);
-        record.storageMode = fieldSetFlags()[5] ? this.storageMode : (java.util.List<java.lang.Object>) defaultValue(fields()[5]);
+        record.charge = fieldSetFlags()[2] ? this.charge : (java.util.List<java.lang.Double>) defaultValue(fields()[2]);
+        record.discharge = fieldSetFlags()[3] ? this.discharge : (java.util.List<java.lang.Double>) defaultValue(fields()[3]);
+        record.energy = fieldSetFlags()[4] ? this.energy : (java.util.List<java.lang.Double>) defaultValue(fields()[4]);
+        record.storageMode = fieldSetFlags()[5] ? this.storageMode : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto>) defaultValue(fields()[5]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -678,6 +678,223 @@ public class StorageResultDto extends org.apache.avro.specific.SpecificRecordBas
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeLong(this.id);
+
+    out.writeString(this.name);
+
+    long size0 = this.charge.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.lang.Double e0: this.charge) {
+      actualSize0++;
+      out.startItem();
+      out.writeDouble(e0);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
+    long size1 = this.discharge.size();
+    out.writeArrayStart();
+    out.setItemCount(size1);
+    long actualSize1 = 0;
+    for (java.lang.Double e1: this.discharge) {
+      actualSize1++;
+      out.startItem();
+      out.writeDouble(e1);
+    }
+    out.writeArrayEnd();
+    if (actualSize1 != size1)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size1 + ", but element count was " + actualSize1 + ".");
+
+    long size2 = this.energy.size();
+    out.writeArrayStart();
+    out.setItemCount(size2);
+    long actualSize2 = 0;
+    for (java.lang.Double e2: this.energy) {
+      actualSize2++;
+      out.startItem();
+      out.writeDouble(e2);
+    }
+    out.writeArrayEnd();
+    if (actualSize2 != size2)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size2 + ", but element count was " + actualSize2 + ".");
+
+    long size3 = this.storageMode.size();
+    out.writeArrayStart();
+    out.setItemCount(size3);
+    long actualSize3 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto e3: this.storageMode) {
+      actualSize3++;
+      out.startItem();
+      out.writeEnum(e3.ordinal());
+    }
+    out.writeArrayEnd();
+    if (actualSize3 != size3)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size3 + ", but element count was " + actualSize3 + ".");
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.id = in.readLong();
+
+      this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+
+      long size0 = in.readArrayStart();
+      java.util.List<java.lang.Double> a0 = this.charge;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<java.lang.Double>((int)size0, SCHEMA$.getField("charge").schema());
+        this.charge = a0;
+      } else a0.clear();
+      SpecificData.Array<java.lang.Double> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          java.lang.Double e0 = (ga0 != null ? ga0.peek() : null);
+          e0 = in.readDouble();
+          a0.add(e0);
+        }
+      }
+
+      long size1 = in.readArrayStart();
+      java.util.List<java.lang.Double> a1 = this.discharge;
+      if (a1 == null) {
+        a1 = new SpecificData.Array<java.lang.Double>((int)size1, SCHEMA$.getField("discharge").schema());
+        this.discharge = a1;
+      } else a1.clear();
+      SpecificData.Array<java.lang.Double> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a1 : null);
+      for ( ; 0 < size1; size1 = in.arrayNext()) {
+        for ( ; size1 != 0; size1--) {
+          java.lang.Double e1 = (ga1 != null ? ga1.peek() : null);
+          e1 = in.readDouble();
+          a1.add(e1);
+        }
+      }
+
+      long size2 = in.readArrayStart();
+      java.util.List<java.lang.Double> a2 = this.energy;
+      if (a2 == null) {
+        a2 = new SpecificData.Array<java.lang.Double>((int)size2, SCHEMA$.getField("energy").schema());
+        this.energy = a2;
+      } else a2.clear();
+      SpecificData.Array<java.lang.Double> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a2 : null);
+      for ( ; 0 < size2; size2 = in.arrayNext()) {
+        for ( ; size2 != 0; size2--) {
+          java.lang.Double e2 = (ga2 != null ? ga2.peek() : null);
+          e2 = in.readDouble();
+          a2.add(e2);
+        }
+      }
+
+      long size3 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> a3 = this.storageMode;
+      if (a3 == null) {
+        a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto>((int)size3, SCHEMA$.getField("storageMode").schema());
+        this.storageMode = a3;
+      } else a3.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto>)a3 : null);
+      for ( ; 0 < size3; size3 = in.arrayNext()) {
+        for ( ; size3 != 0; size3--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto e3 = (ga3 != null ? ga3.peek() : null);
+          e3 = com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto.values()[in.readEnum()];
+          a3.add(e3);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 6; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.id = in.readLong();
+          break;
+
+        case 1:
+          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+          break;
+
+        case 2:
+          long size0 = in.readArrayStart();
+          java.util.List<java.lang.Double> a0 = this.charge;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<java.lang.Double>((int)size0, SCHEMA$.getField("charge").schema());
+            this.charge = a0;
+          } else a0.clear();
+          SpecificData.Array<java.lang.Double> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              java.lang.Double e0 = (ga0 != null ? ga0.peek() : null);
+              e0 = in.readDouble();
+              a0.add(e0);
+            }
+          }
+          break;
+
+        case 3:
+          long size1 = in.readArrayStart();
+          java.util.List<java.lang.Double> a1 = this.discharge;
+          if (a1 == null) {
+            a1 = new SpecificData.Array<java.lang.Double>((int)size1, SCHEMA$.getField("discharge").schema());
+            this.discharge = a1;
+          } else a1.clear();
+          SpecificData.Array<java.lang.Double> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a1 : null);
+          for ( ; 0 < size1; size1 = in.arrayNext()) {
+            for ( ; size1 != 0; size1--) {
+              java.lang.Double e1 = (ga1 != null ? ga1.peek() : null);
+              e1 = in.readDouble();
+              a1.add(e1);
+            }
+          }
+          break;
+
+        case 4:
+          long size2 = in.readArrayStart();
+          java.util.List<java.lang.Double> a2 = this.energy;
+          if (a2 == null) {
+            a2 = new SpecificData.Array<java.lang.Double>((int)size2, SCHEMA$.getField("energy").schema());
+            this.energy = a2;
+          } else a2.clear();
+          SpecificData.Array<java.lang.Double> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.Double>)a2 : null);
+          for ( ; 0 < size2; size2 = in.arrayNext()) {
+            for ( ; size2 != 0; size2--) {
+              java.lang.Double e2 = (ga2 != null ? ga2.peek() : null);
+              e2 = in.readDouble();
+              a2.add(e2);
+            }
+          }
+          break;
+
+        case 5:
+          long size3 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> a3 = this.storageMode;
+          if (a3 == null) {
+            a3 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto>((int)size3, SCHEMA$.getField("storageMode").schema());
+            this.storageMode = a3;
+          } else a3.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto> ga3 = (a3 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto>)a3 : null);
+          for ( ; 0 < size3; size3 = in.arrayNext()) {
+            for ( ; size3 != 0; size3--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto e3 = (ga3 != null ? ga3.peek() : null);
+              e3 = com.github.kacperpotapczyk.pvoptimizer.dto.StorageModeDto.values()[in.readEnum()];
+              a3.add(e3);
+            }
+          }
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
 
 

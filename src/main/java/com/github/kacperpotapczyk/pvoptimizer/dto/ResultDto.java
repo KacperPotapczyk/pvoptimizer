@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class ResultDto extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2286237355307609658L;
+  private static final long serialVersionUID = -8370158786177643580L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ResultDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Task identifier\"},{\"name\":\"optimizationStatus\",\"type\":{\"type\":\"enum\",\"name\":\"OptimizationStatusDto\",\"symbols\":[\"SOLUTION_FOUND\",\"SOLUTION_NOT_FOUND\"]}},{\"name\":\"objectiveFunctionValue\",\"type\":\"double\",\"doc\":\"Objective function optimal value\"},{\"name\":\"relativeGap\",\"type\":\"double\",\"doc\":\"Relative gap between relaxed solution and returned integer solution\"},{\"name\":\"elapsedTime\",\"type\":\"double\",\"doc\":\"Optimization elapsed time\"},{\"name\":\"errorMessage\",\"type\":\"string\",\"doc\":\"Error messages returned by optimizer\",\"default\":\"\"},{\"name\":\"contractResults\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"ContractResultDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"power\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Result power profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Result energy profile\"},{\"name\":\"cost\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Result cost/income profile\"}]}]},\"default\":[]},{\"name\":\"storageResults\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"StorageResultDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Storage id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Storage name\"},{\"name\":\"charge\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Storage charging profile\"},{\"name\":\"discharge\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Storage discharging profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":[\"double\"]},\"doc\":\"Storage storage energy profile\"},{\"name\":\"storageMode\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"enum\",\"name\":\"StorageModeDto\",\"symbols\":[\"DISABLED\",\"CHARGING\",\"DISCHARGING\"]}]},\"doc\":\"Storage mode profile\"}]}]},\"default\":[]},{\"name\":\"movableDemandResults\",\"type\":{\"type\":\"array\",\"items\":[{\"type\":\"record\",\"name\":\"MovableDemandResultDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Movable demand id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Movable demand name\"},{\"name\":\"startInterval\",\"type\":\"int\",\"doc\":\"Optimal start interval\"}]}]},\"default\":[]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ResultDto\",\"namespace\":\"com.github.kacperpotapczyk.pvoptimizer.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Task identifier\"},{\"name\":\"optimizationStatus\",\"type\":{\"type\":\"enum\",\"name\":\"OptimizationStatusDto\",\"symbols\":[\"SOLUTION_FOUND\",\"SOLUTION_NOT_FOUND\"]}},{\"name\":\"objectiveFunctionValue\",\"type\":\"double\",\"doc\":\"Objective function optimal value\"},{\"name\":\"relativeGap\",\"type\":\"double\",\"doc\":\"Relative gap between relaxed solution and returned integer solution\"},{\"name\":\"elapsedTime\",\"type\":\"double\",\"doc\":\"Optimization elapsed time\"},{\"name\":\"errorMessage\",\"type\":\"string\",\"doc\":\"Error messages returned by optimizer\",\"default\":\"\"},{\"name\":\"contractResults\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"ContractResultDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Contract id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Contract name\"},{\"name\":\"power\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Result power profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Result energy profile\"},{\"name\":\"cost\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Result cost/income profile\"}]}},\"default\":[]},{\"name\":\"storageResults\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"StorageResultDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Storage id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Storage name\"},{\"name\":\"charge\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Storage charging profile\"},{\"name\":\"discharge\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Storage discharging profile\"},{\"name\":\"energy\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Storage storage energy profile\"},{\"name\":\"storageMode\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"enum\",\"name\":\"StorageModeDto\",\"symbols\":[\"DISABLED\",\"CHARGING\",\"DISCHARGING\"]}},\"doc\":\"Storage mode profile\"}]}},\"default\":[]},{\"name\":\"movableDemandResults\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"MovableDemandResultDto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"Movable demand id\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Movable demand name\"},{\"name\":\"startInterval\",\"type\":\"int\",\"doc\":\"Optimal start interval\"}]}},\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -84,9 +84,9 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
   private double elapsedTime;
   /** Error messages returned by optimizer */
   private java.lang.CharSequence errorMessage;
-  private java.util.List<java.lang.Object> contractResults;
-  private java.util.List<java.lang.Object> storageResults;
-  private java.util.List<java.lang.Object> movableDemandResults;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> contractResults;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> storageResults;
+  private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> movableDemandResults;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -107,7 +107,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * @param storageResults The new value for storageResults
    * @param movableDemandResults The new value for movableDemandResults
    */
-  public ResultDto(java.lang.Long id, com.github.kacperpotapczyk.pvoptimizer.dto.OptimizationStatusDto optimizationStatus, java.lang.Double objectiveFunctionValue, java.lang.Double relativeGap, java.lang.Double elapsedTime, java.lang.CharSequence errorMessage, java.util.List<java.lang.Object> contractResults, java.util.List<java.lang.Object> storageResults, java.util.List<java.lang.Object> movableDemandResults) {
+  public ResultDto(java.lang.Long id, com.github.kacperpotapczyk.pvoptimizer.dto.OptimizationStatusDto optimizationStatus, java.lang.Double objectiveFunctionValue, java.lang.Double relativeGap, java.lang.Double elapsedTime, java.lang.CharSequence errorMessage, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> contractResults, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> storageResults, java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> movableDemandResults) {
     this.id = id;
     this.optimizationStatus = optimizationStatus;
     this.objectiveFunctionValue = objectiveFunctionValue;
@@ -153,9 +153,9 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
     case 3: relativeGap = (java.lang.Double)value$; break;
     case 4: elapsedTime = (java.lang.Double)value$; break;
     case 5: errorMessage = (java.lang.CharSequence)value$; break;
-    case 6: contractResults = (java.util.List<java.lang.Object>)value$; break;
-    case 7: storageResults = (java.util.List<java.lang.Object>)value$; break;
-    case 8: movableDemandResults = (java.util.List<java.lang.Object>)value$; break;
+    case 6: contractResults = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto>)value$; break;
+    case 7: storageResults = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto>)value$; break;
+    case 8: movableDemandResults = (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -271,7 +271,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * Gets the value of the 'contractResults' field.
    * @return The value of the 'contractResults' field.
    */
-  public java.util.List<java.lang.Object> getContractResults() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> getContractResults() {
     return contractResults;
   }
 
@@ -280,7 +280,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * Sets the value of the 'contractResults' field.
    * @param value the value to set.
    */
-  public void setContractResults(java.util.List<java.lang.Object> value) {
+  public void setContractResults(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> value) {
     this.contractResults = value;
   }
 
@@ -288,7 +288,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * Gets the value of the 'storageResults' field.
    * @return The value of the 'storageResults' field.
    */
-  public java.util.List<java.lang.Object> getStorageResults() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> getStorageResults() {
     return storageResults;
   }
 
@@ -297,7 +297,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * Sets the value of the 'storageResults' field.
    * @param value the value to set.
    */
-  public void setStorageResults(java.util.List<java.lang.Object> value) {
+  public void setStorageResults(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> value) {
     this.storageResults = value;
   }
 
@@ -305,7 +305,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * Gets the value of the 'movableDemandResults' field.
    * @return The value of the 'movableDemandResults' field.
    */
-  public java.util.List<java.lang.Object> getMovableDemandResults() {
+  public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> getMovableDemandResults() {
     return movableDemandResults;
   }
 
@@ -314,7 +314,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
    * Sets the value of the 'movableDemandResults' field.
    * @param value the value to set.
    */
-  public void setMovableDemandResults(java.util.List<java.lang.Object> value) {
+  public void setMovableDemandResults(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> value) {
     this.movableDemandResults = value;
   }
 
@@ -370,9 +370,9 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
     private double elapsedTime;
     /** Error messages returned by optimizer */
     private java.lang.CharSequence errorMessage;
-    private java.util.List<java.lang.Object> contractResults;
-    private java.util.List<java.lang.Object> storageResults;
-    private java.util.List<java.lang.Object> movableDemandResults;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> contractResults;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> storageResults;
+    private java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> movableDemandResults;
 
     /** Creates a new Builder */
     private Builder() {
@@ -727,7 +727,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
       * Gets the value of the 'contractResults' field.
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getContractResults() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> getContractResults() {
       return contractResults;
     }
 
@@ -737,7 +737,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'contractResults'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto.Builder setContractResults(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto.Builder setContractResults(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> value) {
       validate(fields()[6], value);
       this.contractResults = value;
       fieldSetFlags()[6] = true;
@@ -767,7 +767,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
       * Gets the value of the 'storageResults' field.
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getStorageResults() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> getStorageResults() {
       return storageResults;
     }
 
@@ -777,7 +777,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'storageResults'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto.Builder setStorageResults(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto.Builder setStorageResults(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> value) {
       validate(fields()[7], value);
       this.storageResults = value;
       fieldSetFlags()[7] = true;
@@ -807,7 +807,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
       * Gets the value of the 'movableDemandResults' field.
       * @return The value.
       */
-    public java.util.List<java.lang.Object> getMovableDemandResults() {
+    public java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> getMovableDemandResults() {
       return movableDemandResults;
     }
 
@@ -817,7 +817,7 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'movableDemandResults'.
       * @return This builder.
       */
-    public com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto.Builder setMovableDemandResults(java.util.List<java.lang.Object> value) {
+    public com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto.Builder setMovableDemandResults(java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> value) {
       validate(fields()[8], value);
       this.movableDemandResults = value;
       fieldSetFlags()[8] = true;
@@ -854,9 +854,9 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
         record.relativeGap = fieldSetFlags()[3] ? this.relativeGap : (java.lang.Double) defaultValue(fields()[3]);
         record.elapsedTime = fieldSetFlags()[4] ? this.elapsedTime : (java.lang.Double) defaultValue(fields()[4]);
         record.errorMessage = fieldSetFlags()[5] ? this.errorMessage : (java.lang.CharSequence) defaultValue(fields()[5]);
-        record.contractResults = fieldSetFlags()[6] ? this.contractResults : (java.util.List<java.lang.Object>) defaultValue(fields()[6]);
-        record.storageResults = fieldSetFlags()[7] ? this.storageResults : (java.util.List<java.lang.Object>) defaultValue(fields()[7]);
-        record.movableDemandResults = fieldSetFlags()[8] ? this.movableDemandResults : (java.util.List<java.lang.Object>) defaultValue(fields()[8]);
+        record.contractResults = fieldSetFlags()[6] ? this.contractResults : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto>) defaultValue(fields()[6]);
+        record.storageResults = fieldSetFlags()[7] ? this.storageResults : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto>) defaultValue(fields()[7]);
+        record.movableDemandResults = fieldSetFlags()[8] ? this.movableDemandResults : (java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto>) defaultValue(fields()[8]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -884,6 +884,228 @@ public class ResultDto extends org.apache.avro.specific.SpecificRecordBase imple
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeLong(this.id);
+
+    out.writeEnum(this.optimizationStatus.ordinal());
+
+    out.writeDouble(this.objectiveFunctionValue);
+
+    out.writeDouble(this.relativeGap);
+
+    out.writeDouble(this.elapsedTime);
+
+    out.writeString(this.errorMessage);
+
+    long size0 = this.contractResults.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto e0: this.contractResults) {
+      actualSize0++;
+      out.startItem();
+      e0.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
+    long size1 = this.storageResults.size();
+    out.writeArrayStart();
+    out.setItemCount(size1);
+    long actualSize1 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto e1: this.storageResults) {
+      actualSize1++;
+      out.startItem();
+      e1.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize1 != size1)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size1 + ", but element count was " + actualSize1 + ".");
+
+    long size2 = this.movableDemandResults.size();
+    out.writeArrayStart();
+    out.setItemCount(size2);
+    long actualSize2 = 0;
+    for (com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto e2: this.movableDemandResults) {
+      actualSize2++;
+      out.startItem();
+      e2.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize2 != size2)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size2 + ", but element count was " + actualSize2 + ".");
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.id = in.readLong();
+
+      this.optimizationStatus = com.github.kacperpotapczyk.pvoptimizer.dto.OptimizationStatusDto.values()[in.readEnum()];
+
+      this.objectiveFunctionValue = in.readDouble();
+
+      this.relativeGap = in.readDouble();
+
+      this.elapsedTime = in.readDouble();
+
+      this.errorMessage = in.readString(this.errorMessage instanceof Utf8 ? (Utf8)this.errorMessage : null);
+
+      long size0 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> a0 = this.contractResults;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto>((int)size0, SCHEMA$.getField("contractResults").schema());
+        this.contractResults = a0;
+      } else a0.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto e0 = (ga0 != null ? ga0.peek() : null);
+          if (e0 == null) {
+            e0 = new com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto();
+          }
+          e0.customDecode(in);
+          a0.add(e0);
+        }
+      }
+
+      long size1 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> a1 = this.storageResults;
+      if (a1 == null) {
+        a1 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto>((int)size1, SCHEMA$.getField("storageResults").schema());
+        this.storageResults = a1;
+      } else a1.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto>)a1 : null);
+      for ( ; 0 < size1; size1 = in.arrayNext()) {
+        for ( ; size1 != 0; size1--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto e1 = (ga1 != null ? ga1.peek() : null);
+          if (e1 == null) {
+            e1 = new com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto();
+          }
+          e1.customDecode(in);
+          a1.add(e1);
+        }
+      }
+
+      long size2 = in.readArrayStart();
+      java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> a2 = this.movableDemandResults;
+      if (a2 == null) {
+        a2 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto>((int)size2, SCHEMA$.getField("movableDemandResults").schema());
+        this.movableDemandResults = a2;
+      } else a2.clear();
+      SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto>)a2 : null);
+      for ( ; 0 < size2; size2 = in.arrayNext()) {
+        for ( ; size2 != 0; size2--) {
+          com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto e2 = (ga2 != null ? ga2.peek() : null);
+          if (e2 == null) {
+            e2 = new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto();
+          }
+          e2.customDecode(in);
+          a2.add(e2);
+        }
+      }
+
+    } else {
+      for (int i = 0; i < 9; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.id = in.readLong();
+          break;
+
+        case 1:
+          this.optimizationStatus = com.github.kacperpotapczyk.pvoptimizer.dto.OptimizationStatusDto.values()[in.readEnum()];
+          break;
+
+        case 2:
+          this.objectiveFunctionValue = in.readDouble();
+          break;
+
+        case 3:
+          this.relativeGap = in.readDouble();
+          break;
+
+        case 4:
+          this.elapsedTime = in.readDouble();
+          break;
+
+        case 5:
+          this.errorMessage = in.readString(this.errorMessage instanceof Utf8 ? (Utf8)this.errorMessage : null);
+          break;
+
+        case 6:
+          long size0 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> a0 = this.contractResults;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto>((int)size0, SCHEMA$.getField("contractResults").schema());
+            this.contractResults = a0;
+          } else a0.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto e0 = (ga0 != null ? ga0.peek() : null);
+              if (e0 == null) {
+                e0 = new com.github.kacperpotapczyk.pvoptimizer.dto.ContractResultDto();
+              }
+              e0.customDecode(in);
+              a0.add(e0);
+            }
+          }
+          break;
+
+        case 7:
+          long size1 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> a1 = this.storageResults;
+          if (a1 == null) {
+            a1 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto>((int)size1, SCHEMA$.getField("storageResults").schema());
+            this.storageResults = a1;
+          } else a1.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto>)a1 : null);
+          for ( ; 0 < size1; size1 = in.arrayNext()) {
+            for ( ; size1 != 0; size1--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto e1 = (ga1 != null ? ga1.peek() : null);
+              if (e1 == null) {
+                e1 = new com.github.kacperpotapczyk.pvoptimizer.dto.StorageResultDto();
+              }
+              e1.customDecode(in);
+              a1.add(e1);
+            }
+          }
+          break;
+
+        case 8:
+          long size2 = in.readArrayStart();
+          java.util.List<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> a2 = this.movableDemandResults;
+          if (a2 == null) {
+            a2 = new SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto>((int)size2, SCHEMA$.getField("movableDemandResults").schema());
+            this.movableDemandResults = a2;
+          } else a2.clear();
+          SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto> ga2 = (a2 instanceof SpecificData.Array ? (SpecificData.Array<com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto>)a2 : null);
+          for ( ; 0 < size2; size2 = in.arrayNext()) {
+            for ( ; size2 != 0; size2--) {
+              com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto e2 = (ga2 != null ? ga2.peek() : null);
+              if (e2 == null) {
+                e2 = new com.github.kacperpotapczyk.pvoptimizer.dto.MovableDemandResultDto();
+              }
+              e2.customDecode(in);
+              a2.add(e2);
+            }
+          }
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
 
 
