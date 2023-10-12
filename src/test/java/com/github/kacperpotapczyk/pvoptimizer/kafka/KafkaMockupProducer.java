@@ -9,7 +9,6 @@ import java.util.concurrent.CountDownLatch;
 @RequiredArgsConstructor
 public class KafkaMockupProducer {
 
-
     private final KafkaTemplate<String, TaskDto> kafkaTemplate;
     private final CountDownLatch countDownLatch;
 
