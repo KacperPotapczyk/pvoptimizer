@@ -21,6 +21,7 @@ import com.github.kacperpotapczyk.pvoptimizer.solver.LpSolveSolver;
 import com.github.kacperpotapczyk.pvoptimizer.solver.Solver;
 import com.github.kacperpotapczyk.pvoptimizer.solver.enums.SolutionStatus;
 import com.github.kacperpotapczyk.pvoptimizer.solver.exceptions.SolverException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ import java.util.stream.IntStream;
  * Optimization goal is to find optimal electric energy purchase, sell and storage strategy to minimize operation costs
  * while fulfilling fixed PV generation and household electricity demand profiles.
  */
+@Slf4j
 @Service
 public class OptimizerImpl implements Optimizer {
 
@@ -47,7 +49,9 @@ public class OptimizerImpl implements Optimizer {
     public Result solve(Task task) {
 
         Result.ResultBuilder resultBuilder = Result.builder();
-        resultBuilder.id(task.getId());
+        Long taskId = task.getId();
+        resultBuilder.id(taskId);
+        log.debug("Building model for task={}", taskId);
         try {
             Solver solver = new LpSolveSolver();
             solver.setTimeOut(Math.min(task.getTimeoutSeconds(), maxAllowedTimeOut));
@@ -74,19 +78,29 @@ public class OptimizerImpl implements Optimizer {
 
             setUpObjectiveFunction(task, solver, intervals, contractStartIndexes);
 
+            log.info("Solving task={}", taskId);
             SolutionStatus solutionStatus = solver.solve();
 
             if (solutionStatus == SolutionStatus.OPTIMAL || solutionStatus == SolutionStatus.SUBOPTIMAL) {
+                log.info("Solution found for task={}", taskId);
+                log.debug("Result details task={}, status={}, objectiveFunction={}, elapsedTime={}, relativeGap={}",
+                        taskId,
+                        solutionStatus,
+                        solver.getObjectiveValue(),
+                        solver.getSolutionElapsedTime(),
+                        solver.getSolutionRelativeGap()
+                );
                 getResult(task, solver, resultBuilder, contractStartIndexes, storageStartIndexes, movableDemandVariablesIndexes);
             }
             else {
+                log.info("Solution could not be found for task={}", taskId);
                 resultBuilder.optimizationStatus(OptimizationStatus.SOLUTION_NOT_FOUND)
                         .errorMessage("Solution could not be found.");
             }
             solver.free();
         }
         catch (RuntimeException | SolverException exception) {
-            System.out.println(exception.getMessage());
+            log.error("Exception at solving task={}, details={}", taskId, exception.getMessage());
             resultBuilder.optimizationStatus(OptimizationStatus.SOLUTION_NOT_FOUND)
                     .errorMessage(exception.getMessage());
         }

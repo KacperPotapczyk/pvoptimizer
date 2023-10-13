@@ -1,10 +1,12 @@
 package com.github.kacperpotapczyk.pvoptimizer.kafka;
 
 import com.github.kacperpotapczyk.pvoptimizer.dto.ResultDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class KafkaProducer {
 
@@ -21,5 +23,6 @@ public class KafkaProducer {
 
         kafkaTemplate.send(topic, key, resultDto);
         kafkaTemplate.flush();
+        log.info("Record with key={} containing result of task with id={} was send", key, resultDto.getId());
     }
 }
