@@ -5,6 +5,7 @@ optimizer:
 spring:
   kafka:
     consumer:
+      containerId: pvoptimizer-container
       groupId: pvoptimizer
       topic: pvoptimizer
       bootstrapServers: localhost:9092

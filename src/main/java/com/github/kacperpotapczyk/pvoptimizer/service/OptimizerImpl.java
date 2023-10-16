@@ -54,8 +54,19 @@ public class OptimizerImpl implements Optimizer {
         log.debug("Building model for task={}", taskId);
         try {
             Solver solver = new LpSolveSolver();
-            solver.setTimeOut(Math.min(task.getTimeoutSeconds(), maxAllowedTimeOut));
-            solver.setRelativeGap(Math.max(numericalZero, task.getRelativeGap()));
+            if (task.getTimeoutSeconds() > maxAllowedTimeOut) {
+                solver.setTimeOut(maxAllowedTimeOut);
+                log.warn("Optimization timeout trimmed from {} to {} according to application properties", task.getTimeoutSeconds(), maxAllowedTimeOut);
+            } else {
+                solver.setTimeOut(task.getTimeoutSeconds());
+            }
+
+            if (task.getRelativeGap() < numericalZero) {
+                solver.setRelativeGap(numericalZero);
+                log.warn("Optimization relative gap increased from {} to {} according to application properties", task.getRelativeGap(), numericalZero);
+            } else {
+                solver.setRelativeGap(task.getRelativeGap());
+            }
 
             List<Integer> intervals = IntStream.iterate(0, i -> i + 1)
                     .limit(task.optimizationHorizonLength())
