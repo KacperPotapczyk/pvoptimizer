@@ -1,4 +1,4 @@
-package com.github.kacperpotapczyk.pvoptimizer.service;
+package com.github.kacperpotapczyk.pvoptimizer.service.mapper;
 
 import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.model.Task;

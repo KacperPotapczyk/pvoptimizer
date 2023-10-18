@@ -1,4 +1,4 @@
-package com.github.kacperpotapczyk.pvoptimizer.service;
+package com.github.kacperpotapczyk.pvoptimizer.service.mapper;
 
 import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.model.Result;
@@ -16,7 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class ResultToResultDtoTest {

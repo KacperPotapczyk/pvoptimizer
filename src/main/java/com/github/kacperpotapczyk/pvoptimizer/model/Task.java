@@ -6,6 +6,7 @@ import com.github.kacperpotapczyk.pvoptimizer.model.sourcesink.MovableDemand;
 import com.github.kacperpotapczyk.pvoptimizer.model.sourcesink.Production;
 import com.github.kacperpotapczyk.pvoptimizer.model.storage.Storage;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
+import com.github.kacperpotapczyk.pvoptimizer.service.optimizer.Optimizer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -14,7 +15,7 @@ import lombok.Singular;
 import java.util.Set;
 
 /**
- * Task contains all information required to create optimization model by {@link com.github.kacperpotapczyk.pvoptimizer.service.Optimizer optimizer}.
+ * Task contains all information required to create optimization model by {@link Optimizer optimizer}.
  */
 @Builder
 @Getter

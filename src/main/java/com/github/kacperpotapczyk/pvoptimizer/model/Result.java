@@ -4,6 +4,7 @@ import com.github.kacperpotapczyk.pvoptimizer.model.contract.ContractResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.sourcesink.MovableDemandResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.storage.StorageResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.OptimizationStatus;
+import com.github.kacperpotapczyk.pvoptimizer.service.optimizer.Optimizer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -12,7 +13,7 @@ import lombok.Singular;
 import java.util.List;
 
 /**
- * Structure containing results of given {@link Task task} obtained from {@link com.github.kacperpotapczyk.pvoptimizer.service.Optimizer optimizer}.
+ * Structure containing results of given {@link Task task} obtained from {@link Optimizer optimizer}.
  */
 @Builder
 @Getter

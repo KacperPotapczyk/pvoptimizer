@@ -1,4 +1,4 @@
-package com.github.kacperpotapczyk.pvoptimizer.service;
+package com.github.kacperpotapczyk.pvoptimizer.service.mapper;
 
 import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.model.Result;
@@ -12,9 +12,18 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service responsible for mapping Result to ResultDto produced by {@link com.github.kacperpotapczyk.pvoptimizer.service.optimizer.Optimizer optimizer}.
+ * Implements mapping from Result to ResultDto objects
+ */
 @Service
 public class ResultToResultDto implements Mapper<Result, ResultDto> {
 
+    /**
+     * Specific mapping method between Result and ResultDto objects
+     * @param result input Result
+     * @return output ResultDto
+     */
     @Override
     public ResultDto map(Result result) {
 

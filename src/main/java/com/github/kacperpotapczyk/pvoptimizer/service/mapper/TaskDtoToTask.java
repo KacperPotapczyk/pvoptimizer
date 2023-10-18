@@ -1,4 +1,4 @@
-package com.github.kacperpotapczyk.pvoptimizer.service;
+package com.github.kacperpotapczyk.pvoptimizer.service.mapper;
 
 import com.github.kacperpotapczyk.pvoptimizer.dto.*;
 import com.github.kacperpotapczyk.pvoptimizer.model.Task;
@@ -15,9 +15,18 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * Service responsible for mapping incoming TaskDto to Task used by {@link com.github.kacperpotapczyk.pvoptimizer.service.optimizer.Optimizer optimizer}.
+ * Implements mapping from TaskDto to Task objects
+ */
 @Service
 public class TaskDtoToTask implements Mapper<TaskDto, Task> {
 
+    /**
+     * Specific mapping method between TaskDto and Task objects
+     * @param taskDto input TaskDto
+     * @return output Task
+     */
     @Override
     public Task map(TaskDto taskDto) {
 

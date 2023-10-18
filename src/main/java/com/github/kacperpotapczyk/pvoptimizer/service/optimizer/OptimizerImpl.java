@@ -1,4 +1,4 @@
-package com.github.kacperpotapczyk.pvoptimizer.service;
+package com.github.kacperpotapczyk.pvoptimizer.service.optimizer;
 
 import com.github.kacperpotapczyk.pvoptimizer.model.Result;
 import com.github.kacperpotapczyk.pvoptimizer.model.Task;
@@ -14,9 +14,9 @@ import com.github.kacperpotapczyk.pvoptimizer.model.storage.StorageResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.OptimizationStatus;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.Profile;
 import com.github.kacperpotapczyk.pvoptimizer.model.utils.SumConstraint;
-import com.github.kacperpotapczyk.pvoptimizer.service.index.ContractVariablesStartIndexes;
-import com.github.kacperpotapczyk.pvoptimizer.service.index.MovableDemandVariablesStartIndexes;
-import com.github.kacperpotapczyk.pvoptimizer.service.index.StorageVariablesStartIndexes;
+import com.github.kacperpotapczyk.pvoptimizer.service.optimizer.index.ContractVariablesStartIndexes;
+import com.github.kacperpotapczyk.pvoptimizer.service.optimizer.index.MovableDemandVariablesStartIndexes;
+import com.github.kacperpotapczyk.pvoptimizer.service.optimizer.index.StorageVariablesStartIndexes;
 import com.github.kacperpotapczyk.pvoptimizer.solver.LpSolveSolver;
 import com.github.kacperpotapczyk.pvoptimizer.solver.Solver;
 import com.github.kacperpotapczyk.pvoptimizer.solver.enums.SolutionStatus;

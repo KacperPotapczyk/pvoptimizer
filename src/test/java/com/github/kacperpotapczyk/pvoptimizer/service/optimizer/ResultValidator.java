@@ -1,4 +1,4 @@
-package com.github.kacperpotapczyk.pvoptimizer.service;
+package com.github.kacperpotapczyk.pvoptimizer.service.optimizer;
 
 import com.github.kacperpotapczyk.pvoptimizer.model.contract.ContractResult;
 import com.github.kacperpotapczyk.pvoptimizer.model.sourcesink.MovableDemandResult;
