@@ -74,3 +74,14 @@ services:
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       PORT: 9021
     restart: unless-stopped
+  pvoptimizer:
+    image: pvoptimizer:0.1.0
+    hostname: pvoptimizer
+    container_name: pvoptimizer
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

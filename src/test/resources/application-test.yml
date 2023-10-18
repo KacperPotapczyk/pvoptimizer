@@ -8,9 +8,12 @@ spring:
       containerId: pvoptimizer-container
       groupId: pvoptimizer
       topic: pvoptimizer
+      bootstrapServers: localhost:3333
+      auto-offset-reset: earliest
       properties:
         schema.registry.url: mock://test-schema
     producer:
       topic: pvoptimizer-test
+      bootstrapServers: localhost:3333
       properties:
         schema.registry.url: mock://test-schema

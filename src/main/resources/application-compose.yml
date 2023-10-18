@@ -1,0 +1,18 @@
+optimizer:
+  maxAllowedTimeOut: 600
+  numericalZero: 1e-11
+
+spring:
+  kafka:
+    consumer:
+      containerId: pvoptimizer-container
+      groupId: pvoptimizer
+      topic: pvoptimizer
+      bootstrap-servers: broker:29092
+      properties:
+        schema.registry.url: http://schema-registry:8081
+    producer:
+      topic: pvoptimizer-result
+      bootstrap-servers: broker:29092
+      properties:
+        schema.registry.url: http://schema-registry:8081

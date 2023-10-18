@@ -27,8 +27,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @EmbeddedKafka(
         partitions = 1,
         brokerProperties = {
-                "listeners=PLAINTEXT://localhost:9092",
-                "port=9092"})
+                "listeners=PLAINTEXT://localhost:3333",
+                "port=3333"})
 public class EndToEndTests {
 
     private final KafkaTemplate<String, TaskDto> kafkaTemplate;
