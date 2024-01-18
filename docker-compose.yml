@@ -75,7 +75,7 @@ services:
       PORT: 9021
     restart: unless-stopped
   pvoptimizer:
-    image: pvoptimizer:0.1.0
+    image: pvoptimizer:0.2.0
     hostname: pvoptimizer
     container_name: pvoptimizer
     depends_on:
