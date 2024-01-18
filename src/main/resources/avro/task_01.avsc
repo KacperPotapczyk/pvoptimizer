@@ -1,5 +1,5 @@
 {
-  "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+  "namespace": "com.github.kacperpotapczyk.pvoptimizer.avro.optimizer.task",
   "type": "record",
   "name": "TaskDto",
   "fields": [
@@ -152,7 +152,7 @@
                 "items": {
                   "type": "record",
                   "name": "SumConstraintDto",
-                  "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+                  "namespace": "com.github.kacperpotapczyk.pvoptimizer.avro.optimizer.task",
                   "fields": [
                     {
                       "type": "int",
@@ -176,7 +176,7 @@
               "doc": "Constraint on maximal energy over intervals range",
               "type": {
                 "type": "array",
-                "items": "com.github.kacperpotapczyk.pvoptimizer.dto.SumConstraintDto"
+                "items": "com.github.kacperpotapczyk.pvoptimizer.avro.optimizer.task.SumConstraintDto"
               },
               "default": []
             }

@@ -7,12 +7,12 @@ spring:
     consumer:
       containerId: pvoptimizer-container
       groupId: pvoptimizer
-      topic: pvoptimizer
+      topic: pv-optimizer-task
       bootstrap-servers: broker:29092
       properties:
         schema.registry.url: http://schema-registry:8081
     producer:
-      topic: pvoptimizer-result
+      topic: pv-optimizer-result
       bootstrap-servers: broker:29092
       properties:
         schema.registry.url: http://schema-registry:8081

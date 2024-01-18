@@ -1,5 +1,5 @@
 {
-  "namespace": "com.github.kacperpotapczyk.pvoptimizer.dto",
+  "namespace": "com.github.kacperpotapczyk.pvoptimizer.avro.optimizer.result",
   "type": "record",
   "name": "ResultDto",
   "fields": [
