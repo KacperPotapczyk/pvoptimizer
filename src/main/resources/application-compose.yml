@@ -1,18 +1,4 @@
-optimizer:
-  maxAllowedTimeOut: 600
-  numericalZero: 1e-11
-
 spring:
-  kafka:
-    consumer:
-      containerId: pvoptimizer-container
-      groupId: pvoptimizer
-      topic: pv-optimizer-task
-      bootstrap-servers: broker:29092
-      properties:
-        schema.registry.url: http://schema-registry:8081
-    producer:
-      topic: pv-optimizer-result
-      bootstrap-servers: broker:29092
-      properties:
-        schema.registry.url: http://schema-registry:8081
+  cloud.config.enabled: true
+  config.import: configserver:http://configserver:8888
+  application.name: optimizer
