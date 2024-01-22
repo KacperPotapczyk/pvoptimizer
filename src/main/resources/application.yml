@@ -3,6 +3,7 @@ optimizer:
   numericalZero: 1e-11
 
 spring:
+  cloud.config.enabled: false
   kafka:
     consumer:
       containerId: pvoptimizer-container

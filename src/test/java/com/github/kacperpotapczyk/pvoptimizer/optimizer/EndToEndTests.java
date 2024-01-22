@@ -27,9 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext
 @EmbeddedKafka(
         partitions = 1,
-        brokerProperties = {
-                "listeners=PLAINTEXT://localhost:3333",
-                "port=3333"})
+        brokerProperties = "${spring.embedded.kafka.brokers}")
 public class EndToEndTests {
 
     private final KafkaTemplate<String, TaskDto> kafkaTemplate;

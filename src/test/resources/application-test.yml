@@ -3,17 +3,18 @@ optimizer:
   numericalZero: 1e-11
 
 spring:
+  cloud.config.enabled: false
   kafka:
     consumer:
       containerId: pvoptimizer-container
       groupId: pvoptimizer
       topic: pvoptimizer
-      bootstrapServers: localhost:3333
+      bootstrapServers: ${spring.embedded.kafka.brokers}
       auto-offset-reset: earliest
       properties:
         schema.registry.url: mock://test-schema
     producer:
       topic: pvoptimizer-test
-      bootstrapServers: localhost:3333
+      bootstrapServers: ${spring.embedded.kafka.brokers}
       properties:
         schema.registry.url: mock://test-schema
